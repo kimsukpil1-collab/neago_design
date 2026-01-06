@@ -17,7 +17,7 @@
             color: #333;
         }
         
-        /* 네비게이션 */
+        /* 네비게이션 (기존 스타일 유지) */
         nav {
             background: #2c3e50;
             padding: 1rem 0;
@@ -57,105 +57,81 @@
         nav a:hover {
             color: #3498db;
         }
-        
-        /* 페이지 헤더 */
-        .page-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        /* 히어로 섹션 */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
-        
-        .page-header h1 {
+
+        .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
-        
-        /* 컨테이너 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 회사 소개 섹션 */
-        .intro-section {
-            padding: 80px 20px;
-            text-align: center;
-        }
-        
-        .intro-section h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-        }
-        
-        .intro-section p {
-            font-size: 1.2rem;
-            line-height: 2;
-            color: #555;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-        }
-        
+
         /* 강점 섹션 */
-        .strengths-section {
+        .strength-section {
             padding: 80px 20px;
             background: #f8f9fa;
         }
-        
-        .strengths-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+
+        .container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
-        .strength-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        
-        .strength-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .strength-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-        
-        /* 서비스 프로세스 */
-        .process-section {
-            padding: 80px 20px;
-        }
-        
-        .process-section h2 {
+
+        .section-title {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 3rem;
             color: #2c3e50;
         }
-        
+
+        .strength-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .strength-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .strength-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .strength-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        /* 서비스 프로세스 */
+        .process-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
         .process-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            margin-top: 2rem;
         }
-        
+
         .process-step {
             text-align: center;
             position: relative;
         }
-        
+
         .step-number {
             width: 60px;
             height: 60px;
@@ -169,18 +145,94 @@
             font-weight: bold;
             margin: 0 auto 1rem;
         }
-        
+
         .process-step h3 {
-            font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: #2c3e50;
         }
-        
-        /* 가격 섹션 */
-        .pricing-section {
-            padding: 80px 20px;
-            background: #f8f9fa;
+
+        /* 푸터 (기존 스타일 유지) */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 2rem 20px;
+            text-align: center;
         }
-        
-        .pricing-section h2 {
-            text-align
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">DESIGN STUDIO</div>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="portfolio.html">포트폴리오</a></li>
+                <li><a href="about.html">회사소개</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>우리는 가치를 디자인합니다</h1>
+            <p>디자인스튜디오는 단순한 이미지를 넘어 비즈니스의 성공을 설계합니다.</p>
+        </div>
+    </section>
+
+    <section class="strength-section">
+        <div class="container">
+            <h2 class="section-title">우리의 핵심 강점</h2>
+            <div class="strength-grid">
+                <div class="strength-card">
+                    <div class="icon">🎯</div>
+                    <h3>매출 중심 디자인</h3>
+                    <p>단순히 예쁜 디자인이 아닌, 소비자의 구매를 이끌어내는 전략적인 레이아웃을 구성합니다.</p>
+                </div>
+                <div class="strength-card">
+                    <div class="icon">⚡</div>
+                    <h3>빠른 피드백</h3>
+                    <p>고객님과의 원활한 소통을 위해 24시간 이내 답변 및 신속한 수정을 원칙으로 합니다.</p>
+                </div>
+                <div class="strength-card">
+                    <div class="icon">💎</div>
+                    <h3>압도적 퀄리티</h3>
+                    <p>작은 디테일 하나 놓치지 않는 정교한 작업으로 브랜드의 품격을 높여드립니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">작업 프로세스</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h3>상담 및 기획</h3>
+                    <p>요구사항 분석 및 컨셉 설정</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h3>디자인 작업</h3>
+                    <p>전문 디자이너의 맞춤 제작</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h3>수정 및 보완</h3>
+                    <p>디테일 조정 및 완성도 향상</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h3>최종 납품</h3>
+                    <p>최적화된 파일 전송 및 완료</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Design Studio. All rights reserved.</p>
+        <p>Email: contact@designstudio.com | Tel: 02-1234-5678</p>
+    </footer>
+</body>
+</html>
