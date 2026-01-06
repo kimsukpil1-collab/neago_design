@@ -2,16 +2,17 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>포트폴리오 - 디자인스튜디오</title>
+    <title>포트폴리오</title>
     <style>
         body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.6; margin: 0; }
         nav { background: #1a1a1a; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { color: #3498db; font-weight: bold; font-size: 1.5rem; text-decoration: none; }
+        .logo { color: #5499ff; font-weight: bold; font-size: 1.5rem; text-decoration: none; }
         nav ul { list-style: none; display: flex; gap: 25px; }
         nav a { color: white; text-decoration: none; }
-        .header { background: #2c3e50; color: white; padding: 80px 20px; text-align: center; }
+        .header { background: #3a4a5b; color: white; padding: 80px 20px; text-align: center; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 50px auto; padding: 0 20px; }
-        .work { background: #eee; height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-weight: bold; color: #999; }
+        .work { background: #eee; height: auto; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 10px; font-weight: bold; color: #666; }
+        .work img { width: 100%; border-radius: 10px; margin-bottom: 15px; }
         footer { background: #1a1a1a; color: #888; padding: 40px; text-align: center; }
     </style>
 </head>
@@ -19,31 +20,28 @@
     <nav>
         <a href="index.html" class="logo">DESIGN STUDIO</a>
         <ul>
-            <li><a href="index.html">인덱스</a></li>
+            <li><a href="index.html">홈</a></li>
             <li><a href="about.html">회사소개</a></li>
             <li><a href="portfolio.html">포트폴리오</a></li>
             <li><a href="contact.html">고객상담</a></li>
         </ul>
     </nav>
+
     <section class="header">
         <h1>우리의 작업물</h1>
         <p>삶을 보완하는 디자인의 기록들입니다.</p>
     </section>
+
     <div class="grid">
-    <div class="work">
-        <img src="images/157.png" style="width: 100%; border-radius: 10px; margin-bottom: 10px;">
-        <p>프리미엄 화장품 상세페이지</p>
-    </div>
-    <div class="work">IT 스타트업 로고 BI</div>
-    <div class="work">전문가용 비즈니스 명함</div>
-    <div class="work">건강식품 상세페이지</div>
-</div>
-        <div class="work">프리미엄 화장품 상세페이지</div>
+        <div class="work">
+            <img src="images/157.png" alt="상품 이미지">
+            <p>프리미엄 화장품 상세페이지</p>
+        </div>
         <div class="work">IT 스타트업 로고 BI</div>
         <div class="work">전문가용 비즈니스 명함</div>
         <div class="work">건강식품 상세페이지</div>
     </div>
-    
-    <footer><p>&copy; 2026 Design Studio. All rights reserved.</p></footer>
+
+    <footer>&copy; 2026 Design Studio. All rights reserved.</footer>
 </body>
 </html>
