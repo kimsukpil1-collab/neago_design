@@ -2,237 +2,39 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회사소개 - 디자인스튜디오</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        
-        /* 네비게이션 (기존 스타일 유지) */
-        nav {
-            background: #2c3e50;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #3498db;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        nav a:hover {
-            color: #3498db;
-        }
-
-        /* 히어로 섹션 */
-        .hero {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* 강점 섹션 */
-        .strength-section {
-            padding: 80px 20px;
-            background: #f8f9fa;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: #2c3e50;
-        }
-
-        .strength-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .strength-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .strength-card .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .strength-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-
-        /* 서비스 프로세스 */
-        .process-section {
-            padding: 80px 20px;
-            background: white;
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .process-step {
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 1rem;
-        }
-
-        .process-step h3 {
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-        }
-
-        /* 푸터 (기존 스타일 유지) */
-        footer {
-            background: #1a1a1a;
-            color: #ccc;
-            padding: 2rem 20px;
-            text-align: center;
-        }
+        body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.8; margin: 0; color: #333; }
+        nav { background: #1a1a1a; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #3498db; font-weight: bold; font-size: 1.5rem; text-decoration: none; }
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav a { color: white; text-decoration: none; }
+        .philosophy { max-width: 800px; margin: 100px auto; padding: 0 20px; text-align: center; }
+        .philosophy h1 { font-size: 2.5rem; color: #2c3e50; margin-bottom: 40px; }
+        .philosophy p { font-size: 1.2rem; color: #666; }
+        .point { background: #f4f7f6; padding: 50px 20px; text-align: center; }
+        footer { background: #1a1a1a; color: #888; padding: 40px; text-align: center; }
     </style>
 </head>
 <body>
     <nav>
-        <div class="container">
-            <div class="logo">DESIGN STUDIO</div>
-            <ul>
-                <li><a href="index.html">홈</a></li>
-                <li><a href="portfolio.html">포트폴리오</a></li>
-                <li><a href="about.html">회사소개</a></li>
-                <li><a href="contact.html">고객상담</a></li>             </ul>
-        </div>
+        <a href="index.html" class="logo">DESIGN STUDIO</a>
+        <ul>
+            <li><a href="index.html">인덱스</a></li>
+            <li><a href="about.html">회사소개</a></li>
+            <li><a href="portfolio.html">포트폴리오</a></li>
+            <li><a href="contact.html">고객상담</a></li>
+        </ul>
     </nav>
-
-    <section class="hero">
-        <div class="container">
-            <h1>우리는 가치를 디자인합니다</h1>
-            <p>디자인스튜디오는 단순한 이미지를 넘어 비즈니스의 성공을 설계합니다.</p>
-        </div>
+    <section class="philosophy">
+        <h1>사업철학</h1>
+        <p>"디자인은 인간과 함께 살아가는 생명체입니다."</p>
+        <p>우리는 단순히 그림을 그리는 사람들이 아닙니다. 인간의 삶이 변할 때마다 발생하는 불편함을 찾고, 디자인이라는 보완책을 통해 더 나은 삶을 설계합니다.</p>
     </section>
-
-    <section class="strength-section">
-        <div class="container">
-            <h2 class="section-title">우리의 핵심 강점</h2>
-            <div class="strength-grid">
-                <div class="strength-card">
-                    <div class="icon">🎯</div>
-                    <h3>매출 중심 디자인</h3>
-                    <p>단순히 예쁜 디자인이 아닌, 소비자의 구매를 이끌어내는 전략적인 레이아웃을 구성합니다.</p>
-                </div>
-                <div class="strength-card">
-                    <div class="icon">⚡</div>
-                    <h3>빠른 피드백</h3>
-                    <p>고객님과의 원활한 소통을 위해 24시간 이내 답변 및 신속한 수정을 원칙으로 합니다.</p>
-                </div>
-                <div class="strength-card">
-                    <div class="icon">💎</div>
-                    <h3>압도적 퀄리티</h3>
-                    <p>작은 디테일 하나 놓치지 않는 정교한 작업으로 브랜드의 품격을 높여드립니다.</p>
-                </div>
-            </div>
-        </div>
+    <section class="point">
+        <h2>우리의 다짐</h2>
+        <p>유행을 따르기보다 본질을 봅니다. 고객의 비즈니스가 숨 쉴 수 있도록 살아있는 디자인을 약속합니다.</p>
     </section>
-
-    <section class="process-section">
-        <div class="container">
-            <h2 class="section-title">작업 프로세스</h2>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">01</div>
-                    <h3>상담 및 기획</h3>
-                    <p>요구사항 분석 및 컨셉 설정</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">02</div>
-                    <h3>디자인 작업</h3>
-                    <p>전문 디자이너의 맞춤 제작</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">03</div>
-                    <h3>수정 및 보완</h3>
-                    <p>디테일 조정 및 완성도 향상</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">04</div>
-                    <h3>최종 납품</h3>
-                    <p>최적화된 파일 전송 및 완료</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Design Studio. All rights reserved.</p>
-        <p>Email: contact@designstudio.com | Tel: 02-1234-5678</p>
-    </footer>
+    <footer><p>&copy; 2026 Design Studio. All rights reserved.</p></footer>
 </body>
 </html>
