@@ -2,45 +2,80 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DESIGN STUDIO - 포트폴리오</title>
     <style>
-        body { font-family: 'Malgun Gothic', sans-serif; margin: 0; background: #f4f4f4; }
-        nav { background: #1a1a1a; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { color: #5499ff; font-weight: bold; font-size: 1.5rem; text-decoration: none; }
-        nav ul { list-style: none; display: flex; gap: 25px; }
-        nav a { color: white; text-decoration: none; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1200px; margin: 50px auto; padding: 20px; }
-        .work { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: center; }
-        .work img { width: 100%; border-radius: 15px; margin-bottom: 20px; }
-        .btn-stack { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
-        .p-btn { padding: 10px; border-radius: 5px; text-decoration: none; font-weight: bold; color: white; font-size: 13px; }
-        .n { background: #2ecc71; } .c { background: #e62117; } .k { background: #ffeb00; color: #3c1e1e; } .a { background: #f39c12; } .g { background: #3498db; }
-        footer { background: #1a1a1a; color: #888; padding: 40px; text-align: center; }
+        /* 기본 설정: 여백 제거 및 폰트 크기 확대 */
+        body { font-family: 'Malgun Gothic', sans-serif; margin: 0; background: #f0f2f5; font-size: 18px; }
+        nav { background: #1a1a1a; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #5499ff; font-weight: bold; font-size: 1.8rem; text-decoration: none; }
+        nav ul { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; }
+        nav a { color: white; text-decoration: none; font-size: 16px; }
+
+        /* 컨테이너 여백 최소화 */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
+        
+        .header { background: #3a4a5b; color: white; padding: 40px 10px; text-align: center; margin-bottom: 20px; }
+        .header h1 { font-size: 2.5rem; margin: 0; }
+
+        /* 작업물 박스: 좌우 꽉 차게 */
+        .work { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; margin-bottom: 30px; }
+        .work img { width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px; }
+        .work h3 { font-size: 1.6rem; margin-bottom: 20px; color: #333; }
+
+        /* 버튼 그룹: 한 줄에 2~3개씩 꽉 차게 배치 */
+        .pay-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 20px; }
+        
+        /* 버튼 스타일: 대문짝만하게 */
+        .p-btn { display: flex; align-items: center; justify-content: center; height: 60px; border-radius: 10px; text-decoration: none; font-weight: bold; color: white; font-size: 1.1rem; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+        
+        /* 브랜드 색상 */
+        .n { background: #2ecc71; } /* 네이버 */
+        .c { background: #e62117; } /* 쿠팡 */
+        .k { background: #ffeb00; color: #3c1e1e; } /* 카카오 */
+        .a { background: #f39c12; } /* 옥션 */
+        .g { background: #3498db; } /* G마켓 */
+        .s { background: #ffbe00; color: #000; } /* 쓱닷컴 */
+
+        /* 모바일에서 버튼 더 크게 (한 줄에 2개씩) */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2rem; }
+            .pay-grid { grid-template-columns: repeat(2, 1fr); }
+            .p-btn { font-size: 1rem; height: 70px; }
+        }
+
+        footer { background: #1a1a1a; color: #888; padding: 30px; text-align: center; margin-top: 50px; }
     </style>
 </head>
 <body>
     <nav>
-        <a href="index.html" class="logo">DESIGN STUDIO</a>
+        <a href="index.html" class="logo">STUDIO</a>
         <ul>
             <li><a href="index.html">인덱스</a></li>
-            <li><a href="about.html">회사소개</a></li>
             <li><a href="portfolio.html">포트폴리오</a></li>
             <li><a href="contact.html">고객상담</a></li>
         </ul>
     </nav>
-    <div class="grid">
+
+    <section class="header">
+        <h1>우리의 작업물</h1>
+    </section>
+
+    <div class="container">
         <div class="work">
-            <img src="images/157.png">
-            <h3>프리미엄 화장품 패키지</h3>
-            <div class="btn-stack">
-                <a href="#" class="p-btn n">네이버페이 구매하기</a>
-                <a href="#" class="p-btn c">쿠팡 로켓배송 구매</a>
-                <a href="#" class="p-btn k">카카오톡 간편구매</a>
-                <a href="#" class="p-btn a">옥션 특별가 구매</a>
-                <a href="#" class="p-btn g">G마켓 베스트 구매</a>
+            <img src="images/157.png" alt="작업물">
+            <h3>프리미엄 화장품 상세페이지</h3>
+            
+            <div class="pay-grid">
+                <a href="#" class="p-btn n">네이버 구매</a>
+                <a href="#" class="p-btn c">쿠팡 구매</a>
+                <a href="#" class="p-btn k">카카오 구매</a>
+                <a href="#" class="p-btn s">쓱닷컴 구매</a> <a href="#" class="p-btn a">옥션 구매</a>
+                <a href="#" class="p-btn g">G마켓 구매</a>
             </div>
         </div>
-        </div>
+    </div>
+
     <footer>&copy; 2026 Design Studio. All rights reserved.</footer>
 </body>
 </html>
