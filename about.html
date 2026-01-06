@@ -2,17 +2,19 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>회사소개 - 디자인스튜디오</title>
+    <title>DESIGN STUDIO - 회사소개</title>
     <style>
-        body { font-family: 'Malgun Gothic', sans-serif; line-height: 1.8; margin: 0; color: #333; }
+        /* 기본 스타일 index.html과 동일 (생략 가능하나 완전한 코드를 위해 유지) */
+        body { font-family: 'Malgun Gothic', sans-serif; margin: 0; }
         nav { background: #1a1a1a; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo { color: #3498db; font-weight: bold; font-size: 1.5rem; text-decoration: none; }
+        .logo { color: #5499ff; font-weight: bold; font-size: 1.5rem; text-decoration: none; }
         nav ul { list-style: none; display: flex; gap: 25px; }
         nav a { color: white; text-decoration: none; }
-        .philosophy { max-width: 800px; margin: 100px auto; padding: 0 20px; text-align: center; }
-        .philosophy h1 { font-size: 2.5rem; color: #2c3e50; margin-bottom: 40px; }
-        .philosophy p { font-size: 1.2rem; color: #666; }
-        .point { background: #f4f7f6; padding: 50px 20px; text-align: center; }
+        .content { max-width: 900px; margin: 80px auto; padding: 0 20px; text-align: center; }
+        .about-img { width: 100%; border-radius: 20px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .pay-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 50px; background: #eee; padding: 40px; border-radius: 20px; }
+        .pay-btn { padding: 12px 20px; border-radius: 10px; text-decoration: none; font-weight: bold; color: white; }
+        .naver { background: #2ecc71; } .coupang { background: #e62117; } .kakao { background: #ffeb00; color: #3c1e1e; } .auction { background: #f39c12; } .gmarket { background: #3498db; }
         footer { background: #1a1a1a; color: #888; padding: 40px; text-align: center; }
     </style>
 </head>
@@ -26,15 +28,19 @@
             <li><a href="contact.html">고객상담</a></li>
         </ul>
     </nav>
-    <section class="philosophy">
-        <h1>사업철학</h1>
-        <p>"디자인은 인간과 함께 살아가는 생명체입니다."</p>
-        <p>우리는 단순히 그림을 그리는 사람들이 아닙니다. 인간의 삶이 변할 때마다 발생하는 불편함을 찾고, 디자인이라는 보완책을 통해 더 나은 삶을 설계합니다.</p>
-    </section>
-    <section class="point">
-        <h2>우리의 다짐</h2>
-        <p>유행을 따르기보다 본질을 봅니다. 고객의 비즈니스가 숨 쉴 수 있도록 살아있는 디자인을 약속합니다.</p>
-    </section>
-    <footer><p>&copy; 2026 Design Studio. All rights reserved.</p></footer>
+    <div class="content">
+        <h1>우리는 가치를 디자인합니다</h1>
+        <p>10년 경력의 전문가 그룹이 당신의 성공을 돕습니다.</p>
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" class="about-img">
+        <h3>지금 바로 전문가와 시작하세요!</h3>
+        <div class="pay-group">
+            <a href="#" class="pay-btn naver">네이버 결제</a>
+            <a href="#" class="pay-btn coupang">쿠팡 결제</a>
+            <a href="#" class="pay-btn kakao">카카오 결제</a>
+            <a href="#" class="pay-btn auction">옥션 결제</a>
+            <a href="#" class="pay-btn gmarket">G마켓 결제</a>
+        </div>
+    </div>
+    <footer>&copy; 2026 Design Studio. All rights reserved.</footer>
 </body>
 </html>
