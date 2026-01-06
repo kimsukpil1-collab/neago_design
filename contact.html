@@ -2,42 +2,32 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>고객상담 - 내 웹사이트</title>
+    <title>고객상담 - 디자인스튜디오</title>
     <style>
-        /* 페이지를 조금 더 전문적으로 보이게 하는 스타일 */
-        body { font-family: sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 20px; }
-        nav { background: #f4f4f4; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
-        nav li { display: inline; margin-right: 15px; }
-        .container { max-width: 600px; margin: 0 auto; border: 1px solid #ddd; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h1 { color: #007bff; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
-        .contact-info { background: #e9ecef; padding: 15px; border-left: 5px solid #007bff; margin: 20px 0; }
-        .btn { display: inline-block; background: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .btn:hover { background: #218838; }
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 20px; }
+        nav { background: #2c3e50; padding: 1rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .logo { color: #3498db; font-weight: bold; font-size: 1.5rem; }
+        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav a { color: white; text-decoration: none; }
+        .container { max-width: 600px; margin: 0 auto; border: 1px solid #ddd; padding: 30px; border-radius: 10px; }
+        .btn { display: inline-block; background: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
     </style>
 </head>
 <body>
-
     <nav>
-        <li><a href="index.html">인덱스</a></li>
-        <li><a href="about.html">회사소개</a></li>
-        <li><a href="portfolio.html">포트폴리오</a></li>
-        <li><a href="contact.html">고객상담</a></li>
+        <div class="logo">DESIGN STUDIO</div>
+        <ul>
+            <li><a href="index.html">인덱스</a></li>
+            <li><a href="about.html">회사소개</a></li>
+            <li><a href="portfolio.html">포트폴리오</a></li>
+            <li><a href="contact.html">고객상담</a></li>
+        </ul>
     </nav>
-
     <div class="container">
         <h1>고객상담 센터</h1>
-        <p>궁금하신 점이 있으신가요? 언제든 편하게 문의해 주세요.</p>
-
-        <div class="contact-info">
-            <p><strong>📞 전화 문의:</strong> 010-1234-5678</p>
-            <p><strong>📧 이메일:</strong> support@example.com</p>
-            <p><strong>⏰ 상담 시간:</strong> 평일 09:00 ~ 18:00 (주말 휴무)</p>
-        </div>
-
-        <h3>실시간 채팅 상담</h3>
-        <p>상담원과 실시간으로 대화하시려면 아래 버튼을 눌러주세요.</p>
-        <a href="#" class="btn">카카오톡 상담하기</a>
+        <p>📞 전화: 010-1234-5678</p>
+        <p>⏰ 시간: 평일 09:00 ~ 18:00</p>
+        <a href="#" class="btn">카카오톡 문의하기</a>
     </div>
-
 </body>
 </html>
