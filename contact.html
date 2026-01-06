@@ -11,15 +11,17 @@
         nav ul { list-style: none; display: flex; gap: 20px; margin: 0; }
         nav a { color: white; text-decoration: none; font-weight: bold; }
         
-        .contact-wrap { max-width: 800px; margin: 50px auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .pay-box { margin-bottom: 40px; text-align: center; }
-        .pay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .p-btn { display: flex; align-items: center; justify-content: center; height: 70px; border-radius: 10px; text-decoration: none; font-weight: bold; color: white; font-size: 1.1rem; }
+        .contact-wrap { max-width: 1000px; margin: 50px auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        /* 🔥 003.jpg 요청사항: 상담창보다 더 큰 결제 버튼 */
+        .pay-box { margin-bottom: 50px; text-align: center; }
+        .pay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .p-btn { display: flex; align-items: center; justify-content: center; height: 100px; border-radius: 15px; text-decoration: none; font-weight: 900; color: white; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .n { background: #2ecc71; } .c { background: #e62117; } .k { background: #ffeb00; color: #3c1e1e; }
         .s { background: #ffbe00; color: #000; } .a { background: #f39c12; } .g { background: #3498db; }
 
-        input, textarea { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
-        .submit-btn { background: #1a1a1a; color: white; padding: 20px; width: 100%; border: none; border-radius: 10px; font-weight: bold; font-size: 1.2rem; cursor: pointer; }
+        input, textarea { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 1rem; }
+        .submit-btn { background: #5499ff; color: white; padding: 20px; width: 100%; border: none; border-radius: 10px; font-weight: bold; font-size: 1.3rem; cursor: pointer; margin-top: 20px; }
         footer { background: #1a1a1a; color: #888; padding: 40px; text-align: center; }
     </style>
 </head>
@@ -35,17 +37,18 @@
     </nav>
     <div class="contact-wrap">
         <div class="pay-box">
-            <h2>⚡ 상담 전 빠른 결제 ⚡</h2>
+            <h1 style="color:#e62117;">💰 상담 전 우선 결제 (진행 1순위) 💰</h1>
             <div class="pay-grid">
                 <a href="#" class="p-btn n">네이버</a> <a href="#" class="p-btn c">쿠팡</a> <a href="#" class="p-btn k">카카오</a>
                 <a href="#" class="p-btn s">쓱닷컴</a> <a href="#" class="p-btn a">옥션</a> <a href="#" class="p-btn g">G마켓</a>
             </div>
         </div>
-        <hr style="margin: 40px 0; border: 0; border-top: 1px dashed #ccc;">
-        <h2>상담 문의하기</h2>
+        <hr style="margin: 50px 0; border: 0; border-top: 2px solid #eee;">
+        <h2>무료 견적 상담 문의</h2>
         <input type="text" placeholder="문의자 성함">
-        <textarea rows="6" placeholder="상세 내용을 적어주세요"></textarea>
-        <button class="submit-btn">견적 요청하기</button>
+        <input type="email" placeholder="이메일 주소">
+        <textarea rows="6" placeholder="문의 내용을 상세히 적어주세요"></textarea>
+        <button class="submit-btn">지금 바로 견적 요청하기</button>
     </div>
     <footer>&copy; 2026 Design Studio.</footer>
 </body>
