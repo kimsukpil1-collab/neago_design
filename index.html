@@ -2,19 +2,24 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>DESIGN STUDIO - 메인</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESIGN STUDIO - 인덱스</title>
     <style>
-        body { font-family: 'Malgun Gothic', sans-serif; margin: 0; background: #f9f9f9; }
-        nav { background: #1a1a1a; padding: 1rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo { color: #5499ff; font-weight: bold; font-size: 1.5rem; text-decoration: none; }
-        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; }
+        body { font-family: 'Malgun Gothic', sans-serif; margin: 0; background: #f0f2f5; }
+        nav { background: #1a1a1a; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: #5499ff; font-weight: bold; font-size: 2rem; text-decoration: none; }
+        nav ul { list-style: none; display: flex; gap: 20px; margin: 0; }
         nav a { color: white; text-decoration: none; font-weight: bold; }
-        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); background-size: cover; color: white; padding: 150px 20px; text-align: center; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .pay-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 40px; }
-        .pay-btn { padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; color: white; transition: 0.3s; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .naver { background: #2ecc71; } .coupang { background: #e62117; } .kakao { background: #ffeb00; color: #3c1e1e; } .auction { background: #f39c12; } .gmarket { background: #3498db; }
-        .pay-btn:hover { transform: translateY(-5px); filter: brightness(1.1); }
+        
+        /* 003.jpg 스타일: 상단 6대 결제 버튼 */
+        .pay-section { background: #fff; padding: 40px 20px; border-bottom: 5px solid #5499ff; text-align: center; }
+        .pay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+        .p-btn { display: flex; align-items: center; justify-content: center; height: 120px; border-radius: 20px; text-decoration: none; font-weight: 900; font-size: 1.6rem; color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s; }
+        .p-btn:hover { transform: translateY(-10px); filter: brightness(1.1); }
+        .n { background: #2ecc71; } .c { background: #e62117; } .k { background: #ffeb00; color: #3c1e1e; }
+        .s { background: #ffbe00; color: #000; } .a { background: #f39c12; } .g { background: #3498db; }
+
+        .hero { padding: 100px 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1350&q=80'); background-size: cover; color: white; }
         footer { background: #1a1a1a; color: #888; padding: 40px; text-align: center; }
     </style>
 </head>
@@ -28,17 +33,17 @@
             <li><a href="contact.html">고객상담</a></li>
         </ul>
     </nav>
-    <section class="hero">
-        <h1>당신의 비즈니스를 디자인합니다</h1>
-        <p>지금 바로 베스트셀러 디자인을 소유하세요!</p>
-        <div class="pay-group">
-            <a href="#" class="pay-btn naver">네이버페이 구매</a>
-            <a href="#" class="pay-btn coupang">쿠팡 구매</a>
-            <a href="#" class="pay-btn kakao">카카오페이 구매</a>
-            <a href="#" class="pay-btn auction">옥션 구매</a>
-            <a href="#" class="pay-btn gmarket">G마켓 구매</a>
+    <section class="pay-section">
+        <h1 style="margin-bottom:30px;">🔥 입점 완료! 지금 바로 주문하세요 🔥</h1>
+        <div class="pay-grid">
+            <a href="#" class="p-btn n">네이버페이</a> <a href="#" class="p-btn c">쿠팡 구매</a> <a href="#" class="p-btn k">카카오페이</a>
+            <a href="#" class="p-btn s">쓱닷컴 구매</a> <a href="#" class="p-btn a">옥션 구매</a> <a href="#" class="p-btn g">G마켓 구매</a>
         </div>
     </section>
-    <footer>&copy; 2026 Design Studio. All rights reserved.</footer>
+    <div class="hero">
+        <h2>최고의 디자인 파트너</h2>
+        <p>당신의 비즈니스 가치를 높여드립니다.</p>
+    </div>
+    <footer>&copy; 2026 Design Studio.</footer>
 </body>
 </html>
