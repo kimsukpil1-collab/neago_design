@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 - 디자인스튜디오</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* 네비게이션 */
+        nav {
+            background: #2c3e50;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #3498db;
+        }
+        
+        /* 페이지 헤더 */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* 필터 버튼 */
+        .filter-buttons {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f8f9fa;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 2px solid #3498db;
+            color: #3498db;
+            padding: 10px 25px;
+            margin: 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        /* 포트폴리오 그리드 */
+        .portfolio-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+        
+        .portfolio-category {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-content p {
+            color: #666;
+            margin-top: 1rem;
+        }
+        
+        /* 푸터 */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 2rem 20px;
+            text-align: center;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 -->
+    <nav>
+        <div class="container">
+            <div class="logo">DESIGN STUDIO</div>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="portfolio.html">포트폴리오</a></li>
+                <li><a href="about.html">회사소개</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 페이지 헤더 -->
+    <section class="page-header">
+        <h1>포트폴리오</h1>
+        <p>다양한 프로젝트를 통해 입증된 우리의 실력을 확인하세요</p>
+    </section>
+
+    <!-- 필터 버튼 -->
+    <div class="filter-buttons">
+        <button class="filter-btn active">전체</button>
+        <button class="filter-btn">상세페이지</button>
+        <button class="filter-btn">카드뉴스</button>
+        <button class="filter-btn">로고</button>
+        <button class="filter-btn">명함</button>
+    </div>
+
+    <!-- 포트폴리오 그리드 -->
+    <section class="portfolio-section">
+        <div class="portfolio-grid">
+            <!-- 상세페이지 프로젝트 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">📱</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">상세페이지</span>
+                    <h3>프리미엄 화장품 상세페이지</h3>
+                    <p>럭셔리한 감성을 담은 화장품 상세페이지로 전환율 35% 향상</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">🛒</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">상세페이지</span>
+                    <h3>생활용품 쇼핑몰 상세페이지</h3>
+                    <p>간결하고 실용적인 디자인으로 구매 결정을 빠르게 유도</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">👗</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">상세페이지</span>
+                    <h3>패션 브랜드 상세페이지</h3>
+                    <p>감각적인 레이아웃과 비주얼로 브랜드 가치 극대화</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">🍔</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">상세페이지</span>
+                    <h3>식품 브랜드 상세페이지</h3>
+                    <p>신선함과 맛을 강조한 비주얼로 구매욕구 자극</p>
+                </div>
+            </div>
+
+            <!-- 카드뉴스 프로젝트 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">💳</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">카드뉴스</span>
+                    <h3>IT 스타트업 홍보 카드뉴스</h3>
+                    <p>복잡한 기술을 쉽고 재미있게 전달하는 10장 시리즈</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">🏋️</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">카드뉴스</span>
+                    <h3>피트니스 센터 프로모션</h3>
+                    <p>동기부여를 자극하는 감성적인 카드뉴스로 회원 가입 증가</p>
+                </div>
+            </div>
+
+            <!-- 로고 프로젝트 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">🎨</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">로고</span>
+                    <h3>카페 브랜드 로고</h3>
+                    <p>따뜻하고 친근한 감성의 카페 로고, 심볼+워드마크 조합</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">💼</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">로고</span>
+                    <h3>법률 사무소 로고</h3>
+                    <p>신뢰감과 전문성을 강조한 미니멀 로고 디자인</p>
+                </div>
+            </div>
+
+            <!-- 명함 프로젝트 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">👔</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">명함</span>
+                    <h3>건축 사무소 명함</h3>
+                    <p>건축적 요소를 활용한 고급스러운 명함 디자인</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">✨</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">명함</span>
+                    <h3>뷰티 살롱 명함</h3>
+                    <p>우아하고 세련된 감성의 양면 명함 디자인</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">🎯</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">상세페이지</span>
+                    <h3>가전제품 상세페이지</h3>
+                    <p>제품의 기능과 장점을 명확하게 전달하는 인포그래픽 활용</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">📚</div>
+                <div class="portfolio-content">
+                    <span class="portfolio-category">카드뉴스</span>
+                    <h3>교육 플랫폼 카드뉴스</h3>
+                    <p>학습 효과를 높이는 깔끔한 인포그래픽 스타일</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2026 Design Studio. All rights reserved.</p>
+        <p>Email: contact@designstudio.com | Tel: 02-1234-5678</p>
+    </footer>
+
+    <script>
+        // 필터 버튼 기능
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
