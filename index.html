@@ -131,25 +131,52 @@
         });
     }
 
+    // 이 함수가 날짜와 주문번호를 [01/14_1] 형식으로 만들어 전송하는 핵심입니다.
     async function handleFinalSubmit() {
         const name = document.getElementById('user-name').value;
         const contact = document.getElementById('user-contact').value;
         const message = document.getElementById('user-msg').value;
 
+        // [핵심] 날짜 생성 (예: 01/14)
+        const now = new Date();
+        const dateStr = `${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')}`;
+        
+        // [핵심] 주문번호 카운팅 로직 (브라우저에 저장됨)
+        let orderCount = localStorage.getItem('last_order_count') || 0;
+        let lastOrderDate = localStorage.getItem('last_order_date');
+        
+        if (lastOrderDate !== dateStr) {
+            orderCount = 1; // 날짜 바뀌면 1번부터 다시 시작
+        } else {
+            orderCount = parseInt(orderCount) + 1; // 오늘 주문이면 +1
+        }
+        
+        localStorage.setItem('last_order_date', dateStr);
+        localStorage.setItem('last_order_count', orderCount);
+
+        // 텔레그램 정보
         const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
         const chatId = "7299827824";
-        const text = `🔔 [신규의뢰]\n성함: ${name}\n연락처: ${contact}\n내용: ${message}`;
+        
+        // 사장님이 원하신 [날짜_번호] 머리말 완성
+        const titleTag = `[${dateStr}_${orderCount}]`;
+        const text = `${titleTag}\n성함: ${name}\n연락처: ${contact}\n내용: ${message}`;
 
+        // 성공 알림창 띄우기
         document.getElementById('success-overlay').style.display = 'flex';
         
         try {
+            // 실제 전송
             await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: chatId, text: text })
             });
-        } catch (e) { console.error(e); }
+        } catch (e) { 
+            console.error("전송 오류:", e); 
+        }
 
+        // 6초 뒤에 페이지 새로고침 (알림창 닫기 대용)
         setTimeout(() => { location.reload(); }, 6000);
     }
 </script>
