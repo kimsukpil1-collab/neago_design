@@ -59,8 +59,12 @@
 
         /* [모바일 대응 레이아웃 설정] */
         @media (max-width: 1024px) {
-            nav { padding: 10px 10px; }
-            .logo { font-size: 1.3rem; }
+            nav { padding: 10px 5px; } /* 양옆 여백 최소화 */
+            .logo { font-size: 1.15rem; } /* 로고 크기 살짝 조절 */
+            nav ul { gap: 4px; } /* P1, P2, P3 사이 간격을 20px에서 4px로 확 줄임 */
+            .nav-btn { padding: 6px 6px; font-size: 0.75rem; } /* 버튼 여백 줄임 */
+            .call-btn { padding: 8px 10px; font-size: 0.8rem; letter-spacing: -0.5px; } /* 전화번호 버튼 확보 */
+
             .metal-plate { padding: 40px 0 !important; width: 95% !important; }
             .wave-text { font-size: 1.45rem !important; }
             .sub-copy { font-size: 0.65rem !important; }
