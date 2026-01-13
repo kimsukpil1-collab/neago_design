@@ -1,20 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEAGO DESIGN - 네고의 역사 I</title>
+    <style>
+        :root { --main-glow: #00ff87; --bg-dark: #050a07; }
+        body { background: var(--bg-dark); color: #fff; margin: 0; font-family: 'Pretendard', sans-serif; }
+        
+        /* 1. 상단 메뉴 */
+        nav { background: rgba(0,0,0,0.9); padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--main-glow); position: sticky; top: 0; z-index: 1000; }
+        .logo { color: var(--main-glow); font-weight: 900; font-size: 1.8rem; text-decoration: none; text-shadow: 0 0 10px var(--main-glow); }
+        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; }
+        nav a { color: #fff; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: var(--main-glow); }
+
+        /* 2. 상단 배너 (Hero Section) */
+        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; text-align: center; }
+        .hero h1 { font-size: 4rem; margin-bottom: 10px; text-shadow: 0 0 20px var(--main-glow); }
+        .hero p { font-size: 1.2rem; color: #ccc; }
+
+        /* 3. 3단 이미지 배치 레이아웃 */
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+        .section-title { font-size: 2rem; margin-bottom: 30px; border-left: 5px solid var(--main-glow); padding-left: 15px; }
+        .history-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        
+        .work-card { background: #111; border: 1px solid #333; border-radius: 15px; overflow: hidden; transition: 0.4s; text-decoration: none; color: inherit; }
+        .work-card:hover { border-color: var(--main-glow); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,255,135,0.2); }
+        .work-card img { width: 100%; height: 200px; object-fit: cover; }
+        .work-card-info { padding: 20px; }
+        .work-card-info h3 { margin: 0; font-size: 1.2rem; color: var(--main-glow); }
+        .work-card-info p { margin: 10px 0 0; font-size: 0.9rem; color: #888; }
+
+        footer { text-align: center; padding: 50px; border-top: 1px solid #222; margin-top: 100px; color: #555; }
+    </style>
+</head>
 <body>
     <nav>
         <a href="index.html" class="logo">NEAGO DESIGN</a>
         <ul>
-            <li><a href="index.html">네고의 역사 I</a></li>
+            <li><a href="index.html" style="color:var(--main-glow);">네고의 역사 I</a></li>
             <li><a href="about.html">네고의 역사 II</a></li>
             <li><a href="portfolio.html">네고의 기록 III</a></li>
-            <li><a href="contact.html" style="color:#ffeb00;">예약하기</a></li>
+            <li><a href="contact.html">예약하기</a></li>
         </ul>
     </nav>
-    <section class="pay-section">
-        <h1>📜 네고 디자인의 탄생과 역사 (01-30)</h1>
-        <p>지금까지 쌓아온 디자인 결과물을 확인하세요.</p>
-        <div class="pay-grid">
-            <a href="4가지_확인.html" class="p-btn" style="background:#1a1a1a; border:1px solid #5499ff;">01. 식물 체크리스트</a>
-            <a href="work02.html" class="p-btn" style="background:#1a1a1a; border:1px solid #5499ff;">02. 작업물 제목</a>
-            <a href="work30.html" class="p-btn" style="background:#1a1a1a; border:1px solid #5499ff;">30. 작업물 제목</a>
-        </div>
-    </section>
+
+    <header class="hero">
+        <h1>NEAGO HISTORY I</h1>
+        <p>협상의 가치를 디자인에 담다. 그 위대한 여정의 시작.</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">주요 작업물 (01-30)</h2>
+        <div class="history-grid">
+            <a href="4가지_확인.html" class="work-card">
+                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=500&q=80" alt="식물 체크리스트">
+                <div class="work-card-info">
+                    <h3>01. 식물 체크리스트</h3>
+                    <p>다크모드 기반의 세련된 UI 가이드 디자인</p>
+                </div>
+            </a>
+            
+            <a href="work02.html" class="work-card">
+                <img src="https://via.placeholder.com/500x300/111/00ff87?text=Work+02" alt="작업물">
+                <div class="work-card-info">
+                    <h3>02. 브랜드 아이덴티티</h3>
+                    <p>기업 로고 및 컬러 가이드 시스템 구축</p>
+                </div>
+            </a>
+
+            </div>
+    </div>
+
+    <footer>&copy; 2026 NEAGO DESIGN. All rights reserved.</footer>
 </body>
+</html>
