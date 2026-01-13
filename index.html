@@ -20,7 +20,7 @@
             background: linear-gradient(90deg, var(--gold) 0%, #fff 50%, var(--gold) 100%);
             background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: shine-flow 4s linear infinite;
-            white-space: nowrap; /* 상호 한 줄 고정 */
+            white-space: nowrap;
         }
         @keyframes shine-flow { to { background-position: 200% center; } }
         
@@ -37,7 +37,7 @@
             font-weight: 900 !important;
             box-shadow: 0 0 15px rgba(197, 160, 89, 0.6);
             border: 1px solid #fff;
-            white-space: nowrap; /* 번호 한 줄 고정 */
+            white-space: nowrap;
         }
 
         /* 💎 [1번] 히어로 박스 */
@@ -66,7 +66,7 @@
         }
         @keyframes light-sweep { 0% { left: -150%; } 95% { left: 150%; } 100% { left: 150%; } }
 
-        /* 💎 [3번] 메인 카피: 사장님 수치 절대 고정 */
+        /* 💎 [3번] 메인 카피: 사장님 수치 고정 */
         .wave-text {
             display: inline-block !important;
             font-family: 'Cinzel', serif; font-size: 3.8rem; font-weight: 900; letter-spacing: -2px;
@@ -85,16 +85,21 @@
             position: relative; top: 10px; z-index: 10; margin: 0;
         }
 
-        /* 🔥 [사장님 필독] 모바일용 마법 코드: 화면 작아지면 글자도 같이 작아져서 한 줄 유지 */
+        /* ✅ 줄바꿈 마법 (PC에서는 숨김) */
+        .pc-hide { display: none; }
+
+        /* 📱 모바일 대응 */
         @media (max-width: 768px) {
-            nav { padding: 10px 20px; } /* 옆 여백 줄임 */
-            .logo { font-size: 1.5rem; } /* 상호 작게 해서 한 줄로 */
-            nav ul { gap: 10px; } /* 메뉴 간격 좁힘 */
-            nav a { font-size: 0.8rem; } /* 메뉴 글자 작게 */
-            .call-btn { font-size: 0.9rem !important; padding: 5px 10px; } /* 전화번호 한 줄 유지 */
+            nav { padding: 10px 20px; }
+            .logo { font-size: 1.5rem; } 
+            nav ul { gap: 10px; }
+            nav a { font-size: 0.8rem; }
+            .call-btn { font-size: 0.9rem !important; padding: 5px 10px; }
             
-            /* 현판 안 글자들도 모바일에서 안 깨지게 조절 */
-            .wave-text { font-size: 1.8rem; }
+            /* ✅ 모바일에서만 줄바꿈 작동 */
+            .pc-hide { display: block; }
+
+            .wave-text { font-size: 1.8rem; line-height: 1.4; } /* 줄바꿈 대비 간격 조절 */
             .sub-copy { font-size: 0.7rem; letter-spacing: 4px; }
             .metal-plate { padding: 40px 20px; width: 90%; }
         }
@@ -105,9 +110,9 @@
 <nav>
     <a href="index.html" class="logo">NEAGO DESIGN</a>
     <ul>
-        <li><a href="#" style="color:#fff">P 1</a></li> 
-        <li><a href="#">P 2</a></li>
-        <li><a href="#">P 3</a></li>
+        <li><a href="#" style="color:#fff">P1</a></li> 
+        <li><a href="#">P2</a></li>
+        <li><a href="#">P3</a></li>
         <li><a href="tel:010-7928-8645" class="call-btn">☎ 010-7928-8645</a></li>
     </ul>
 </nav>
@@ -118,7 +123,7 @@
 
 <div class="copy-section">
     <div class="metal-plate">
-        <h1 class="wave-text">꿈을 디자인으로 이뤄 드립니다.</h1>
+        <h1 class="wave-text">꿈을 디자인으로 <br class="pc-hide"> 이뤄 드립니다.</h1>
         <p class="sub-copy">FANTASTIC SUCCESS WITH DESIGN</p>
     </div>
 </div>
