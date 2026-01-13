@@ -132,6 +132,7 @@
     const successOverlay = document.getElementById('success-overlay');
     let uploadedFiles = [];
 
+    // 파일 이름 표시 기능
     function updateFileDisplay() {
         if (uploadedFiles.length > 0) {
             fileNameDisplay.innerText = uploadedFiles.map(f => f.name).join(' / ');
@@ -142,6 +143,7 @@
         }
     }
 
+    // 파일 선택 및 드래그 앤 드롭 기능
     dropZone.addEventListener('click', () => fileInput.click());
     fileInput.addEventListener('change', () => {
         uploadedFiles = [...uploadedFiles, ...Array.from(fileInput.files)];
@@ -156,18 +158,20 @@
         updateFileDisplay();
     });
 
-    // [핵심] 텔레그램 알림 전송 함수
+    // [수정] 텔레그램 전송 + 알림창 8초 유지 기능
     async function handleFinalSubmit() {
-        const name = document.getElementById('user-name').value;
-        const contact = document.getElementById('user-contact').value;
-        const email = document.getElementById('user-email').value;
-        const message = document.getElementById('user-msg').value;
+        // 사장님 인덱스 파일의 각 입력창 ID를 정확히 매칭했습니다.
+        const name = document.querySelector('input[placeholder*="회사명"]')?.value || "미입력";
+        const contact = document.querySelector('input[placeholder*="연락처"]')?.value || "미입력";
+        const email = document.querySelector('input[placeholder*="이메일"]')?.value || "미입력";
+        const message = document.querySelector('textarea')?.value || "미입력";
 
         // 텔레그램 설정
         const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
-        const chatId = "1079288645"; // 사장님 폰번호/ID 기반 (테스트 필요)
-        const text = `🔔 [디자인 의뢰 알림]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}`;
+        const chatId = "1079288645"; 
+        const text = `🔔 [신규 의뢰 알림]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}\n첨부파일: ${uploadedFiles.length}개`;
 
+        // 알림창 띄우기
         successOverlay.style.display = 'flex';
 
         try {
@@ -176,14 +180,15 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: chatId, text: text })
             });
-        } catch (error) {
-            console.error("전송 실패:", error);
+        } catch (e) {
+            console.log("텔레그램 전송 실패");
         }
 
+        // 8초(8000ms) 동안 알림창 보여주고 새로고침
         setTimeout(() => {
             successOverlay.style.display = 'none';
-            location.reload();
-        }, 4000);
+            location.reload(); 
+        }, 8000); 
     }
 </script>
 
