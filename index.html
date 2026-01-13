@@ -11,7 +11,7 @@
         /* 💎 메뉴바 */
         nav { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 5px 80px; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000;
+            padding: 10px 80px; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000;
             border-bottom: 2px solid var(--gold);
         }
         .logo { 
@@ -22,9 +22,24 @@
             animation: shine-flow 4s linear infinite;
         }
         @keyframes shine-flow { to { background-position: 200% center; } }
-        nav ul { list-style: none; display: flex; gap: 20px; margin: 0; }
-        nav a { color: #888; text-decoration: none; font-weight: 800; letter-spacing: -1.5px; transition: 0.3s; }
+        
+        /* 메뉴 정렬 */
+        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; align-items: center; }
+        nav a { color: #888; text-decoration: none; font-weight: 800; letter-spacing: -1.5px; transition: 0.3s; font-size: 1.1rem; }
         nav a:hover { color: #fff; text-shadow: 0 0 10px #fff; }
+
+        /* ✅ [복구] 황금색 전화번호 버튼 (글자 키움) */
+        .call-btn {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #b38728 100%);
+            color: #000 !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.3rem !important; /* 글자 크기 시원하게 키웠습니다 */
+            font-weight: 900 !important;
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.6);
+            border: 1px solid #fff;
+            margin-left: 10px;
+        }
 
         /* 💎 [1번] 히어로 박스 (사장님 고정 60vh) */
         .hero-box {
@@ -45,19 +60,14 @@
             position: relative; overflow: hidden; text-align: center;
         }
 
-        /* 현판 조명 */
         .metal-plate::before {
             content: ""; position: absolute; top: 0; left: -150%; width: 100%; height: 100%;
             background: linear-gradient(120deg, transparent 15%, rgba(255, 223, 0, 0.15) 35%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 223, 0, 0.15) 65%, transparent 85%);
             animation: light-sweep 10.5s infinite;
         }
-        @keyframes light-sweep {
-            0% { left: -150%; }
-            95% { left: 150%; }
-            100% { left: 150%; }
-        }
+        @keyframes light-sweep { 0% { left: -150%; } 95% { left: 150%; } 100% { left: 150%; } }
 
-        /* 💎 [3번] 메인 카피: 한글 문구 */
+        /* 💎 [3번] 메인 카피: 사장님 수치 유지 */
         .wave-text {
             display: inline-block !important;
             font-family: 'Cinzel', serif; font-size: 3.8rem; font-weight: 900; letter-spacing: -2px;
@@ -65,23 +75,16 @@
             background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: move-up-down 3.5s ease-in-out infinite, text-shine 3s linear infinite;
             filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.8));
-            
-            /* ✅ 사장님 여백 수치 100% 유지 */
             margin-top: -15px; 
             margin-bottom: 0px; 
         }
         @keyframes text-shine { to { background-position: 200% center; } }
-        @keyframes move-up-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
+        @keyframes move-up-down { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-        /* 💎 서브 카피: 영어 문구 */
+        /* 💎 서브 카피: 사장님 수치 유지 */
         .sub-copy { 
             font-size: 1.4rem; font-weight: 800; letter-spacing: 12px; color: #5c441a; 
             text-transform: uppercase;
-            
-            /* ✅ 사장님 위치 수치 100% 유지 */
             position: relative;
             top: 10px; 
             z-index: 10;
@@ -97,7 +100,7 @@
         <li><a href="#" style="color:#fff">CLIENTS 1</a></li>
         <li><a href="#">CLIENTS 2</a></li>
         <li><a href="#">CLIENTS 3</a></li>
-        <li><a href="tel:010-7928-8645" style="color:var(--gold); font-weight:900;">☎ 010-7928-8645</a></li>
+        <li><a href="tel:010-7928-8645" class="call-btn">☎ 010-7928-8645</a></li>
     </ul>
 </nav>
 
