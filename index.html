@@ -1,49 +1,20 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DESIGN STUDIO - 인덱스</title>
-    <style>
-        body { font-family: 'Malgun Gothic', sans-serif; margin: 0; background: #f0f2f5; }
-        nav { background: #1a1a1a; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { color: #5499ff; font-weight: bold; font-size: 2rem; text-decoration: none; }
-        nav ul { list-style: none; display: flex; gap: 20px; margin: 0; }
-        nav a { color: white; text-decoration: none; font-weight: bold; }
-        
-        /* 003.jpg 스타일: 상단 6대 결제 버튼 */
-        .pay-section { background: #fff; padding: 40px 20px; border-bottom: 5px solid #5499ff; text-align: center; }
-        .pay-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .p-btn { display: flex; align-items: center; justify-content: center; height: 120px; border-radius: 20px; text-decoration: none; font-weight: 900; font-size: 1.6rem; color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s; }
-        .p-btn:hover { transform: translateY(-10px); filter: brightness(1.1); }
-        .n { background: #2ecc71; } .c { background: #e62117; } .k { background: #ffeb00; color: #3c1e1e; }
-        .s { background: #ffbe00; color: #000; } .a { background: #f39c12; } .g { background: #3498db; }
-
-        .hero { padding: 100px 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1350&q=80'); background-size: cover; color: white; }
-        footer { background: #1a1a1a; color: #888; padding: 40px; text-align: center; }
-    </style>
-</head>
 <body>
     <nav>
-        <a href="index.html" class="logo">DESIGN STUDIO</a>
+        <a href="index.html" class="logo">NEAGO DESIGN</a>
         <ul>
-            <li><a href="index.html">인덱스</a></li>
-            <li><a href="about.html">회사소개</a></li>
-            <li><a href="portfolio.html">포트폴리오</a></li>
-            <li><a href="contact.html">고객상담</a></li>
+            <li><a href="index.html">네고의 역사 I</a></li>
+            <li><a href="about.html">네고의 역사 II</a></li>
+            <li><a href="portfolio.html">네고의 기록 III</a></li>
+            <li><a href="contact.html" style="color:#ffeb00;">예약하기</a></li>
         </ul>
     </nav>
     <section class="pay-section">
-        <h1 style="margin-bottom:30px;">🔥 입점 완료! 지금 바로 주문하세요 🔥</h1>
+        <h1>📜 네고 디자인의 탄생과 역사 (01-30)</h1>
+        <p>지금까지 쌓아온 디자인 결과물을 확인하세요.</p>
         <div class="pay-grid">
-            <a href="#" class="p-btn n">네이버페이</a> <a href="#" class="p-btn c">쿠팡 구매</a> <a href="#" class="p-btn k">카카오페이</a>
-            <a href="#" class="p-btn s">쓱닷컴 구매</a> <a href="#" class="p-btn a">옥션 구매</a> <a href="#" class="p-btn g">G마켓 구매</a>
+            <a href="4가지_확인.html" class="p-btn" style="background:#1a1a1a; border:1px solid #5499ff;">01. 식물 체크리스트</a>
+            <a href="work02.html" class="p-btn" style="background:#1a1a1a; border:1px solid #5499ff;">02. 작업물 제목</a>
+            <a href="work30.html" class="p-btn" style="background:#1a1a1a; border:1px solid #5499ff;">30. 작업물 제목</a>
         </div>
     </section>
-    <div class="hero">
-        <h2>최고의 디자인 파트너</h2>
-        <p>당신의 비즈니스 가치를 높여드립니다.</p>
-    </div>
-    <footer>&copy; 2026 Design Studio.</footer>
 </body>
-</html>
