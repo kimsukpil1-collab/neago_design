@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NEAGO DESIGN</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
     <style>
+        /* [107.html 원본 스타일 그대로 유지] */
         :root { --gold: #c5a059; --bg: #000; }
         body { background: var(--bg); color: #fff; margin: 0; font-family: 'Pretendard', sans-serif; overflow-x: hidden; }
 
-        /* [COMMON] 메뉴바 */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 80px; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold); }
         .logo { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 900; color: var(--gold); text-decoration: none; }
-        nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
+        nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; }
         .nav-btn { padding: 8px 16px; border: 2px solid #444; border-radius: 5px; color: #888; text-decoration: none; }
         .nav-btn.active { color: #fff; border-color: var(--gold); }
-        .call-btn { background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728); color: #000 !important; padding: 10px 20px; border-radius: 5px; font-weight: 900; text-decoration: none; border: 1px solid #fff; }
+        
+        /* 📱 전화번호 가로 한 줄 유지 (아이콘 제거 및 최적화) */
+        .call-btn { 
+            background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728); 
+            color: #000 !important; padding: 10px 20px; border-radius: 5px; 
+            font-weight: 900; text-decoration: none; border: 1px solid #fff; 
+            white-space: nowrap; /* 무조건 한 줄 */
+        }
 
-        /* -----------------------------------------
-           [SECTION 1] 메인 비주얼 스타일 시작
-           ----------------------------------------- */
         .hero-box { width: 100%; height: 60vh; overflow: hidden; border-bottom: 12px solid; border-image: repeating-linear-gradient(-45deg, #8a6d3b 0px, #bf953f 2px, #fcf6ba 4px) 1; }
         .hero-box img { width: 100%; height: 100%; object-fit: cover; }
         .metal-plate { display: block; margin: 40px auto; width: 90%; max-width: 800px; padding: 60px 20px; border-radius: 8px; background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 20%, #b38728 40%, #fbf5b7 60%, #aa771c 80%, #fcf6ba 100%); border: 3px solid #f1d384; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; overflow: hidden; text-align: center; }
@@ -29,11 +33,7 @@
         @keyframes text-shine { to { background-position: 200% center; } }
         @keyframes move-up-down { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
         .sub-copy { font-size: 1.4rem; font-weight: 800; letter-spacing: 12px; color: #5c441a; text-transform: uppercase; margin-top: 15px; display: block; text-align: center; }
-        /* [SECTION 1] 끝 */
 
-        /* -----------------------------------------
-           [SECTION 2] 3단 프리미엄 라인업 스타일 시작
-           ----------------------------------------- */
         .service-section { padding: 80px 0px; text-align: center; }
         .section-title { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 60px; letter-spacing: 5px; }
         .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1400px; margin: 0 auto; align-items: start; }
@@ -41,20 +41,37 @@
         .service-card:hover { transform: translateY(-10px); border-color: var(--gold); }
         .card-image { width: 100%; height: auto; display: block; filter: brightness(1.05); }
         .click-hint { position: absolute; bottom: 20px; right: 20px; font-size: 8px; color: #5024; font-family: Arial, sans-serif; z-index: 10; pointer-events: none; }
-        /* [SECTION 2] 끝 */
 
-        /* 📱 모바일 최적화 (갤럭시 S10 꽉 차게!) */
+        /* [3섹션 전용 스타일 추가] */
+        .lab-section { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: radial-gradient(circle at center, #1a1a1a 0%, #000000 85%); }
+        .lab-content { position: relative; z-index: 2; text-align: center; max-width: 1400px; padding: 0 40px; width: 100%; }
+        .intro-line { font-family: 'Noto Sans KR', sans-serif; font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 900; color: #444; margin-bottom: 20px; display: block; opacity: 0.8; }
+        .main-line { font-family: 'Noto Sans KR', sans-serif; font-size: clamp(1.8rem, 6vw, 4.5rem); font-weight: 900; color: #ffffff; display: block; margin-bottom: 50px; text-shadow: 0px 0px 20px rgba(255,255,255,0.2), 2px 6px 15px rgba(0,0,0,1); }
+        .shining-text { position: relative; display: inline-block; background: linear-gradient(110deg, #8a6d3b 33%, #fcf6ba 50%, #8a6d3b 66%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: slash-shine 3s linear infinite; }
+        @keyframes slash-shine { to { background-position: -200% center; } }
+        .signature-wrap { margin-top: 60px; text-align: right; position: relative; padding-right: 8%; }
+        .signature-name { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 8vw, 4.5rem); color: var(--gold); margin-bottom: 0; line-height: 1; display: block; text-shadow: 2px 5px 12px rgba(0,0,0,1); }
+        .peace-wish { font-family: 'Cinzel', serif; font-size: clamp(0.8rem, 2vw, 1.1rem); color: #555; letter-spacing: 10px; margin-top: 10px; text-transform: uppercase; font-weight: 700; }
+
+        /* [모바일 최적화] */
         @media (max-width: 1024px) {
-            nav { padding: 10px 20px; }
-            .logo { font-size: 1.5rem; }
-            .metal-plate { padding: 40px 0 !important; width: 95% !important; }
-            .wave-text { font-size: 1.45rem !important; letter-spacing: -1px; }
-            .sub-copy { font-size: 0.65rem !important; letter-spacing: 3px !important; }
+            nav { padding: 10px 10px; }
+            .logo { font-size: 1.3rem; }
+            nav ul { gap: 5px; }
+            .nav-btn { padding: 6px 8px; font-size: 0.8rem; }
+            .call-btn { padding: 6px 10px; font-size: 0.75rem; letter-spacing: -0.5px; } /* 전화번호 가로 유지 */
 
-            /* ❗ 여기가 S10에서 꽉 차게 만드는 핵심 */
-            .service-grid { grid-template-columns: 1fr !important; max-width: 100vw !important; gap: 0; padding: 0; }
+            .metal-plate { padding: 40px 0 !important; width: 95% !important; }
+            .wave-text { font-size: 1.45rem !important; }
+            .sub-copy { font-size: 0.65rem !important; }
+
+            .service-grid { grid-template-columns: 1fr !important; gap: 0; padding: 0; }
             .service-card { border-radius: 0; border: none; width: 100vw; }
-            .card-image { width: 100vw !important; display: block; margin: 0; }
+            .card-image { width: 100vw !important; }
+
+            .intro-line { font-size: 1.2rem !important; }
+            .main-line { font-size: 1.8rem !important; }
+            .signature-wrap { margin-top: 40px; padding-right: 0; text-align: center; }
         }
     </style>
 </head>
@@ -66,7 +83,7 @@
         <li><a href="102.html" class="nav-btn active">P1</a></li> 
         <li><a href="p2.html" class="nav-btn">P2</a></li>
         <li><a href="p3.html" class="nav-btn">P3</a></li>
-        <li><a href="tel:010-7928-8645" class="call-btn">☎ 010-7928-8645</a></li>
+        <li><a href="tel:010-7928-8645" class="call-btn">010-7928-8645</a></li>
     </ul>
 </nav>
 
@@ -79,6 +96,7 @@
         <p class="sub-copy">FANTASTIC SUCCESS WITH DESIGN</p>
     </div>
 </div>
+
 <section class="service-section">
     <h2 class="section-title">PREMIUM LINEUP</h2>
     <div class="service-grid">
@@ -96,5 +114,22 @@
         </div>
     </div>
 </section>
+
+<section class="lab-section">
+    <div class="lab-content">
+        <h2 class="lab-title">
+            <span class="intro-line">누구나 기획을 말할 때,</span>
+            <span class="main-line">
+                <span class="shining-text">디자인</span>으로 당신의 가치를 증명합니다.
+            </span>
+        </h2>
+        <div class="signature-wrap">
+            <span class="signature-name">Sukbum Kim</span>
+            <div class="peace-wish">In Peace</div>
+            <span class="click-hint">click</span>
+        </div>
+    </div>
+</section>
+
 </body>
 </html>
