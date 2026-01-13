@@ -10,7 +10,7 @@
         :root { --gold: #c5a059; --bg: #000; }
         body { background: var(--bg); color: #fff; margin: 0; font-family: 'Pretendard', sans-serif; overflow-x: hidden; }
 
-        /* [상단 메뉴 & 로고 광채 효과] */
+        /* [상단 메뉴 & 로고 광채 효과 - 사장님 원본 유지] */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 80px; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold); }
         .logo { 
             font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 900; text-decoration: none;
@@ -29,7 +29,7 @@
         .hero-box { width: 100%; height: 60vh; overflow: hidden; border-bottom: 12px solid; border-image: repeating-linear-gradient(-45deg, #8a6d3b 0px, #bf953f 2px, #fcf6ba 4px) 1; }
         .hero-box img { width: 100%; height: 100%; object-fit: cover; }
         
-        /* [2섹션: 금빛 명판 & 웨이브 텍스트] */
+        /* [2섹션: 금빛 명판 & 웨이브 텍스트 - 사장님 원본 유지] */
         .metal-plate { display: block; margin: 40px auto; width: 90%; max-width: 800px; padding: 60px 20px; border-radius: 8px; background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 20%, #b38728 40%, #fbf5b7 60%, #aa771c 80%, #fcf6ba 100%); border: 3px solid #f1d384; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; overflow: hidden; text-align: center; }
         .metal-plate::before { content: ""; position: absolute; top: 0; left: -150%; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0.6) 50%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0) 100%); animation: light-sweep 10.5s infinite; }
         @keyframes light-sweep { 0% { left: -150%; } 95% { left: 150%; } 100% { left: 150%; } }
@@ -38,16 +38,16 @@
         @keyframes move-up-down { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
         .sub-copy { font-size: 1.4rem; font-weight: 800; letter-spacing: 12px; color: #5c441a; text-transform: uppercase; margin-top: 15px; display: block; text-align: center; }
 
-        /* [3섹션: 프리미엄 라인업 이미지 그리드] */
+        /* [3섹션: 프리미엄 라인업] */
         .service-section { padding: 80px 0px; text-align: center; }
         .section-title { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 60px; letter-spacing: 5px; }
         .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1400px; margin: 0 auto; align-items: start; }
-        .service-card { background: #050505; border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 15px; overflow: hidden; position: relative; transition: transform 0.3s; }
+        .service-card { background: #050505; border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 15px; overflow: hidden; position: relative; transition: transform 0.3s; cursor:pointer; }
         .service-card:hover { transform: translateY(-10px); border-color: var(--gold); }
         .card-image { width: 100%; height: auto; display: block; }
         .click-hint { position: absolute; bottom: 20px; right: 20px; font-size: 8px; color: #5024; font-family: Arial, sans-serif; z-index: 10; }
 
-        /* [4섹션: 디자인 철학 및 실험실 영역] */
+        /* [4섹션: 디자인 철학] */
         .lab-section { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: radial-gradient(circle at center, #1a1a1a 0%, #000000 85%); }
         .lab-content { position: relative; z-index: 2; text-align: center; max-width: 1400px; padding: 0 40px; width: 100%; }
         .intro-line { font-family: 'Noto Sans KR', sans-serif; font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 900; color: #444; margin-bottom: 20px; display: block; }
@@ -57,13 +57,13 @@
         .signature-name { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 8vw, 4.5rem); color: var(--gold); display: block; }
         .peace-wish { font-family: 'Cinzel', serif; font-size: clamp(0.8rem, 2vw, 1.1rem); color: #555; letter-spacing: 10px; margin-top: 10px; text-transform: uppercase; }
 
-        /* [모바일 대응 레이아웃 설정] */
+        /* [🚀 모바일 대응 레이아웃 - 이 부분만 정교하게 수정했습니다] */
         @media (max-width: 1024px) {
-            nav { padding: 10px 5px; } /* 양옆 여백 최소화 */
-            .logo { font-size: 1.15rem; } /* 로고 크기 살짝 조절 */
-            nav ul { gap: 4px; } /* P1, P2, P3 사이 간격을 20px에서 4px로 확 줄임 */
-            .nav-btn { padding: 6px 6px; font-size: 0.75rem; } /* 버튼 여백 줄임 */
-            .call-btn { padding: 8px 10px; font-size: 0.8rem; letter-spacing: -0.5px; } /* 전화번호 버튼 확보 */
+            nav { padding: 10px 5px !important; } /* 양옆 여백 최소화 */
+            .logo { font-size: 1.15rem !important; } /* 로고 크기 살짝 축소 */
+            nav ul { gap: 3px !important; } /* P1, P2, P3 사이 간격을 아주 좁게 붙임 */
+            .nav-btn { padding: 6px 5px !important; font-size: 0.75rem !important; } /* 버튼 여백 최소화 */
+            .call-btn { padding: 8px 8px !important; font-size: 0.8rem !important; letter-spacing: -0.8px !important; } /* 전화번호 공간 확보 */
 
             .metal-plate { padding: 40px 0 !important; width: 95% !important; }
             .wave-text { font-size: 1.45rem !important; }
@@ -99,15 +99,15 @@
 <section class="service-section">
     <h2 class="section-title">PREMIUM LINEUP</h2>
     <div class="service-grid">
-        <div class="service-card" onclick="location.href='2p-s1.html'" style="cursor:pointer">
+        <div class="service-card" onclick="location.href='2p-s1.html'">
             <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-1.jpg?raw=true" class="card-image">
             <span class="click-hint">click</span>
         </div>
-        <div class="service-card" onclick="location.href='2p-s1.html'" style="cursor:pointer">
+        <div class="service-card" onclick="location.href='2p-s1.html'">
             <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-2.jpg?raw=true" class="card-image">
             <span class="click-hint">click</span>
         </div>
-        <div class="service-card" onclick="location.href='3p-s1.html'" style="cursor:pointer">
+        <div class="service-card" onclick="location.href='3p-s1.html'">
             <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-3.jpg?raw=true" class="card-image">
             <span class="click-hint">click</span>
         </div>
