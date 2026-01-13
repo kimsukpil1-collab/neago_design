@@ -94,6 +94,58 @@ background: linear-gradient(135deg,
                 text-align: center !important;
             }
         }
+/* --- 여기서부터 복사 --- */
+        .service-section { padding: 80px 20px; text-align: center; }
+        .section-title { 
+            font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); 
+            margin-bottom: 60px; letter-spacing: 5px; 
+        }
+
+        .service-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            align-items: start; 
+        }
+
+        .service-card {
+            background: #050505;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+
+        .card-image {
+            width: 100%;
+            height: auto; 
+            display: block;
+            filter: brightness(1.05);
+        }
+
+        .click-hint {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 8px; 
+            color: #5024;   
+            font-family: Arial, sans-serif;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        @media (max-width: 1024px) {
+            .service-grid { grid-template-columns: 1fr; max-width: 500px; }
+        }
+        /* --- 여기까지 복사해서 index.html 스타일 끝에 붙여넣기 --- */
     </style>
 </head>
 <body>
@@ -118,6 +170,35 @@ background: linear-gradient(135deg,
         <p class="sub-copy">FANTASTIC SUCCESS WITH DESIGN</p>
     </div>
 </div>
+<section class="service-section">
+        <h2 class="section-title">PREMIUM LINEUP</h2>
+        
+        <div class="service-grid">
+            
+            <div class="service-card">
+                <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-1.jpg?raw=true" class="card-image">
+                <span class="click-hint">click</span>
+            </div>
 
+            <div class="service-card">
+                <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-2.jpg?raw=true" class="card-image">
+                <span class="click-hint">click</span>
+            </div>
+
+            <div class="service-card">
+                <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-3.jpg?raw=true" class="card-image">
+                <span class="click-hint">click</span>
+            </div>
+
+        </div>
+    </section>
+    ```
+
+---
+
+### ⚠️ 주의사항 (이거 안 하면 사진 안 보입니다)
+바디에 이 알맹이만 넣는다고 끝나는 게 아니라, 아까 제가 드린 **스타일(CSS) 코드**도 꼭 `<style>` 태그 안에 같이 있어야 박스 테두리랑 3분할 모양이 잡힙니다. 
+
+바디에 저거 붙여넣고 저장해서 한번 열어보세요. 사진 3장이 세로로 길게 쫙 나오면 성공입니다! 잘 나오나요?
 </body>
 </html>
