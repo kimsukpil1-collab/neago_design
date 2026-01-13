@@ -132,7 +132,7 @@
     const successOverlay = document.getElementById('success-overlay');
     let uploadedFiles = [];
 
-    // 파일 이름 표시 기능
+    // 파일 이름 표시 기능 유지
     function updateFileDisplay() {
         if (uploadedFiles.length > 0) {
             fileNameDisplay.innerText = uploadedFiles.map(f => f.name).join(' / ');
@@ -143,24 +143,23 @@
         }
     }
 
-    // 파일 선택 및 드래그 앤 드롭 기능
     dropZone.addEventListener('click', () => fileInput.click());
     fileInput.addEventListener('change', () => {
         uploadedFiles = [...uploadedFiles, ...Array.from(fileInput.files)];
         updateFileDisplay();
     });
 
-    ['dragenter', 'dragover'].forEach(n => dropZone.addEventListener(n, e => { e.preventDefault(); dropZone.classList.add('dragover'); }));
-    ['dragleave', 'drop'].forEach(n => dropZone.addEventListener(n, e => { e.preventDefault(); dropZone.classList.remove('dragover'); }));
+    ['dragenter', 'dragover'].forEach(n => dropZone.addEventListener(n, e => { e.preventDefault(); }));
+    ['dragleave', 'drop'].forEach(n => dropZone.addEventListener(n, e => { e.preventDefault(); }));
     dropZone.addEventListener('drop', e => {
         e.preventDefault();
         uploadedFiles = [...uploadedFiles, ...Array.from(e.dataTransfer.files)];
         updateFileDisplay();
     });
 
-    // [수정] 텔레그램 전송 + 알림창 8초 유지 기능
+    // [최종본] 텔레그램 전송 함수 (사장님 ID: 7299827824 적용 완료)
     async function handleFinalSubmit() {
-        // 사장님 인덱스 파일의 각 입력창 ID를 정확히 매칭했습니다.
+        // 입력값 가져오기
         const name = document.querySelector('input[placeholder*="회사명"]')?.value || "미입력";
         const contact = document.querySelector('input[placeholder*="연락처"]')?.value || "미입력";
         const email = document.querySelector('input[placeholder*="이메일"]')?.value || "미입력";
@@ -168,23 +167,25 @@
 
         // 텔레그램 설정
         const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
-        const chatId = "1079288645"; 
-        const text = `🔔 [신규 의뢰 알림]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}\n첨부파일: ${uploadedFiles.length}개`;
+        const chatId = "7299827824"; // 사장님 고유 ID
+        const text = `🔔 [신규 디자인 의뢰]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}\n첨부파일: ${uploadedFiles.length}개`;
 
-        // 알림창 띄우기
+        // 8초 알림창 띄우기
         successOverlay.style.display = 'flex';
 
         try {
+            // 텔레그램 API로 메시지 전송
             await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: chatId, text: text })
             });
+            console.log("텔레그램 전송 성공!");
         } catch (e) {
-            console.log("텔레그램 전송 실패");
+            console.error("전송 오류:", e);
         }
 
-        // 8초(8000ms) 동안 알림창 보여주고 새로고침
+        // 8초 후 새로고침 (충분히 읽으실 시간 확보)
         setTimeout(() => {
             successOverlay.style.display = 'none';
             location.reload(); 
