@@ -6,22 +6,37 @@
     <title>NEAGO DESIGN</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
     <style>
-        /* [107.html 원본 스타일 그대로 유지] */
+        /* [116.html 기반 유지] */
         :root { --gold: #c5a059; --bg: #000; }
         body { background: var(--bg); color: #fff; margin: 0; font-family: 'Pretendard', sans-serif; overflow-x: hidden; }
 
         nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 80px; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold); }
-        .logo { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 900; color: var(--gold); text-decoration: none; }
+        
+        /* ✨ [복구 완료] NEAGO DESIGN 로고 금빛 광채 모션 효과 */
+        .logo { 
+            font-family: 'Cinzel', serif; 
+            font-size: 2.5rem; 
+            font-weight: 900; 
+            text-decoration: none;
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logo-shine 3s linear infinite; /* 금빛이 흐르는 효과 */
+        }
+        @keyframes logo-shine {
+            to { background-position: 200% center; }
+        }
+
         nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; }
         .nav-btn { padding: 8px 16px; border: 2px solid #444; border-radius: 5px; color: #888; text-decoration: none; }
         .nav-btn.active { color: #fff; border-color: var(--gold); }
         
-        /* 📱 전화번호 가로 한 줄 유지 (아이콘 제거 및 최적화) */
         .call-btn { 
             background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728); 
             color: #000 !important; padding: 10px 20px; border-radius: 5px; 
             font-weight: 900; text-decoration: none; border: 1px solid #fff; 
-            white-space: nowrap; /* 무조건 한 줄 */
+            white-space: nowrap;
         }
 
         .hero-box { width: 100%; height: 60vh; overflow: hidden; border-bottom: 12px solid; border-image: repeating-linear-gradient(-45deg, #8a6d3b 0px, #bf953f 2px, #fcf6ba 4px) 1; }
@@ -42,7 +57,6 @@
         .card-image { width: 100%; height: auto; display: block; filter: brightness(1.05); }
         .click-hint { position: absolute; bottom: 20px; right: 20px; font-size: 8px; color: #5024; font-family: Arial, sans-serif; z-index: 10; pointer-events: none; }
 
-        /* [3섹션 전용 스타일 추가] */
         .lab-section { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: radial-gradient(circle at center, #1a1a1a 0%, #000000 85%); }
         .lab-content { position: relative; z-index: 2; text-align: center; max-width: 1400px; padding: 0 40px; width: 100%; }
         .intro-line { font-family: 'Noto Sans KR', sans-serif; font-size: clamp(1.5rem, 4vw, 3rem); font-weight: 900; color: #444; margin-bottom: 20px; display: block; opacity: 0.8; }
@@ -53,13 +67,12 @@
         .signature-name { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 8vw, 4.5rem); color: var(--gold); margin-bottom: 0; line-height: 1; display: block; text-shadow: 2px 5px 12px rgba(0,0,0,1); }
         .peace-wish { font-family: 'Cinzel', serif; font-size: clamp(0.8rem, 2vw, 1.1rem); color: #555; letter-spacing: 10px; margin-top: 10px; text-transform: uppercase; font-weight: 700; }
 
-        /* [모바일 최적화] */
         @media (max-width: 1024px) {
             nav { padding: 10px 10px; }
             .logo { font-size: 1.3rem; }
             nav ul { gap: 5px; }
             .nav-btn { padding: 6px 8px; font-size: 0.8rem; }
-            .call-btn { padding: 6px 10px; font-size: 0.75rem; letter-spacing: -0.5px; } /* 전화번호 가로 유지 */
+            .call-btn { padding: 6px 10px; font-size: 0.75rem; letter-spacing: -0.5px; } 
 
             .metal-plate { padding: 40px 0 !important; width: 95% !important; }
             .wave-text { font-size: 1.45rem !important; }
