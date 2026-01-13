@@ -1,78 +1,67 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEAGO DESIGN - 네고의 역사 I</title>
-    <style>
-        :root { --main-glow: #00ff87; --bg-dark: #050a07; }
-        body { background: var(--bg-dark); color: #fff; margin: 0; font-family: 'Pretendard', sans-serif; }
+<style>
+    /* 상호(로고) 디자인: 황금 유리판 + 입체 양각 + 오로라 */
+    .logo {
+        position: relative;
+        font-family: 'Pretendard', sans-serif;
+        font-weight: 900;
+        font-size: 2.5rem;
+        letter-spacing: -1px;
+        text-decoration: none;
         
-        /* 1. 상단 메뉴 */
-        nav { background: rgba(0,0,0,0.9); padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--main-glow); position: sticky; top: 0; z-index: 1000; }
-        .logo { color: var(--main-glow); font-weight: 900; font-size: 1.8rem; text-decoration: none; text-shadow: 0 0 10px var(--main-glow); }
-        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; }
-        nav a { color: #fff; text-decoration: none; font-weight: 500; transition: 0.3s; }
-        nav a:hover { color: var(--main-glow); }
-
-        /* 2. 상단 배너 (Hero Section) */
-        .hero { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; text-align: center; }
-        .hero h1 { font-size: 4rem; margin-bottom: 10px; text-shadow: 0 0 20px var(--main-glow); }
-        .hero p { font-size: 1.2rem; color: #ccc; }
-
-        /* 3. 3단 이미지 배치 레이아웃 */
-        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
-        .section-title { font-size: 2rem; margin-bottom: 30px; border-left: 5px solid var(--main-glow); padding-left: 15px; }
-        .history-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        /* 1. 황금색 글자 & 양각 효과 */
+        color: #fff6ca;
+        text-shadow: 
+            0 1px 0 #b3953e, 0 2px 0 #a38530, 
+            0 3px 0 #937522, 0 4px 0 #836514,
+            0 10px 20px rgba(0,0,0,0.5); /* 깊은 그림자 */
         
-        .work-card { background: #111; border: 1px solid #333; border-radius: 15px; overflow: hidden; transition: 0.4s; text-decoration: none; color: inherit; }
-        .work-card:hover { border-color: var(--main-glow); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,255,135,0.2); }
-        .work-card img { width: 100%; height: 200px; object-fit: cover; }
-        .work-card-info { padding: 20px; }
-        .work-card-info h3 { margin: 0; font-size: 1.2rem; color: var(--main-glow); }
-        .work-card-info p { margin: 10px 0 0; font-size: 0.9rem; color: #888; }
+        /* 2. 오로라 광채 효과 (애니메이션) */
+        background: linear-gradient(120deg, #ffd700, #fff, #00ff87, #ffd700);
+        background-size: 300% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: aurora 5s linear infinite;
+        
+        /* 3. 황금 유리 뒷판 */
+        padding: 10px 30px;
+        background: rgba(255, 215, 0, 0.1); /* 황금빛 도는 투명판 */
+        backdrop-filter: blur(10px); /* 유리 효과 */
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        border-radius: 5px;
+        box-shadow: inset 0 0 15px rgba(255, 215, 0, 0.2);
+    }
 
-        footer { text-align: center; padding: 50px; border-top: 1px solid #222; margin-top: 100px; color: #555; }
-    </style>
-</head>
-<body>
-    <nav>
-        <a href="index.html" class="logo">NEAGO DESIGN</a>
-        <ul>
-            <li><a href="index.html" style="color:var(--main-glow);">네고의 역사 I</a></li>
-            <li><a href="about.html">네고의 역사 II</a></li>
-            <li><a href="portfolio.html">네고의 기록 III</a></li>
-            <li><a href="contact.html">예약하기</a></li>
-        </ul>
-    </nav>
+    @keyframes aurora {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
 
-    <header class="hero">
-        <h1>NEAGO HISTORY I</h1>
-        <p>협상의 가치를 디자인에 담다. 그 위대한 여정의 시작.</p>
-    </header>
+    /* 메뉴 스타일도 세련되게 변경 */
+    nav ul li a {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        padding-bottom: 5px;
+    }
+    nav ul li a::after {
+        content: '';
+        position: absolute;
+        width: 0; height: 2px;
+        bottom: 0; left: 0;
+        background: var(--main-glow);
+        transition: 0.3s;
+    }
+    nav ul li a:hover::after { width: 100%; }
+</style>
 
-    <div class="container">
-        <h2 class="section-title">주요 작업물 (01-30)</h2>
-        <div class="history-grid">
-            <a href="4가지_확인.html" class="work-card">
-                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=500&q=80" alt="식물 체크리스트">
-                <div class="work-card-info">
-                    <h3>01. 식물 체크리스트</h3>
-                    <p>다크모드 기반의 세련된 UI 가이드 디자인</p>
-                </div>
-            </a>
-            
-            <a href="work02.html" class="work-card">
-                <img src="https://via.placeholder.com/500x300/111/00ff87?text=Work+02" alt="작업물">
-                <div class="work-card-info">
-                    <h3>02. 브랜드 아이덴티티</h3>
-                    <p>기업 로고 및 컬러 가이드 시스템 구축</p>
-                </div>
-            </a>
-
-            </div>
-    </div>
-
-    <footer>&copy; 2026 NEAGO DESIGN. All rights reserved.</footer>
-</body>
-</html>
+<nav>
+    <a href="index.html" class="logo">NEAGO DESIGN</a>
+    <ul>
+        <li><a href="index.html">CLIENTS 01</a></li>
+        <li><a href="about.html">CLIENTS 02</a></li>
+        <li><a href="portfolio.html">CLIENTS 03</a></li>
+        <li><a href="contact.html" style="color:#ffd700; font-weight:900;">RESERVATION</a></li>
+    </ul>
+</nav>
