@@ -9,7 +9,7 @@
         :root { --gold: #c5a059; --bg: #000; }
         body { background: var(--bg); color: #fff; margin: 0; font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* [1. 네비게이션] */
+        /* 네비게이션 */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 80px; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold); }
         .logo { 
             font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 900; text-decoration: none; 
@@ -46,7 +46,7 @@
             font-weight: 900; text-decoration: none; border: 1px solid #fff; 
         }
 
-        /* [2. 시안 갤러리] */
+        /* 시안 갤러리 */
         #lineup { padding: 80px 0; text-align: center; }
         .lineup-title { 
             font-family: 'Cinzel', serif; 
@@ -76,7 +76,58 @@
             filter: brightness(1.05); 
         }
 
-        /* [3. 의뢰서 섹션] */
+        /* 브랜드 철학 */
+        .lab-section { 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 85%); 
+            text-align: center; 
+        }
+        .intro-line { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            font-size: clamp(1.5rem, 4vw, 3rem); 
+            font-weight: 900; 
+            color: #444; 
+            margin-bottom: 20px; 
+            display: block; 
+            opacity: 0.8;
+        }
+        .main-line { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            font-size: clamp(1.8rem, 6vw, 4.5rem); 
+            font-weight: 900; 
+            color: #ffffff; 
+            text-shadow: 0px 0px 20px rgba(255,255,255,0.2), 2px 6px 15px rgba(0,0,0,1);
+            display: block; 
+            margin-bottom: 50px;
+        }
+        .shining-text { 
+            background: linear-gradient(110deg, #8a6d3b 33%, #fcf6ba 50%, #8a6d3b 66%); 
+            background-size: 200% auto; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            animation: slash-shine 3s linear infinite; 
+        }
+        @keyframes slash-shine { to { background-position: 200% center; } }
+
+        .signature-name { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: clamp(3rem, 8vw, 4.5rem); 
+            color: var(--gold); 
+            display: block; 
+            text-shadow: 2px 5px 12px rgba(0,0,0,1);
+        }
+        .peace-wish { 
+            font-family: 'Cinzel', serif; 
+            font-size: 1.1rem; 
+            color: #555; 
+            letter-spacing: 10px; 
+            margin-top: 10px; 
+        }
+
+        /* 의뢰서 */
         .offer-section { 
             min-height: 100vh; 
             padding: 80px 20px; 
@@ -210,7 +261,7 @@
             margin-top: 10px; 
         }
 
-        /* [4. 반응형] */
+        /* 반응형 */
         @media (max-width: 1024px) { 
             nav { padding: 10px 5px; } 
             .logo { font-size: 1.15rem; } 
@@ -233,6 +284,9 @@
             .lineup-grid img { 
                 width: 100vw !important; 
             }
+            
+            .intro-line { font-size: 1.2rem !important; }
+            .main-line { font-size: 1.8rem !important; }
             
             #main-section { padding: 40px 30px; }
             .offer-title { font-size: 36px; }
@@ -260,15 +314,51 @@
 <section id="lineup">
     <h2 class="lineup-title">PREMIUM LINEUP</h2>
     <div class="lineup-grid">
-        <div class="lineup-card">
-            <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-1.jpg?raw=true" alt="시안 1">
-        </div>
-        <div class="lineup-card">
-            <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-2.jpg?raw=true" alt="시안 2">
-        </div>
-        <div class="lineup-card">
-            <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-3.jpg?raw=true" alt="시안 3">
-        </div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-1.jpg?raw=true" alt="시안 1"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-2.jpg?raw=true" alt="시안 2"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-3.jpg?raw=true" alt="시안 3"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(1).png?raw=true" alt="시안 4"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(2).png?raw=true" alt="시안 5"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(3).png?raw=true" alt="시안 6"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(4).png?raw=true" alt="시안 7"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(5).png?raw=true" alt="시안 8"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(6).png?raw=true" alt="시안 9"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(7).png?raw=true" alt="시안 10"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(8).png?raw=true" alt="시안 11"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(9).png?raw=true" alt="시안 12"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(10).png?raw=true" alt="시안 13"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(11).png?raw=true" alt="시안 14"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(12).png?raw=true" alt="시안 15"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(13).png?raw=true" alt="시안 16"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(14).png?raw=true" alt="시안 17"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(15).png?raw=true" alt="시안 18"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(16).png?raw=true" alt="시안 19"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(17).png?raw=true" alt="시안 20"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(18).png?raw=true" alt="시안 21"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(19).png?raw=true" alt="시안 22"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(20).png?raw=true" alt="시안 23"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(21).png?raw=true" alt="시안 24"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(22).png?raw=true" alt="시안 25"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(23).png?raw=true" alt="시안 26"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(24).png?raw=true" alt="시안 27"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(25).png?raw=true" alt="시안 28"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(26).png?raw=true" alt="시안 29"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(27).png?raw=true" alt="시안 30"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(28).png?raw=true" alt="시안 31"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(29).png?raw=true" alt="시안 32"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(30).png?raw=true" alt="시안 33"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(31).png?raw=true" alt="시안 34"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(32).png?raw=true" alt="시안 35"></div>
+    </div>
+</section>
+
+<!-- 브랜드 철학 -->
+<section class="lab-section">
+    <div>
+        <span class="intro-line">누구나 기획을 말할 때,</span>
+        <span class="main-line"><span class="shining-text">디자인</span>으로 당신의 가치를 증명합니다.</span>
+        <span class="signature-name">Sukbeom Kim</span>
+        <div class="peace-wish">In Peace</div>
     </div>
 </section>
 
@@ -316,7 +406,6 @@
 </section>
 
 <script>
-    // 드롭다운 클릭 시에만 열림
     const dropbtn = document.querySelector('.dropbtn');
     const dropdown = document.querySelector('.dropdown');
     
@@ -329,7 +418,6 @@
         dropdown.classList.remove('active');
     });
 
-    // 의뢰서 제출 함수
     async function handleFinalSubmit() {
         const name = document.getElementById('user-name').value;
         const contact = document.getElementById('user-contact').value;
@@ -341,7 +429,6 @@
             return;
         }
 
-        // 날짜_주문번호 생성
         const now = new Date();
         const dateStr = `${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')}`;
         let count = localStorage.getItem('last_count') || 0;
@@ -356,7 +443,6 @@
         localStorage.setItem('last_date', dateStr);
         localStorage.setItem('last_count', count);
 
-        // 텔레그램 전송
         const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
         const chatId = "7299827824";
         const text = `📢 [${dateStr}_${count}]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}`;
