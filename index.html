@@ -38,12 +38,33 @@
         @keyframes logo-shine { to { background-position: 200% center; } }
         
         nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; }
-        .dropdown { position: relative; display: inline-block; }
+        /* [메뉴 제어: 호버 삭제, 오직 클릭 시 active 클래스로만 작동] */
         .dropbtn { padding: 10px 20px; border: 2px solid var(--gold); border-radius: 5px; color: #fff; font-weight: 900; background: transparent; cursor: pointer; font-size: 1rem; outline: none; }
         .dropdown-content { display: none; position: absolute; background-color: #111; min-width: 140px; box-shadow: 0px 8px 16px rgba(0,0,0,0.8); z-index: 1001; border: 1px solid var(--gold); top: 50px; left: 0; border-radius: 5px; }
+        
+        /* 호버 시 열리는 코드 삭제함 - 아래 active 클래스가 있어야만 열림 */
+        .dropdown.active .dropdown-content { display: block; }
+
         .dropdown-content a { color: #ccc; padding: 12px 16px; text-decoration: none; display: block; font-size: 14px; font-weight: bold; }
         .dropdown-content a:hover { color: #fff; background: #222; }
-        .dropdown:hover .dropdown-content { display: block; } /* 마우스 올리면 보이게 */
+
+        <script>
+        /* 프로젝트 버튼 클릭 시에만 메뉴 고정/해제 스크립트 */
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropbtn = document.querySelector('.dropbtn');
+            const dropdown = document.querySelector('.dropdown');
+
+            dropbtn.addEventListener('click', function(e) {
+                e.stopPropagation(); // 클릭 이벤트가 밖으로 퍼지는 것 방지
+                dropdown.classList.toggle('active'); // 클릭할 때마다 열림/닫힘 반복
+            });
+
+            // 메뉴 바깥쪽 클릭하면 자동으로 닫히게 설정
+            window.addEventListener('click', function() {
+                dropdown.classList.remove('active');
+            });
+        });
+        </script>
 
         .call-btn { background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728); color: #000 !important; padding: 10px 20px; border-radius: 5px; font-weight: 900; text-decoration: none; border: 1px solid #fff; }
 
