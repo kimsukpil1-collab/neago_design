@@ -3,112 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>디자인 의뢰 - NEAGO DESIGN</title>
+    <title>NEAGO DESIGN</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Noto+Sans+KR:wght@300;400;900&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #c5a059; }
-        body { background: #e0e5ec; color: #333; margin: 0; font-family: 'Noto Sans KR', sans-serif; }
+        :root { --gold: #c5a059; --bg: #000; }
+        body { background: var(--bg); color: #fff; margin: 0; font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* [1. 심플 네비게이션 - 집중 방해 최소화] */
-        nav { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 15px 40px; background: #e0e5ec; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
-        }
+        /* [1. 네비게이션 - 클릭 시에만 드롭다운] */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 80px; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold); }
         .logo { 
-            font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; 
-            text-decoration: none; color: var(--gold); 
+            font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 900; text-decoration: none; 
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f); 
+            background-size: 200% auto; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            animation: logo-shine 3s linear infinite; 
         }
-        .back-btn { 
-            padding: 8px 20px; background: #8B9DA2; color: #fff; 
-            text-decoration: none; border-radius: 8px; font-weight: 900; 
-            font-size: 0.9rem; 
+        @keyframes logo-shine { to { background-position: 200% center; } }
+        
+        nav ul { list-style: none; display: flex; gap: 20px; align-items: center; margin: 0; padding: 0; }
+        .dropdown { position: relative; }
+        .dropbtn { 
+            padding: 10px 20px; border: 2px solid var(--gold); border-radius: 5px; 
+            color: #fff; font-weight: 900; background: transparent; cursor: pointer; 
+            font-size: 1rem; outline: none; 
+        }
+        .dropdown-content { 
+            display: none; position: absolute; background-color: #111; 
+            min-width: 140px; box-shadow: 0px 8px 16px rgba(0,0,0,0.8); 
+            z-index: 1001; border: 1px solid var(--gold); 
+            top: 50px; left: 0; border-radius: 5px; 
+        }
+        .dropdown.active .dropdown-content { display: block; }
+        .dropdown-content a { 
+            color: #888; padding: 12px 16px; text-decoration: none; 
+            display: block; font-size: 14px; font-weight: bold; 
+        }
+        .dropdown-content a:hover { color: #fff; background: #222; }
+        .call-btn { 
+            background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728); 
+            color: #000 !important; padding: 10px 20px; border-radius: 5px; 
+            font-weight: 900; text-decoration: none; border: 1px solid #fff; 
         }
 
-        /* [2. 의뢰서 섹션 - 깔끔하고 집중된 디자인] */
+        /* [2. 섹션 1 - 히어로 이미지] */
+        .hero-box { 
+            width: 100%; height: 60vh; overflow: hidden; 
+            border-bottom: 12px solid; 
+            border-image: repeating-linear-gradient(-45deg, #8a6d3b 0px, #bf953f 2px, #fcf6ba 4px) 1; 
+        }
+        .hero-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* [3. 섹션 1.5 - 금속판 빛 효과] */
+        .metal-plate {
+            display: block; 
+            margin: 40px auto; 
+            width: 90%; 
+            max-width: 800px; 
+            padding: 60px 20px; 
+            border-radius: 8px;
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 20%, #b38728 40%, #fbf5b7 60%, #aa771c 80%, #fcf6ba 100%);
+            border: 3px solid #f1d384;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            position: relative; 
+            overflow: hidden; 
+            text-align: center;
+        }
+
+        .metal-plate::before {
+            content: ""; 
+            position: absolute; 
+            top: 0; 
+            left: -150%; 
+            width: 100%; 
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0) 0%,      
+                rgba(255, 255, 255, 0) 35%,     
+                rgba(255, 255, 255, 0.8) 50%,   
+                rgba(255, 255, 255, 0) 65%,     
+                rgba(255, 255, 255, 0) 100%     
+            );
+            animation: light-sweep 3.3s infinite;
+        }
+        @keyframes light-sweep { 
+            0% { left: -150%; } 
+            90% { left: 150%; } 
+            100% { left: 150%; } 
+        }
+
+        .wave-text { 
+            display: block; 
+            font-family: 'Cinzel', serif; 
+            font-size: 3.8rem; 
+            font-weight: 900; 
+            letter-spacing: -2px; 
+            background: linear-gradient(to right, #fcf6ba, #ffffff, #fcf6ba);
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.8));
+            animation: move-up-down 3.5s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+        @keyframes move-up-down { 
+            0%, 100% { transform: translateY(0); } 
+            50% { transform: translateY(-15px); } 
+        }
+
+        .sub-copy { 
+            font-size: 1.4rem; 
+            font-weight: 800; 
+            letter-spacing: 12px; 
+            color: #5c441a; 
+            text-transform: uppercase; 
+            margin-top: 15px; 
+            position: relative;
+            z-index: 2;
+        }
+
+        /* [4. 섹션 2 - 시안 갤러리] */
+        #lineup { padding: 80px 0; text-align: center; }
+        .lineup-title { 
+            font-family: 'Cinzel', serif; 
+            font-size: 2.5rem; 
+            color: var(--gold); 
+            margin-bottom: 60px; 
+            letter-spacing: 5px;
+        }
+        .lineup-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            align-items: start; 
+        }
+        .lineup-card { 
+            background: #050505; 
+            border: 1px solid rgba(197, 160, 89, 0.3); 
+            border-radius: 15px; 
+            overflow: hidden; 
+        }
+        .lineup-grid img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            filter: brightness(1.05); 
+        }
+
+        /* [5. 섹션 3 - 디자인 철학] */
+        .lab-section { 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 85%); 
+            text-align: center; 
+        }
+        .intro-line { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            font-size: clamp(1.5rem, 4vw, 3rem); 
+            font-weight: 900; 
+            color: #444; 
+            margin-bottom: 20px; 
+            display: block; 
+            opacity: 0.8;
+        }
+        .main-line { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            font-size: clamp(1.8rem, 6vw, 4.5rem); 
+            font-weight: 900; 
+            color: #ffffff; 
+            text-shadow: 0px 0px 20px rgba(255,255,255,0.2), 2px 6px 15px rgba(0,0,0,1);
+            display: block; 
+            margin-bottom: 50px;
+        }
+        .shining-text { 
+            background: linear-gradient(110deg, #8a6d3b 33%, #fcf6ba 50%, #8a6d3b 66%); 
+            background-size: 200% auto; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            animation: slash-shine 3s linear infinite; 
+        }
+        @keyframes slash-shine { to { background-position: 200% center; } }
+
+        .signature-name { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: clamp(3rem, 8vw, 4.5rem); 
+            color: var(--gold); 
+            display: block; 
+            text-shadow: 2px 5px 12px rgba(0,0,0,1);
+        }
+        .peace-wish { 
+            font-family: 'Cinzel', serif; 
+            font-size: 1.1rem; 
+            color: #555; 
+            letter-spacing: 10px; 
+            margin-top: 10px; 
+        }
+
+        /* [6. 섹션 4 - 의뢰서] */
         .offer-section { 
-            min-height: 100vh; padding: 80px 20px; 
-            display: flex; justify-content: center; align-items: center; 
+            min-height: 100vh; 
+            padding: 80px 20px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background: #e0e5ec;
         }
         #main-section { 
-            width: 100%; max-width: 520px; padding: 50px 45px; 
-            background: #e0e5ec; border-radius: 40px; 
+            width: 100%; 
+            max-width: 520px; 
+            padding: 50px 45px; 
+            background: #e0e5ec; 
+            border-radius: 40px; 
             border: 1.5px solid #d4af37; 
             box-shadow: 20px 20px 40px #bec3c9, -20px -20px 40px #ffffff; 
             position: relative; 
         }
         
         #success-overlay { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(224, 229, 236, 0.98); border-radius: 40px; 
-            display: none; flex-direction: column; justify-content: center; 
-            align-items: center; z-index: 100; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(224, 229, 236, 0.98); 
+            border-radius: 40px; 
+            display: none; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            z-index: 100; 
         }
         .success-glass { 
-            background: rgba(220, 240, 220, 0.25); backdrop-filter: blur(10px); 
-            padding: 50px 30px; border-radius: 25px; text-align: center; 
+            background: rgba(220, 240, 220, 0.25); 
+            backdrop-filter: blur(10px); 
+            padding: 50px 30px; 
+            border-radius: 25px; 
+            text-align: center; 
             box-shadow: 10px 10px 20px #bec3c9, -10px -10px 20px #ffffff; 
             border: 1px solid rgba(212, 175, 55, 0.25); 
         }
         .msg-line-1 { 
-            font-family: 'Noto Sans KR', sans-serif; font-size: 26px; 
-            font-weight: 400; color: rgb(143, 88, 10); margin-bottom: 12px; 
+            font-family: 'Noto Sans KR', sans-serif; 
+            font-size: 26px; 
+            font-weight: 400; 
+            color: rgb(143, 88, 10); 
+            margin-bottom: 12px; 
         }
         .msg-line-2 { 
-            font-family: 'Noto Sans KR', sans-serif; font-size: 16px; 
-            color: #666; font-weight: 300; 
+            font-family: 'Noto Sans KR', sans-serif; 
+            font-size: 16px; 
+            color: #666; 
+            font-weight: 300; 
         }
 
         .offer-title { 
-            font-family: 'Nanum Brush Script', cursive; font-size: 42px; 
+            font-family: 'Nanum Brush Script', cursive; 
+            font-size: 42px; 
             color: rgb(143, 88, 10); 
             text-shadow: -1.5px -1.5px 0px rgba(255, 255, 255, 0.9), 
                          1.5px 1.5px 2px rgba(0, 0, 0, 0.4); 
-            text-align: center; margin-bottom: 40px; 
+            text-align: center; 
+            margin-bottom: 40px; 
         }
-        .field { margin-bottom: 25px; text-align: left; }
+        .field { 
+            margin-bottom: 25px; 
+            text-align: left; 
+        }
         .field label { 
-            display: block; font-size: 11px; color: #888; 
-            margin-bottom: 6px; font-weight: bold; letter-spacing: 1px; 
+            display: block; 
+            font-size: 11px; 
+            color: #888; 
+            margin-bottom: 6px; 
+            font-weight: bold; 
+            letter-spacing: 1px; 
         }
         .offer-input, .offer-textarea { 
-            width: 100%; border: none; border-bottom: 2px solid #b0c4de; 
-            padding: 10px 0; font-size: 16px; background: transparent; 
-            color: #2c3e50; outline: none; 
+            width: 100%; 
+            border: none; 
+            border-bottom: 2px solid #b0c4de; 
+            padding: 10px 0; 
+            font-size: 16px; 
+            background: transparent; 
+            color: #2c3e50; 
+            outline: none; 
         }
         .offer-textarea { 
-            resize: none; overflow: hidden; 
-            min-height: 80px; line-height: 1.6; 
+            resize: none; 
+            overflow: hidden; 
+            min-height: 80px; 
+            line-height: 1.6; 
         }
         
         .submit-btn { 
-            width: 100%; padding: 20px; background: #8B9DA2; 
-            color: #fff; border-radius: 12px; font-size: 20px; 
-            font-weight: 900; border: none; cursor: pointer; 
+            width: 100%; 
+            padding: 20px; 
+            background: #8B9DA2; 
+            color: #fff; 
+            border-radius: 12px; 
+            font-size: 20px; 
+            font-weight: 900; 
+            border: none; 
+            cursor: pointer; 
             box-shadow: 6px 6px 12px #bec3c9, -6px -6px 12px #ffffff; 
             margin-top: 20px; 
         }
-        .submit-btn:hover { background: #7a8c91; }
+        .submit-btn:hover { 
+            background: #7a8c91; 
+        }
 
         .signature-box { 
-            margin-top: 50px; padding-top: 30px; 
-            border-top: 1px solid #d1d9e6; text-align: center; 
+            margin-top: 50px; 
+            padding-top: 30px; 
+            border-top: 1px solid #d1d9e6; 
+            text-align: center; 
         }
-        .signature-name { 
+        .signature-box .signature-name { 
             font-family: 'Great Vibes', cursive; 
-            font-size: 3rem; color: #111; display: block; 
+            font-size: 3rem; 
+            color: #111; 
+            display: block; 
+            text-shadow: none;
         }
         .phone-gold { 
-            font-size: 17px; font-weight: 900; color: #d4af37; 
-            display: inline-block; letter-spacing: 2px; margin-top: 10px; 
+            font-size: 17px; 
+            font-weight: 900; 
+            color: #d4af37; 
+            display: inline-block; 
+            letter-spacing: 2px; 
+            margin-top: 10px; 
         }
 
-        /* [3. 반응형] */
-        @media (max-width: 768px) { 
-            nav { padding: 15px 20px; }
-            .logo { font-size: 1.4rem; }
+        /* [7. 반응형] */
+        @media (max-width: 1024px) { 
+            nav { padding: 10px 5px; } 
+            .logo { font-size: 1.15rem; } 
+            nav ul { gap: 5px; } 
+            .dropbtn { padding: 8px 10px; font-size: 0.8rem; } 
+            .call-btn { padding: 8px 12px; font-size: 0.75rem; }
+            .wave-text { font-size: 1.45rem; } 
+            .sub-copy { font-size: 0.65rem; letter-spacing: 3px; }
+            
+            .lineup-grid { 
+                grid-template-columns: 1fr !important; 
+                max-width: 100vw !important; 
+                gap: 0; 
+                padding: 0; 
+            }
+            .lineup-card { 
+                border-radius: 0; 
+                border-left: none; 
+                border-right: none; 
+                width: 100vw; 
+            }
+            .lineup-grid img { 
+                width: 100vw !important; 
+            }
+            
+            .intro-line { font-size: 1.2rem !important; }
+            .main-line { font-size: 1.8rem !important; }
+            
             #main-section { padding: 40px 30px; }
             .offer-title { font-size: 36px; }
+            .phone-gold { font-size: 14px; letter-spacing: 1px; }
         }
     </style>
 </head>
@@ -116,10 +376,57 @@
 
 <nav>
     <a href="index.html" class="logo">NEAGO DESIGN</a>
-    <a href="index.html" class="back-btn">← 홈으로</a>
+    <ul>
+        <li class="dropdown">
+            <button class="dropbtn">PROJECT</button>
+            <div class="dropdown-content">
+                <a href="#lineup">시안</a>
+                <a href="#order">의뢰서</a>
+            </div>
+        </li>
+        <li><a href="tel:010-7928-8645" class="call-btn">010-7928-8645</a></li>
+    </ul>
 </nav>
 
-<section class="offer-section">
+<!-- 섹션 1: 히어로 이미지 -->
+<div id="home" class="hero-box">
+    <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s1-1.jpg?raw=true" alt="NEAGO DESIGN">
+</div>
+
+<!-- 섹션 1.5: 금속판 사명 -->
+<div class="metal-plate">
+    <h1 class="wave-text">꿈을 디자인으로 이뤄 드립니다.</h1>
+    <p class="sub-copy">FANTASTIC SUCCESS WITH DESIGN</p>
+</div>
+
+<!-- 섹션 2: 시안 갤러리 -->
+<section id="lineup">
+    <h2 class="lineup-title">PREMIUM LINEUP</h2>
+    <div class="lineup-grid">
+        <div class="lineup-card">
+            <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-1.jpg?raw=true" alt="시안 1">
+        </div>
+        <div class="lineup-card">
+            <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-2.jpg?raw=true" alt="시안 2">
+        </div>
+        <div class="lineup-card">
+            <img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-3.jpg?raw=true" alt="시안 3">
+        </div>
+    </div>
+</section>
+
+<!-- 섹션 3: 디자인 철학 -->
+<section class="lab-section">
+    <div>
+        <span class="intro-line">누구나 기획을 말할 때,</span>
+        <span class="main-line"><span class="shining-text">디자인</span>으로 당신의 가치를 증명합니다.</span>
+        <span class="signature-name">Sukbeom Kim</span>
+        <div class="peace-wish">In Peace</div>
+    </div>
+</section>
+
+<!-- 섹션 4: 의뢰서 -->
+<section id="order" class="offer-section">
     <div id="main-section">
         <div id="success-overlay">
             <div class="success-glass">
@@ -162,6 +469,20 @@
 </section>
 
 <script>
+    // 드롭다운 클릭 시에만 열림
+    const dropbtn = document.querySelector('.dropbtn');
+    const dropdown = document.querySelector('.dropdown');
+    
+    dropbtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('active');
+    });
+    
+    window.addEventListener('click', () => {
+        dropdown.classList.remove('active');
+    });
+
+    // 의뢰서 제출 함수
     async function handleFinalSubmit() {
         const name = document.getElementById('user-name').value;
         const contact = document.getElementById('user-contact').value;
@@ -191,7 +512,7 @@
         // 텔레그램 전송
         const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
         const chatId = "7299827824";
-        const text = `🔔 [${dateStr}_${count}]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}`;
+        const text = `📢 [${dateStr}_${count}]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}`;
 
         document.getElementById('success-overlay').style.display = 'flex';
 
@@ -206,7 +527,12 @@
         }
 
         setTimeout(() => {
-            window.location.href = 'index.html';
+            document.getElementById('success-overlay').style.display = 'none';
+            document.getElementById('user-name').value = '';
+            document.getElementById('user-contact').value = '';
+            document.getElementById('user-email').value = '';
+            document.getElementById('user-msg').value = '';
+            document.getElementById('user-msg').style.height = 'auto';
         }, 4000);
     }
 </script>
