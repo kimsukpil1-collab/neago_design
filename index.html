@@ -294,8 +294,9 @@
         .offer-textarea { 
             resize: none; 
             overflow: hidden; 
-            min-height: 80px; 
+            min-height: 0; 
             line-height: 1.6; 
+            padding: 0;
         }
         
         .submit-btn { 
@@ -432,7 +433,6 @@
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(23).png?raw=true" alt="시안 26"></div>
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(25).png?raw=true" alt="시안 27"></div>
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(26).png?raw=true" alt="시안 28"></div>
-        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(27).png?raw=true" alt="시안 29"></div>
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(29).png?raw=true" alt="시안 30"></div>
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(31).png?raw=true" alt="시안 31"></div>
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(32).png?raw=true" alt="시안 32"></div>
@@ -463,7 +463,7 @@
         
         <div class="field">
             <label>COMPANY / NAME</label>
-            <input type="text" id="user-name" class="offer-input" placeholder="회사명 (개인 성함)">
+            <input type="text" id="user-name" class="offer-input" placeholder="회사명 (개인성함)">
         </div>
         
         <div class="field">
@@ -480,10 +480,18 @@
             <label>MESSAGE</label>
             <textarea id="user-msg" class="offer-textarea" 
                       oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px';" 
-                      placeholder="의뢰 내용을 자세히 작성해주세요.&#10;Enter를 눌러 줄바꿈 할 수 있습니다."></textarea>
+                      placeholder="의뢰내용  Enter줄바꿈" rows="1"></textarea>
         </div>
         
         <button class="submit-btn" onclick="handleFinalSubmit()">제 출</button>
+
+        <div class="field" style="margin-top: 40px;">
+            <label>첨부파일은 이메일로 보내주세요</label>
+            <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
+                <span style="font-size: 16px; color: #2c3e50;">kimsukpil1@gmail.com</span>
+                <button onclick="copyEmail()" style="padding: 8px 16px; background: #e0e5ec; color: #666; border: none; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; box-shadow: inset 3px 3px 6px #bec3c9, inset -3px -3px 6px #ffffff;">주소복사</button>
+            </div>
+        </div>
         
         <div class="signature-box">
             <span class="signature-name">Sukbeom Kim</span>
@@ -504,6 +512,16 @@
     window.addEventListener('click', (e) => {
         dropdown.classList.remove('active');
     });
+
+    // 이메일 주소 복사 함수
+    function copyEmail() {
+        const email = 'kimsukpil1@gmail.com';
+        navigator.clipboard.writeText(email).then(() => {
+            alert('이메일 주소가 복사되었습니다!');
+        }).catch(() => {
+            alert('복사에 실패했습니다.');
+        });
+    }
 
     // 의뢰서 제출 함수
     async function handleFinalSubmit() {
@@ -529,37 +547,33 @@
         }
         
         localStorage.setItem('last_date', dateStr);
-        localStorage.setItem('last_count', count);
+        localStorage.set
+Item('last_count', count);
+const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
+    const chatId = "7299827824";
+    const text = `📢 [${dateStr}_${count}]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}`;
 
-        const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
-        const chatId = "7299827824";
-        const text = `📢 [${dateStr}_${count}]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}`;
+    document.getElementById('success-overlay').style.display = 'flex';
 
-        document.getElementById('success-overlay').style.display = 'flex';
-
-        try {
-            await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: chatId, text: text })
-            });
-        } catch (error) {
-            console.error("전송 실패:", error);
-        }
-
-        setTimeout(() => {
-            document.getElementById('success-overlay').style.display = 'none';
-            document.getElementById('user-name').value = '';
-            document.getElementById('user-contact').value = '';
-            document.getElementById('user-email').value = '';
-            document.getElementById('user-msg').value = '';
-            document.getElementById('user-msg').style.height = 'auto';
-        }, 4000);
+    try {
+        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, text: text })
+        });
+    } catch (error) {
+        console.error("전송 실패:", error);
     }
+
+    setTimeout(() => {
+        document.getElementById('success-overlay').style.display = 'none';
+        document.getElementById('user-name').value = '';
+        document.getElementById('user-contact').value = '';
+        document.getElementById('user-email').value = '';
+        document.getElementById('user-msg').value = '';
+        document.getElementById('user-msg').style.height = 'auto';
+    }, 4000);
+}
 </script>
-</body>
-</html>
-
-
 </body>
 </html>

@@ -90,10 +90,13 @@
             padding: 10px 0; font-size: 16px; background: transparent; 
             color: #2c3e50; outline: none; 
         }
-        .offer-textarea { 
-            resize: none; overflow: hidden; 
-            min-height: 80px; line-height: 1.6; 
-        }
+       .offer-textarea { 
+    resize: none; 
+    overflow: hidden; 
+    min-height: 0; 
+    line-height: 1.6; 
+    padding: 0;
+}
         
         .submit-btn { 
             width: 100%; padding: 20px; background: #8B9DA2; 
@@ -156,7 +159,7 @@
         
         <div class="field">
             <label>COMPANY / NAME</label>
-            <input type="text" id="user-name" class="offer-input" placeholder="회사명 (개인 성함)">
+            <input type="text" id="user-name" class="offer-input" placeholder="회사명 (개인성함)">
         </div>
         
         <div class="field">
@@ -172,11 +175,19 @@
         <div class="field">
             <label>MESSAGE</label>
             <textarea id="user-msg" class="offer-textarea" 
-                      oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px';" 
-                      placeholder="의뢰 내용을 자세히 작성해주세요.&#10;Enter를 눌러 줄바꿈 할 수 있습니다."></textarea>
+          oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px';" 
+          placeholder="의뢰내용  Enter줄바꿈" rows="1"></textarea>
         </div>
         
         <button class="submit-btn" onclick="handleFinalSubmit()">제 출</button>
+
+        <div class="field" style="margin-top: 40px;">
+            <label>첨부파일은 이메일로 보내주세요</label>
+            <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
+                <span style="font-size: 16px; color: #2c3e50;">kimsukpil1@gmail.com</span>
+                <button onclick="copyEmail()" style="padding: 8px 16px; background: #e0e5ec; color: #666; border: none; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; box-shadow: inset 3px 3px 6px #bec3c9, inset -3px -3px 6px #ffffff;">주소복사</button>
+            </div>
+        </div>
         
         <div class="signature-box">
             <span class="signature-name">Sukbeom Kim</span>
@@ -197,6 +208,16 @@
     window.addEventListener('click', () => {
         dropdown.classList.remove('active');
     });
+
+    // 이메일 주소 복사 함수
+    function copyEmail() {
+        const email = 'kimsukpil1@gmail.com';
+        navigator.clipboard.writeText(email).then(() => {
+            alert('이메일 주소가 복사되었습니다!');
+        }).catch(() => {
+            alert('복사에 실패했습니다.');
+        });
+    }
 
     async function handleFinalSubmit() {
         const name = document.getElementById('user-name').value;
