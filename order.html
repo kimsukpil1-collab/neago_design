@@ -136,8 +136,8 @@
 <nav>
     <a href="index.html" class="logo">NEAGO DESIGN</a>
     <ul>
-        <li class="dropdown">
-            <button class="dropbtn">샘플보기</button>
+        <li class="dropdown" id="dropdown">
+            <button class="dropbtn" id="dropbtn">샘플보기</button>
             <div class="dropdown-content">
                 <a href="index.html">홈</a>
                 <a href="portfolio.html">시안</a>
@@ -177,7 +177,7 @@
             <label>MESSAGE</label>
             <textarea id="user-msg" class="offer-textarea" 
                       oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px';" 
-                      placeholder="주문내용  Enter줄바꿈" rows="1"></textarea>
+                      placeholder="주문내용 Enter줄바꿈" rows="1"></textarea>
         </div>
         
         <button class="submit-btn" onclick="handleFinalSubmit()">주 문 하 기</button>
@@ -198,8 +198,9 @@
 </section>
 
 <script>
-    const dropbtn = document.querySelector('.dropbtn');
-    const dropdown = document.querySelector('.dropdown');
+    // 드롭다운 클릭 시에만 열림
+    const dropbtn = document.getElementById('dropbtn');
+    const dropdown = document.getElementById('dropdown');
     
     dropbtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -220,6 +221,7 @@
         });
     }
 
+    // 주문서 제출 함수
     async function handleFinalSubmit() {
         const name = document.getElementById('user-name').value;
         const contact = document.getElementById('user-contact').value;
@@ -233,8 +235,8 @@
 
         const now = new Date();
         const dateStr = `${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')}`;
-        let count = localStorage.getItem('last_count_design') || 0;
-        let lastDate = localStorage.getItem('last_date_design');
+        let count = localStorage.getItem('last_count_order') || 0;
+        let lastDate = localStorage.getItem('last_date_order');
 
         if(lastDate !== dateStr) {
             count = 1;
@@ -242,17 +244,12 @@
             count = parseInt(count) + 1;
         }
         
-        localStorage.setItem('last_date_design', dateStr);
-        localStorage.setItem('last_count_design', count);
+        localStorage.setItem('last_date_order', dateStr);
+        localStorage.setItem('last_count_order', count);
 
         const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
         const chatId = "7299827824";
-        const text = `🎨 [디자인주문_${dateStr}_${count}]
-
-성함: ${name}
-연락처: ${contact}
-이메일: ${email}
-내용: ${message}`;
+        const text = `🎨 [디자인주문_${dateStr}_${count}]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}`;
 
         // 성공 오버레이 먼저 표시
         document.getElementById('success-overlay').style.display = 'flex';

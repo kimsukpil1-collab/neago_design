@@ -403,33 +403,14 @@
 
 <!-- 섹션 2: 시안 갤러리 -->
 <section id="lineup">
-       <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-1.jpg?raw=true" alt="시안 1"></div>
-        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-2.jpg?raw=true" alt="시안 2"></div>
-        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-3.jpg?raw=true" alt="시안 3"></div>
     <h2 class="lineup-title">PREMIUM LINEUP</h2>
     <div class="lineup-grid">
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-1.jpg?raw=true" alt="시안 1"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-2.jpg?raw=true" alt="시안 2"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-3.jpg?raw=true" alt="시안 3"></div>
+        
         <div id="superman-zone-final" style="display: contents;"></div>
-<script>
-    (function() {
-        const zone = document.getElementById('superman-zone-final');
-        const url = "https://github.com/kimsukpil1-collab/neago_design/blob/main/";
-        let imgHtml = "";
-        for (let i = 1; i <= 220; i++) {
-            const fileName = String(i).padStart(3, '0') + ".jpg"; 
-            imgHtml += `
-            <div class="lineup-card" style="position:relative; cursor:pointer;" onclick="this.querySelector('input').click()">
-                <img src="${url}${fileName}?raw=true" 
-                     alt="시안 ${i}" 
-                     style="width:100%; height:auto; display:block; border:1px solid #333;" 
-                     onerror="setTimeout(() => { this.src='${url}${fileName}?raw=true'; }, 1000);">
-                <span style="position:absolute; bottom:8px; right:8px; color:#5024; font-size:8px; font-weight:bold;">click</span>
-                <input type="file" style="display:none;" onchange="const f=this.files[0]; if(f) this.parentElement.querySelector('img').src=URL.createObjectURL(f)">
-            </div>`;
-        }
-        zone.innerHTML = imgHtml;
-    })();
-</script>
-     
+        
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(1).png?raw=true" alt="시안 4"></div>
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(2).png?raw=true" alt="시안 5"></div>
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(3).png?raw=true" alt="시안 6"></div>
@@ -502,7 +483,7 @@
             <label>MESSAGE</label>
             <textarea id="user-msg" class="offer-textarea" 
                       oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px';" 
-                      placeholder="의뢰내용  Enter줄바꿈" rows="1"></textarea>
+                      placeholder="의뢰내용 Enter줄바꿈" rows="1"></textarea>
         </div>
         
         <button class="submit-btn" onclick="handleFinalSubmit()">제 출</button>
@@ -521,9 +502,10 @@
         </div>
     </div>
 </section>
+
 <script>
     // 드롭다운 클릭 시에만 열림
-    const dropbtn = document.getElementById('dropbtn');
+    const dropbtn= document.getElementById('dropbtn');
     const dropdown = document.getElementById('dropdown');
     
     dropbtn.addEventListener('click', (e) => {
@@ -534,6 +516,26 @@
     window.addEventListener('click', (e) => {
         dropdown.classList.remove('active');
     });
+
+    // 220개 이미지 동적 로드
+    (function() {
+        const zone = document.getElementById('superman-zone-final');
+        const url = "https://github.com/kimsukpil1-collab/neago_design/blob/main/";
+        let imgHtml = "";
+        for (let i = 1; i <= 220; i++) {
+            const fileName = String(i).padStart(3, '0') + ".jpg"; 
+            imgHtml += `
+            <div class="lineup-card" style="position:relative; cursor:pointer;" onclick="this.querySelector('input').click()">
+                <img src="${url}${fileName}?raw=true" 
+                     alt="시안 ${i}" 
+                     style="width:100%; height:auto; display:block; border:1px solid #333;" 
+                     onerror="setTimeout(() => { this.src='${url}${fileName}?raw=true'; }, 1000);">
+                <span style="position:absolute; bottom:8px; right:8px; color:#fff; font-size:8px; font-weight:bold;">click</span>
+                <input type="file" style="display:none;" onchange="const f=this.files[0]; if(f) this.parentElement.querySelector('img').src=URL.createObjectURL(f)">
+            </div>`;
+        }
+        zone.innerHTML = imgHtml;
+    })();
 
     // 이메일 주소 복사 함수
     function copyEmail() {
@@ -569,36 +571,33 @@
         }
         
         localStorage.setItem('last_date', dateStr);
-        localStorage.set
-Item('last_count', count);
-const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
-    const chatId = "7299827824";
-    const text = `📢 [${dateStr}_${count}]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}`;
+        localStorage.setItem('last_count', count);
 
-    document.getElementById('success-overlay').style.display = 'flex';
+        const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
+        const chatId = "7299827824";
+        const text = `📢 [${dateStr}_${count}]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}`;
 
-    try {
-        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: chatId, text: text })
-        });
-    } catch (error) {
-        console.error("전송 실패:", error);
+        document.getElementById('success-overlay').style.display = 'flex';
+
+        try {
+            await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: chatId, text: text })
+            });
+        } catch (error) {
+            console.error("전송 실패:", error);
+        }
+
+        setTimeout(() => {
+            document.getElementById('success-overlay').style.display = 'none';
+            document.getElementById('user-name').value = '';
+            document.getElementById('user-contact').value = '';
+            document.getElementById('user-email').value = '';
+            document.getElementById('user-msg').value = '';
+            document.getElementById('user-msg').style.height = 'auto';
+        }, 4000);
     }
-
-    setTimeout(() => {
-        document.getElementById('success-overlay').style.display = 'none';
-        document.getElementById('user-name').value = '';
-        document.getElementById('user-contact').value = '';
-        document.getElementById('user-email').value = '';
-        document.getElementById('user-msg').value = '';
-        document.getElementById('user-msg').style.height = 'auto';
-    }, 4000);
-}
 </script>
 </body>
-
 </html>
-
-
