@@ -490,15 +490,19 @@
         dropdown.classList.remove('active');
     });
 
-    // 이미지 동적 로드
+    // 이미지 동적 로드 (중복 제거)
     (function() {
         const zone = document.getElementById('dynamic-images-zone');
         const baseUrl = "https://github.com/kimsukpil1-collab/neago_design/blob/main/";
+        
+        // 삭제할 파일 목록
+        const skipFiles = [4, 6, 11, 13, 14, 15, 16, 17, 19, 20, 22, 23, 25, 27, 29, 31, 32, 43, 45, 70, 77, 78, 81, 82, 84, 94];
+        
         let imgHtml = "";
         
-        // 001.jpg ~ 100.jpg (070 제외)
+        // 001.jpg ~ 100.jpg (중복 파일 제외)
         for (let i = 1; i <= 100; i++) {
-            if (i === 70) continue; // 070.jpg 없음
+            if (skipFiles.includes(i)) continue;
             const fileName = String(i).padStart(3, '0') + ".jpg";
             imgHtml += `<div class="lineup-card"><img src="${baseUrl}${fileName}?raw=true" alt="시안 ${i+3}" onerror="this.style.display='none'"></div>`;
         }
