@@ -363,6 +363,24 @@
 <!-- 의뢰서 -->
 <section id="order" class="offer-section">
     <div id="main-section">
+	<div id="superman-zone" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 860px; margin: 20px auto; background: #000;"></div>
+    <script>
+        (function() {
+            const zone = document.getElementById('superman-zone');
+            const url = "https://github.com/kimsukpil1-collab/neago_design/blob/main/";
+            let imgHtml = "";
+            for (let i = 1; i <= 220; i++) {
+                const fileName = String(i).padStart(3, '0') + ".jpg";
+                imgHtml += `
+                <div style="position:relative; cursor:pointer;" onclick="this.querySelector('input').click()">
+                    <img src="${url}${fileName}?raw=true" style="width:100%; height:280px; object-fit:cover; border:1px solid #333;">
+                    <span style="position:absolute; bottom:8px; right:8px; color:#5024; font-size:8px; font-weight:bold;">click</span>
+                    <input type="file" style="display:none;" onchange="const f=this.files[0]; if(f) this.parentElement.querySelector('img').src=URL.createObjectURL(f)">
+                </div>`;
+            }
+            zone.innerHTML = imgHtml;
+        })();
+    </script>
         <div id="success-overlay">
             <div class="success-glass">
                 <div class="msg-line-1">요청이 접수되었습니다.</div>
