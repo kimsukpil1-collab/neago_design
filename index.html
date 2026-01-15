@@ -151,6 +151,16 @@
             display: block; 
             filter: brightness(1.05); 
         }
+        
+        /* 이미지 로딩 에러 처리 */
+        .lineup-card img {
+            background: #111;
+            min-height: 200px;
+        }
+        
+        .lineup-card img.error {
+            display: none;
+        }
 
         /* 섹션 3: 디자인 철학 */
         .lab-section { 
@@ -405,10 +415,10 @@
 <section id="lineup">
     <h2 class="lineup-title">PREMIUM LINEUP</h2>
     <div class="lineup-grid">
-        <!-- images 폴더의 3개 -->
-        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-1.jpg?raw=true" alt="시안 1"></div>
-        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-2.jpg?raw=true" alt="시안 2"></div>
-        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-3.jpg?raw=true" alt="시안 3"></div>
+        <!-- 초기 3개 이미지 -->
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-1.jpg?raw=true" alt="시안 1" onerror="handleImageError(this)"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-2.jpg?raw=true" alt="시안 2" onerror="handleImageError(this)"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-3.jpg?raw=true" alt="시안 3" onerror="handleImageError(this)"></div>
 
         <!-- 동적으로 로드될 영역 -->
         <div id="dynamic-images-zone" style="display: contents;"></div>
@@ -490,7 +500,14 @@
         dropdown.classList.remove('active');
     });
 
-    // 이미지 동적 로드 - 실제 깃허브에 있는 파일만 정확히 로드
+    // 이미지 에러 처리 함수
+    function handleImageError(img) {
+        console.warn('Image failed to load:', img.src);
+        img.classList.add('error');
+        img.parentElement.style.display = 'none';
+    }
+
+    // 이미지 동적 로드 - 수정된 버전
     (function() {
         const zone = document.getElementById('dynamic-images-zone');
         const baseUrl = "https://github.com/kimsukpil1-collab/neago_design/blob/main/";
@@ -507,22 +524,22 @@
         // 실제 존재하는 파일만 로드
         existingFiles.forEach(num => {
             const fileName = String(num).padStart(3, '0') + ".jpg";
-            imgHtml += `<div class="lineup-card"><img src="${baseUrl}${fileName}?raw=true" alt="시안 ${num}"></div>`;
+            imgHtml += `<div class="lineup-card"><img src="${baseUrl}${fileName}?raw=true" alt="시안 ${num}" onerror="handleImageError(this)"></div>`;
         });
         
         // 148.jpg
-        imgHtml += `<div class="lineup-card"><img src="${baseUrl}148.jpg?raw=true" alt="시안 148"></div>`;
+        imgHtml += `<div class="lineup-card"><img src="${baseUrl}148.jpg?raw=true" alt="시안 148" onerror="handleImageError(this)"></div>`;
         
         // 221.jpg ~ 233.jpg
         for (let i = 221; i <= 233; i++) {
             const fileName = String(i).padStart(3, '0') + ".jpg";
-            imgHtml += `<div class="lineup-card"><img src="${baseUrl}${fileName}?raw=true" alt="시안 ${i}"></div>`;
+            imgHtml += `<div class="lineup-card"><img src="${baseUrl}${fileName}?raw=true" alt="시안 ${i}" onerror="handleImageError(this)"></div>`;
         }
         
         // 5 (1).png ~ 5 (32).png (실제 존재하는 것만)
-        const pngNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,28,29,31,32];
+        const pngNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,26,28,29,31,32];
         pngNumbers.forEach(num => {
-            imgHtml += `<div class="lineup-card"><img src="${baseUrl}5%20(${num}).png?raw=true" alt="시안 5-${num}"></div>`;
+            imgHtml += `<div class="lineup-card"><img src="${baseUrl}5%20(${num}).png?raw=true" alt="시안 5-${num}" onerror="handleImageError(this)"></div>`;
         });
         
         zone.innerHTML = imgHtml;
@@ -531,19 +548,40 @@
     // 이메일 주소 복사 함수
     function copyEmail() {
         const email = 'kimsukpil1@gmail.com';
-        navigator.clipboard.writeText(email).then(() => {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(email).then(() => {
+                alert('이메일 주소가 복사되었습니다!');
+            }).catch(() => {
+                fallbackCopyEmail(email);
+            });
+        } else {
+            fallbackCopyEmail(email);
+        }
+    }
+    
+    // 클립보드 API 지원 안 될 때 대체 방법
+    function fallbackCopyEmail(email) {
+        const textArea = document.createElement("textarea");
+        textArea.value = email;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            document.execCommand('copy');
             alert('이메일 주소가 복사되었습니다!');
-        }).catch(() => {
-            alert('복사에 실패했습니다.');
-        });
+        } catch (err) {
+            alert('복사에 실패했습니다. 수동으로 복사해주세요: ' + email);
+        }
+        document.body.removeChild(textArea);
     }
 
     // 의뢰서 제출 함수
     async function handleFinalSubmit() {
-        const name = document.getElementById('user-name').value;
-        const contact = document.getElementById('user-contact').value;
-        const email = document.getElementById('user-email').value;
-        const message = document.getElementById('user-msg').value;
+        const name = document.getElementById('user-name').value.trim();
+        const contact = document.getElementById('user-contact').value.trim();
+        const email = document.getElementById('user-email').value.trim();
+        const message = document.getElementById('user-msg').value.trim();
 
         if(!name || !contact) {
             alert("성함과 연락처를 입력해주세요.");
