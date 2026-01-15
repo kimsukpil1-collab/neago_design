@@ -274,14 +274,15 @@
         }
 
         .offer-title { 
-            font-family: 'Nanum Brush Script', cursive; 
-            font-size: 42px; 
-            color: rgb(143, 88, 10); 
-            text-shadow: -1.5px -1.5px 0px rgba(255, 255, 255, 0.9), 
-                         1.5px 1.5px 2px rgba(0, 0, 0, 0.4); 
-            text-align: center; 
-            margin-bottom: 40px; 
-        }
+    font-family: 'Great Vibes', cursive; 
+    font-size: 48px; 
+    font-weight: 400;
+    background: linear-gradient(135deg, var(--gold) 0%, #d4af37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center; 
+    margin-bottom: 40px; 
+}
         .field { 
             margin-bottom: 25px; 
             text-align: left; 
@@ -294,41 +295,117 @@
             font-weight: bold; 
             letter-spacing: 1px; 
         }
-        .offer-input, .offer-textarea { 
-            width: 100%; 
-            border: none; 
-            border-bottom: 2px solid #b0c4de; 
-            padding: 10px 0; 
-            font-size: 16px; 
-            background: transparent; 
-            color: #2c3e50; 
-            outline: none; 
-        }
-        .offer-textarea { 
-            resize: none; 
-            overflow: hidden; 
-            min-height: 0; 
-            line-height: 1.6; 
-            padding: 0;
-        }
+        .offer-input { 
+    width: 100%; 
+    box-sizing: border-box;
+    border: none; 
+    padding: 18px 20px; 
+    font-size: 16px; 
+    background: #e0e5ec;
+    color: #2c3e50; 
+    outline: none; 
+    font-family: 'Noto Sans KR', sans-serif;
+    border-radius: 15px;
+    box-shadow: inset 5px 5px 10px #bec3c9, inset -5px -5px 10px #ffffff;
+    transition: all 0.3s;
+}
+
+.offer-input:focus {
+    box-shadow: inset 3px 3px 6px #bec3c9, inset -3px -3px 6px #ffffff;
+}
         
         .submit-btn { 
-            width: 100%; 
-            padding: 20px; 
-            background: #8B9DA2; 
-            color: #fff; 
-            border-radius: 12px; 
-            font-size: 20px; 
-            font-weight: 900; 
-            border: none; 
-            cursor: pointer; 
-            box-shadow: 6px 6px 12px #bec3c9, -6px -6px 12px #ffffff; 
-            margin-top: 20px; 
-        }
-        .submit-btn:hover { 
-            background: #7a8c91; 
-        }
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px; 
+    background: #d8dde4;
+    color: #888; 
+    border-radius: 15px; 
+    font-size: 14px; 
+    font-weight: 600; 
+    border: none; 
+    cursor: pointer; 
+    box-shadow: 3px 3px 6px #d1d9e6, -3px -3px 6px #f9f9f9; 
+    margin-top: 0; 
+    transition: all 0.3s;
+}
+.submit-btn:hover { 
+    background: #d3d8df;
+    color: #777;
+    box-shadow: 2px 2px 4px #d1d9e6, -2px -2px 4px #f9f9f9;
+}
+.naver-btn {
+    display: block; 
+    width: 100%;
+    box-sizing: border-box;
+    padding: 22px; 
+    background: linear-gradient(135deg, #03c75a 0%, #029648 100%);
+    color: #fff !important; 
+    border-radius: 15px; 
+    font-size: 18px; 
+    font-weight: 900; 
+    text-decoration: none;
+    box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #ffffff;
+    margin-top: 20px;
+    transition: all 0.3s;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+.naver-btn:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 10px 10px 20px #bec3c9, -10px -10px 20px #ffffff;
+}
 
+.email-box {
+    background: rgba(212, 175, 55, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff;
+}
+
+.email-info {
+    flex: 1;
+}
+
+.email-label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.email-address {
+    font-size: 16px;
+    color: var(--gold);
+    font-weight: 700;
+}
+
+.copy-btn {
+    padding: 10px 20px;
+    background: #e0e5ec;
+    color: #666;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #bec3c9, -5px -5px 10px #ffffff;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    box-shadow: 3px 3px 6px #bec3c9, -3px -3px 6px #ffffff;
+}
+
+.copy-btn:active {
+    box-shadow: inset 2px 2px 4px #bec3c9, inset -2px -2px 4px #ffffff;
+}
         .signature-box { 
             margin-top: 50px; 
             padding-top: 30px; 
@@ -446,41 +523,33 @@
                 <div class="msg-line-1">요청이 접수되었습니다.</div>
                 <div class="msg-line-2">24시간 내 답변드립니다.</div>
             </div>
-        </div>
+</div>
 
-        <h1 class="offer-title">디자인 의뢰</h1>
-        
-        <div class="field">
-            <label>COMPANY / NAME</label>
-            <input type="text" id="user-name" class="offer-input" placeholder="회사명 (개인성함)">
-        </div>
-        
-        <div class="field">
-            <label>CONTACT</label>
-            <input type="text" id="user-contact" class="offer-input" placeholder="연락처">
-        </div>
-        
-        <div class="field">
-            <label>E-MAIL</label>
-            <input type="email" id="user-email" class="offer-input" placeholder="이메일">
-        </div>
-        
-        <div class="field">
-            <label>MESSAGE</label>
-            <textarea id="user-msg" class="offer-textarea" 
-                      oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px';" 
-                      placeholder="의뢰내용 Enter줄바꿈" rows="1"></textarea>
-        </div>
-        
-        <button class="submit-btn" onclick="handleFinalSubmit()">제 출</button>
+<h1 class="offer-title">Design Order</h1>
 
-        <div class="field" style="margin-top: 40px;">
-            <label>첨부파일은 이메일로 보내주세요</label>
-            <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
-                <span style="font-size: 16px; color: #2c3e50;">kimsukpil1@gmail.com</span>
-                <button onclick="copyEmail()" style="padding: 8px 16px; background: #e0e5ec; color: #666; border: none; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; box-shadow: inset 3px 3px 6px #bec3c9, inset -3px -3px 6px #ffffff;">주소복사</button>
-            </div>
-        </div>
+<div class="field">
+    <label>어떤 상품인가요?</label>
+    <input type="text" id="product-name" class="offer-input" placeholder="">
+</div>
+
+<div class="field">
+    <label>연락처</label>
+    <input type="text" id="user-contact" class="offer-input" placeholder="010-">
+</div>
+
+<button class="submit-btn" onclick="handleFinalSubmit()">상담요청</button>
+
+<a href="https://smartstore.naver.com/pxq1/products/12976242217" target="_blank" class="naver-btn">
+    네이버에서 상품결제
+</a>
+
+<div class="email-box">
+    <div class="email-info">
+        <div class="email-label">📎 첨부파일 전송 이메일</div>
+        <div class="email-address">kimsukpil1@gmail.com</div>
+    </div>
+    <button class="copy-btn" onclick="copyEmail()">주소복사</button>
+</div>
         
         <div class="signature-box">
             <span class="signature-name">Sukbeom Kim</span>
@@ -585,55 +654,53 @@
         document.body.removeChild(textArea);
     }
 
-    // 의뢰서 제출 함수
+    // 주문서 제출 함수
     async function handleFinalSubmit() {
-        const name = document.getElementById('user-name').value.trim();
-        const contact = document.getElementById('user-contact').value.trim();
-        const email = document.getElementById('user-email').value.trim();
-        const message = document.getElementById('user-msg').value.trim();
+    const productName = document.getElementById('product-name').value.trim();
+    const contact = document.getElementById('user-contact').value.trim();
 
-        if(!name || !contact) {
-            alert("성함과 연락처를 입력해주세요.");
-            return;
-        }
+    if(!productName || !contact) {
+        alert("필수 항목을 모두 입력해주세요.\n(상품명, 연락처)");
+        return;
+    }
 
-        const now = new Date();
-        const dateStr = `${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')}`;
-        let count = localStorage.getItem('last_count') || 0;
-        let lastDate = localStorage.getItem('last_date');
+    const now = new Date();
+    const dateStr = `${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')}`;
+    let count = localStorage.getItem('last_count') || 0;
+    let lastDate = localStorage.getItem('last_date');
 
-        if(lastDate !== dateStr) {
-            count = 1;
-        } else {
-            count = parseInt(count) + 1;
-        }
-        
-        localStorage.setItem('last_date', dateStr);
-        localStorage.setItem('last_count', count);
+    if(lastDate !== dateStr) {
+        count = 1;
+    } else {
+        count = parseInt(count) + 1;
+    }
+    
+    localStorage.setItem('last_date', dateStr);
+    localStorage.setItem('last_count', count);
 
-        const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
-        const chatId = "7299827824";
-        const text = `📢 [${dateStr}_${count}]\n\n성함: ${name}\n연락처: ${contact}\n이메일: ${email}\n내용: ${message}`;
+    const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
+    const chatId = "7299827824";
+    const text = `🎨 [디자인주문_${dateStr}_${count}]
 
-        document.getElementById('success-overlay').style.display = 'flex';
+📦 상품명: ${productName}
+📞 연락처: ${contact}`;
 
-        try {
-            await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: chatId, text: text })
-            });
-        } catch (error) {
-            console.error("전송 실패:", error);
-        }
+    document.getElementById('success-overlay').style.display = 'flex';
 
-        setTimeout(() => {
-            document.getElementById('success-overlay').style.display = 'none';
-            document.getElementById('user-name').value = '';
-            document.getElementById('user-contact').value = '';
- document.getElementById('user-email').value = '';
-        document.getElementById('user-msg').value = '';
-        document.getElementById('user-msg').style.height = 'auto';
+    try {
+        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, text: text })
+        });
+    } catch (error) {
+        console.error("전송 실패:", error);
+    }
+
+    setTimeout(() => {
+        document.getElementById('success-overlay').style.display = 'none';
+        document.getElementById('product-name').value = '';
+        document.getElementById('user-contact').value = '';
     }, 4000);
 }
 </script>
