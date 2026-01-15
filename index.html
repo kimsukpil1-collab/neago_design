@@ -405,28 +405,15 @@
 <section id="lineup">
     <h2 class="lineup-title">PREMIUM LINEUP</h2>
     <div class="lineup-grid">
-        <div class="lineup-card"><img src=".../images/p1-s2-1.jpg?raw=true" alt="시안 1"></div>
-<div class="lineup-card"><img src=".../images/p1-s2-2.jpg?raw=true" alt="시안 2"></div>
-<div class="lineup-card"><img src=".../images/p1-s2-3.jpg?raw=true" alt="시안 3"></div>
+        <!-- images 폴더의 3개 -->
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-1.jpg?raw=true" alt="시안 1"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-2.jpg?raw=true" alt="시안 2"></div>
+        <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-3.jpg?raw=true" alt="시안 3"></div>
 
-<div id="superman-zone-final" style="display: contents;"></div>
-
-<!-- 여기에 새로 추가 -->
-<div id="static-images-zone" style="display: contents;"></div>
-<script>
-(function() {
-    const zone = document.getElementById('static-images-zone');
-    const url = "https://github.com/kimsukpil1-collab/neago_design/blob/main/";
-    const pngNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,29,31,32];
-    let imgHtml = "";
-    
-    pngNumbers.forEach(num => {
-        imgHtml += `<div class="lineup-card"><img src="${url}5%20(${num}).png?raw=true" alt="시안 ${3+num}"></div>`;
-    });
-    
-    zone.innerHTML = imgHtml;
-})();
-</script>
+        <!-- 동적으로 로드될 영역 -->
+        <div id="dynamic-images-zone" style="display: contents;"></div>
+    </div>
+</section>
 
 <!-- 섹션 3: 디자인 철학 -->
 <section class="lab-section">
@@ -503,40 +490,33 @@
         dropdown.classList.remove('active');
     });
 
-    // 이미지 동적 로드 (001~220 + 5(1)~5(32) + 221~233)
+    // 이미지 동적 로드
     (function() {
-        const zone = document.getElementById('superman-zone-final');
-        const url = "https://github.com/kimsukpil1-collab/neago_design/blob/main/";
+        const zone = document.getElementById('dynamic-images-zone');
+        const baseUrl = "https://github.com/kimsukpil1-collab/neago_design/blob/main/";
         let imgHtml = "";
         
-        // 001.jpg ~ 220.jpg
-        for (let i = 1; i <= 220; i++) {
-            const fileName = String(i).padStart(3, '0') + ".jpg"; 
-            imgHtml += `
-            <div class="lineup-card" style="position:relative; cursor:pointer;" onclick="this.querySelector('input').click()">
-                <img src="${url}${fileName}?raw=true" 
-                     alt="시안 ${i}" 
-                     style="width:100%; height:auto; display:block; border:1px solid #333;" 
-                     onerror="setTimeout(() => { this.src='${url}${fileName}?raw=true'; }, 1000);">
-                <span style="position:absolute; bottom:8px; right:8px; color:#fff; font-size:8px; font-weight:bold;">click</span>
-                <input type="file" style="display:none;" onchange="const f=this.files[0]; if(f) this.parentElement.querySelector('img').src=URL.createObjectURL(f)">
-            </div>`;
+        // 001.jpg ~ 100.jpg (070 제외)
+        for (let i = 1; i <= 100; i++) {
+            if (i === 70) continue; // 070.jpg 없음
+            const fileName = String(i).padStart(3, '0') + ".jpg";
+            imgHtml += `<div class="lineup-card"><img src="${baseUrl}${fileName}?raw=true" alt="시안 ${i+3}" onerror="this.style.display='none'"></div>`;
         }
         
-       
+        // 148.jpg
+        imgHtml += `<div class="lineup-card"><img src="${baseUrl}148.jpg?raw=true" alt="시안 148" onerror="this.style.display='none'"></div>`;
+        
         // 221.jpg ~ 233.jpg
         for (let i = 221; i <= 233; i++) {
-            const fileName = String(i).padStart(3, '0') + ".jpg"; 
-            imgHtml += `
-            <div class="lineup-card" style="position:relative; cursor:pointer;" onclick="this.querySelector('input').click()">
-                <img src="${url}${fileName}?raw=true" 
-                     alt="시안 ${i}" 
-                     style="width:100%; height:auto; display:block; border:1px solid #333;" 
-                     onerror="setTimeout(() => { this.src='${url}${fileName}?raw=true'; }, 1000);">
-                <span style="position:absolute; bottom:8px; right:8px; color:#fff; font-size:8px; font-weight:bold;">click</span>
-                <input type="file" style="display:none;" onchange="const f=this.files[0]; if(f) this.parentElement.querySelector('img').src=URL.createObjectURL(f)">
-            </div>`;
+            const fileName = String(i).padStart(3, '0') + ".jpg";
+            imgHtml += `<div class="lineup-card"><img src="${baseUrl}${fileName}?raw=true" alt="시안 ${i}" onerror="this.style.display='none'"></div>`;
         }
+        
+        // 5 (1).png ~ 5 (32).png (24, 28, 30 제외)
+        const pngNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,29,31,32];
+        pngNumbers.forEach(num => {
+            imgHtml += `<div class="lineup-card"><img src="${baseUrl}5%20(${num}).png?raw=true" alt="시안 5-${num}" onerror="this.style.display='none'"></div>`;
+        });
         
         zone.innerHTML = imgHtml;
     })();
@@ -605,6 +585,3 @@
 </script>
 </body>
 </html>
-
-
-
