@@ -408,24 +408,27 @@
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/images/p1-s2-3.jpg?raw=true" alt="시안 3"></div>
     <h2 class="lineup-title">PREMIUM LINEUP</h2>
     <div class="lineup-grid">
-        <div id="index-superman-zone" style="display: contents;"></div>
-    <script>
-        (function() {
-            const zone = document.getElementById('index-superman-zone');
-            const url = "https://github.com/kimsukpil1-collab/neago_design/blob/main/";
-            let imgHtml = "";
-            for (let i = 1; i <= 220; i++) {
-                const fileName = String(i).padStart(3, '0') + ".jpg";
-                imgHtml += `
-                <div class="lineup-card" style="position:relative; cursor:pointer;" onclick="this.querySelector('input').click()">
-                    <img src="${url}${fileName}?raw=true" style="width:100%; height:auto; display:block;">
-                    <span style="position:absolute; bottom:8px; right:8px; color:#5024; font-size:8px; font-weight:bold;">click</span>
-                    <input type="file" style="display:none;" onchange="const f=this.files[0]; if(f) this.parentElement.querySelector('img').src=URL.createObjectURL(f)">
-                </div>`;
-            }
-            zone.innerHTML = imgHtml;
-        })();
-    </script>
+        <div id="superman-zone-final" style="display: contents;"></div>
+<script>
+    (function() {
+        const zone = document.getElementById('superman-zone-final');
+        const url = "https://github.com/kimsukpil1-collab/neago_design/blob/main/";
+        let imgHtml = "";
+        for (let i = 1; i <= 220; i++) {
+            const fileName = String(i).padStart(3, '0') + ".jpg"; 
+            imgHtml += `
+            <div class="lineup-card" style="position:relative; cursor:pointer;" onclick="this.querySelector('input').click()">
+                <img src="${url}${fileName}?raw=true" 
+                     alt="시안 ${i}" 
+                     style="width:100%; height:auto; display:block; border:1px solid #333;" 
+                     onerror="setTimeout(() => { this.src='${url}${fileName}?raw=true'; }, 1000);">
+                <span style="position:absolute; bottom:8px; right:8px; color:#5024; font-size:8px; font-weight:bold;">click</span>
+                <input type="file" style="display:none;" onchange="const f=this.files[0]; if(f) this.parentElement.querySelector('img').src=URL.createObjectURL(f)">
+            </div>`;
+        }
+        zone.innerHTML = imgHtml;
+    })();
+</script>
      
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(1).png?raw=true" alt="시안 4"></div>
         <div class="lineup-card"><img src="https://github.com/kimsukpil1-collab/neago_design/blob/main/5%20(2).png?raw=true" alt="시안 5"></div>
@@ -597,4 +600,5 @@ const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
 </body>
 
 </html>
+
 
