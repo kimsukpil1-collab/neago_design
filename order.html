@@ -278,7 +278,7 @@
         <div class="email-box">
             <div class="email-info">
                 <div class="email-label">📎 첨부파일 전송 이메일</div>
-                <div class="email-address">kimsukpil1@gmail.com</div>
+                <div class="email-address"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7c1715110f09170c15104d3c1b111d1510521f1311">[email&#160;protected]</a></div>
             </div>
             <button class="copy-btn" onclick="copyEmail()">주소복사</button>
         </div>
@@ -338,7 +338,7 @@
         localStorage.setItem('last_date_order', dateStr);
         localStorage.setItem('last_count_order', count);
 
-        const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
+        
         const chatId = "7299827824";
         const text = `🎨 [디자인주문_${dateStr}_${count}]
 
@@ -349,7 +349,7 @@
         document.getElementById('success-overlay').style.display = 'flex';
 
         try {
-            const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            await fetch(`https://script.google.com/macros/s/AKfycbymzFquDdmIHcimqhO0LkSgNt8xp5x9f7WCztr9BZJedBfcPVjHlH2d9sI8nK9xkM8JVQ/exec`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
@@ -359,31 +359,10 @@
                     text: text 
                 })
             });
-
-            const result = await response.json();
             
-            if (!result.ok) {
-                console.error("텔레그램 전송 실패:", result);
-                alert("주문 전송에 실패했습니다. 다시 시도해주세요.");
-                document.getElementById('success-overlay').style.display = 'none';
-                return;
-            }
-            
-            console.log("텔레그램 전송 성공:", result);
+            console.log("전송 완료");
             
         } catch (error) {
             console.error("전송 오류:", error);
             alert("주문 전송 중 오류가 발생했습니다. 인터넷 연결을 확인해주세요.");
-            document.getElementById('success-overlay').style.display = 'none';
-            return;
-        }
-
-        // 성공 시 4초 후 홈으로 이동
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 4000);
-    }
-</script>
-
-</body>
-</html>
+            document.getElementById('success-overlay')

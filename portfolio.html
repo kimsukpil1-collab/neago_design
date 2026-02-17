@@ -468,7 +468,7 @@
         <div class="email-box">
             <div class="email-info">
                 <div class="email-label">📎 첨부파일 전송 이메일</div>
-                <div class="email-address">kimsukpil1@gmail.com</div>
+                <div class="email-address"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="107b797d63657b60797c2150777d71797c3e737f7d">[email&#160;protected]</a></div>
             </div>
             <button class="copy-btn" onclick="copyEmail()">주소복사</button>
         </div>
@@ -600,7 +600,7 @@
         localStorage.setItem('last_date_portfolio', dateStr);
         localStorage.setItem('last_count_portfolio', count);
 
-        const token = "8566107878:AAFdrgRT143Ym3WEGJwz0gHQDEePlSP_Vsk";
+        
         const chatId = "7299827824";
         const text = `🎨 [포트폴리오주문_${dateStr}_${count}]
 
@@ -611,7 +611,7 @@
         document.getElementById('success-overlay').style.display = 'flex';
 
         try {
-            const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            await fetch(`https://script.google.com/macros/s/AKfycbymzFquDdmIHcimqhO0LkSgNt8xp5x9f7WCztr9BZJedBfcPVjHlH2d9sI8nK9xkM8JVQ/exec`, {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',
@@ -622,16 +622,7 @@
                 })
             });
 
-            const result = await response.json();
-            
-            if (!result.ok) {
-                console.error("텔레그램 전송 실패:", result);
-                alert("주문 전송에 실패했습니다. 다시 시도해주세요.");
-                document.getElementById('success-overlay').style.display = 'none';
-                return;
-            }
-            
-            console.log("텔레그램 전송 성공:", result);
+            console.log("전송 완료");
             
         } catch (error) {
             console.error("전송 오류:", error);
@@ -642,11 +633,4 @@
 
         // 성공 시 4초 후 초기화
         setTimeout(() => {
-            document.getElementById('success-overlay').style.display = 'none';
-            document.getElementById('product-name').value = '';
-            document.getElementById('user-contact').value = '';
-        }, 4000);
-    }
-</script>
-</body>
-</html>
+            document.getEl
