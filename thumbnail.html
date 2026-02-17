@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>NEAGO DESIGN</title>
+    <title>썸네일 - NEAGO DESIGN</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Noto+Sans+KR:wght@300;400;900&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #c5a059; --bg: #000; }
-        body { background: var(--bg); color: #fff; margin: 0; font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        body { background: var(--bg); color: #fff; margin: 0; font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; }
 
-        /* 네비 */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 80px; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold); }
         .logo { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 900; text-decoration: none; background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fcf6ba, #bf953f); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: logo-shine 3s linear infinite; }
         @keyframes logo-shine { to { background-position: 200% center; } }
@@ -22,45 +21,15 @@
         .dropdown-content a:hover { color: #fff; background: #222; }
         .call-btn { background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728); color: #000 !important; padding: 10px 20px; border-radius: 5px; font-weight: 900; text-decoration: none; border: 1px solid #fff; white-space: nowrap; }
 
-        /* 섹션1: 히어로 */
-        .hero-box { width: 100%; height: 60vh; overflow: hidden; border-bottom: 12px solid; border-image: repeating-linear-gradient(-45deg, #8a6d3b 0px, #bf953f 2px, #fcf6ba 4px) 1; }
-        .hero-box img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* 금속판 */
-        .metal-plate { display: block; margin: 40px auto; width: 90%; max-width: 800px; padding: 60px 20px; border-radius: 8px; background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 20%, #b38728 40%, #fbf5b7 60%, #aa771c 80%, #fcf6ba 100%); border: 3px solid #f1d384; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; overflow: hidden; text-align: center; }
-        .metal-plate::before { content: ""; position: absolute; top: 0; left: -150%; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(255,255,255,0) 35%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 65%); animation: light-sweep 3.3s infinite; }
-        @keyframes light-sweep { 0% { left: -150%; } 90% { left: 150%; } 100% { left: 150%; } }
-        .wave-text { display: block; font-family: 'Cinzel', serif; font-size: 3.8rem; font-weight: 900; letter-spacing: -2px; background: linear-gradient(to right, #fcf6ba, #fff, #fcf6ba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.8)); animation: move-up-down 3.5s ease-in-out infinite; position: relative; z-index: 2; }
-        @keyframes move-up-down { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        .sub-copy { font-size: 1.4rem; font-weight: 800; letter-spacing: 12px; color: #5c441a; text-transform: uppercase; margin-top: 15px; position: relative; z-index: 2; display: block; }
-
-        /* 섹션2: 프리미엄 라인업 */
-        .lineup-section { padding: 80px 0; text-align: center; }
+        /* 썸네일 섹션 */
+        .thumb-section { padding: 80px 0; text-align: center; background: #050505; }
         .section-title { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 60px; letter-spacing: 5px; }
-        .lineup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1400px; margin: 0 auto; padding: 0 40px; align-items: start; }
-        .lineup-card { background: #050505; border: 1px solid rgba(197,160,89,0.3); border-radius: 15px; overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
-        .lineup-card:hover { transform: translateY(-10px); border-color: var(--gold); }
-        .lineup-card img { width: 100%; height: auto; display: block; filter: brightness(1.05); }
+        .thumb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto; padding: 0 40px; align-items: start; }
+        .thumb-card { background: #000; border: 1px solid rgba(197,160,89,0.2); border-radius: 10px; overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
+        .thumb-card:hover { transform: translateY(-5px); border-color: rgba(197,160,89,0.6); }
+        .thumb-card img { width: 100%; height: auto; display: block; }
 
-        /* 섹션2.5: 갤러리 */
-        .gallery-section { padding: 80px 0; text-align: center; background: #050505; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1400px; margin: 0 auto; padding: 0 40px; align-items: start; }
-        .gallery-card { background: #000; border: 1px solid rgba(197,160,89,0.2); border-radius: 10px; overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
-        .gallery-card:hover { transform: translateY(-5px); border-color: rgba(197,160,89,0.6); }
-        .gallery-card img { width: 100%; height: auto; display: block; }
-
-        /* 섹션3: 철학 */
-        .lab-section { height: 100vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #1a1a1a 0%, #000 85%); text-align: center; }
-        .lab-content { text-align: center; max-width: 1400px; padding: 0 40px; width: 100%; }
-        .intro-line { font-family: 'Noto Sans KR', sans-serif; font-size: clamp(1.5rem,4vw,3rem); font-weight: 900; color: #444; margin-bottom: 20px; display: block; opacity: 0.8; }
-        .main-line { font-family: 'Noto Sans KR', sans-serif; font-size: clamp(1.8rem,6vw,4.5rem); font-weight: 900; color: #fff; display: block; margin-bottom: 50px; text-shadow: 0 0 20px rgba(255,255,255,0.2), 2px 6px 15px rgba(0,0,0,1); }
-        .shining-text { background: linear-gradient(110deg, #8a6d3b 33%, #fcf6ba 50%, #8a6d3b 66%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: slash-shine 3s linear infinite; }
-        @keyframes slash-shine { to { background-position: -200% center; } }
-        .signature-wrap { margin-top: 60px; text-align: right; padding-right: 8%; }
-        .signature-name { font-family: 'Great Vibes', cursive; font-size: clamp(3rem,8vw,4.5rem); color: var(--gold); line-height: 1; display: block; text-shadow: 2px 5px 12px rgba(0,0,0,1); }
-        .peace-wish { font-family: 'Cinzel', serif; font-size: clamp(0.8rem,2vw,1.1rem); color: #555; letter-spacing: 10px; margin-top: 10px; text-transform: uppercase; font-weight: 700; }
-
-        /* 주문서 공통 */
+        /* 주문서 */
         .offer-section { padding: 80px 20px; display: flex; justify-content: center; align-items: center; background: #000; }
         #main-section { width: 100%; max-width: 500px; padding: 50px 40px; background: #e0e5ec; border-radius: 40px; border: 1.5px solid #d4af37; box-shadow: 20px 20px 40px #bec3c9, -20px -20px 40px #fff; position: relative; }
         #success-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(224,229,236,0.98); border-radius: 40px; display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 100; }
@@ -81,27 +50,18 @@
         .email-label { font-size: 12px; color: #888; margin-bottom: 6px; font-weight: 700; }
         .email-address { font-size: 15px; color: #d4af37; font-weight: 700; }
         .email-hint { font-size: 11px; color: #aaa; margin-top: 5px; }
-        .copy-btn { padding: 10px 20px; background: #e0e5ec; color: #666; border: none; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 5px 5px 10px #bec3c9, -5px -5px 10px #fff; transition: all 0.2s; flex-shrink: 0; }
+        .copy-btn { padding: 10px 20px; background: #e0e5ec; color: #666; border: none; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 5px 5px 10px #bec3c9, -5px -5px 10px #fff; flex-shrink: 0; }
         .signature-box { border-top: 1px solid #d1d9e6; padding-top: 24px; text-align: center; }
         .sig-name { font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: #111; display: block; }
         .sig-phone { font-size: 0.85rem; color: #d4af37; font-weight: 700; letter-spacing: 2px; }
 
-        /* 반응형 */
         @media (max-width: 1024px) {
             nav { padding: 10px 20px; }
             .logo { font-size: 1.5rem; }
             nav ul { gap: 8px; }
             .dropbtn { padding: 8px 12px; font-size: 0.85rem; }
             .call-btn { padding: 8px 12px; font-size: 0.8rem; }
-            .metal-plate { padding: 40px 10px !important; width: 95% !important; }
-            .wave-text { font-size: 1.45rem !important; letter-spacing: -1px; }
-            .sub-copy { font-size: 0.65rem !important; letter-spacing: 3px !important; }
-            .lineup-grid { grid-template-columns: 1fr !important; padding: 0; gap: 0; }
-            .lineup-card { border-radius: 0; border-left: none; border-right: none; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 0 10px; gap: 10px; }
-            .intro-line { font-size: 1.2rem !important; }
-            .main-line { font-size: 1.8rem !important; }
-            .signature-wrap { margin-top: 40px; padding-right: 0; text-align: center; }
+            .thumb-grid { grid-template-columns: repeat(2, 1fr) !important; padding: 0 10px; gap: 10px; }
             .email-box { flex-direction: column; gap: 12px; }
             .copy-btn { width: 100%; }
         }
@@ -124,45 +84,10 @@
     </ul>
 </nav>
 
-<!-- 섹션1: 히어로 -->
-<div class="hero-box">
-    <img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s1-1.jpg" alt="NEAGO DESIGN">
-</div>
-
-<!-- 금속판 -->
-<div class="metal-plate">
-    <span class="wave-text">꿈을 디자인으로 이뤄 드립니다.</span>
-    <span class="sub-copy">FANTASTIC SUCCESS WITH DESIGN</span>
-</div>
-
-<!-- 섹션2: 프리미엄 라인업 -->
-<section class="lineup-section">
-    <h2 class="section-title">PREMIUM LINEUP</h2>
-    <div class="lineup-grid">
-        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s2-1.jpg" alt="시안 1" onerror="this.parentElement.style.display='none'"></div>
-        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s2-2.jpg" alt="시안 2" onerror="this.parentElement.style.display='none'"></div>
-        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s2-3.jpg" alt="시안 3" onerror="this.parentElement.style.display='none'"></div>
-    </div>
-</section>
-
-<!-- 섹션2.5: 전체 갤러리 -->
-<section class="gallery-section">
-    <h2 class="section-title">DESIGN GALLERY</h2>
-    <div class="gallery-grid" id="gallery-grid"></div>
-</section>
-
-<!-- 섹션3: 철학 -->
-<section class="lab-section">
-    <div class="lab-content">
-        <h2>
-            <span class="intro-line">누구나 기획을 말할 때,</span>
-            <span class="main-line"><span class="shining-text">디자인</span>으로 당신의 가치를 증명합니다.</span>
-        </h2>
-        <div class="signature-wrap">
-            <span class="signature-name">Sukbeom Kim</span>
-            <div class="peace-wish">In Peace</div>
-        </div>
-    </div>
+<!-- 썸네일 섹션 -->
+<section class="thumb-section">
+    <h2 class="section-title">THUMBNAIL DESIGN</h2>
+    <div class="thumb-grid" id="thumb-grid"></div>
 </section>
 
 <!-- 주문서 -->
@@ -212,24 +137,15 @@
         if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
     });
 
-    // 갤러리 이미지 동적 로드
+    // 썸네일 동적 로드 - 깃허브 이미지 목록 기반 전체 번호
     const BASE = "https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/";
-    const jpgFiles = [
-        '002','003','008','012','021','028','030','034','035','038',
-        '040','042','044','046','047','048','049','050','051','052',
-        '053','054','055','056','057','058','059','060','062','063',
-        '064','065','068','069','072','073','074','075','076','079',
-        '083','085','087','088','089','091','092','093','095','096',
-        '097','099','100','148',
-        '221','222','223','224','225','226','227','228','229','230',
-        '231','232','233'
-    ];
-    const galleryGrid = document.getElementById('gallery-grid');
-    jpgFiles.forEach(num => {
+    const pngNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,28,29,31,32];
+    const thumbGrid = document.getElementById('thumb-grid');
+    pngNumbers.forEach(num => {
         const card = document.createElement('div');
-        card.className = 'gallery-card';
-        card.innerHTML = '<img src="' + BASE + num + '.jpg" alt="레이아웃 ' + num + '" onerror="this.parentElement.style.display=\'none\'">';
-        galleryGrid.appendChild(card);
+        card.className = 'thumb-card';
+        card.innerHTML = '<img src="' + BASE + '5%20(' + num + ').png" alt="썸네일 ' + num + '" onerror="this.parentElement.style.display=\'none\'">';
+        thumbGrid.appendChild(card);
     });
 
     // 이메일 복사 + 토스트
