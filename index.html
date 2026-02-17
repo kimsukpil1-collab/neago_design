@@ -60,6 +60,20 @@
         .signature-name { font-family: 'Great Vibes', cursive; font-size: clamp(3rem,8vw,4.5rem); color: var(--gold); line-height: 1; display: block; text-shadow: 2px 5px 12px rgba(0,0,0,1); }
         .peace-wish { font-family: 'Cinzel', serif; font-size: clamp(0.8rem,2vw,1.1rem); color: #555; letter-spacing: 10px; margin-top: 10px; text-transform: uppercase; font-weight: 700; }
 
+        /* 가격표 */
+        .price-section { padding: 80px 20px; text-align: center; background: #000; }
+        .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto 30px; padding: 0 20px; }
+        .price-card { background: #0a0a0a; border: 1px solid rgba(197,160,89,0.25); border-radius: 15px; padding: 30px 20px; position: relative; transition: transform 0.3s, border-color 0.3s; }
+        .price-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+        .price-card-best { border-color: var(--gold); background: rgba(197,160,89,0.05); }
+        .price-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #d4af37, #c5a059); color: #000; font-size: 0.7rem; font-weight: 900; padding: 4px 14px; border-radius: 20px; letter-spacing: 2px; }
+        .price-qty { font-family: 'Cinzel', serif; font-size: 1rem; color: #888; margin-bottom: 12px; letter-spacing: 2px; }
+        .price-amt { font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; color: var(--gold); }
+        .price-amt span { font-size: 1rem; }
+        .price-save { font-size: 0.75rem; color: #4caf7d; margin-top: 8px; font-weight: 700; }
+        .price-note { font-size: 0.85rem; color: #555; letter-spacing: 1px; }
+        @media (max-width: 768px) { .price-grid { grid-template-columns: repeat(2, 1fr); } }
+
         /* 주문서 공통 */
         .offer-section { padding: 80px 20px; display: flex; justify-content: center; align-items: center; background: #000; }
         #main-section { width: 100%; max-width: 500px; padding: 50px 40px; background: #e0e5ec; border-radius: 40px; border: 1.5px solid #d4af37; box-shadow: 20px 20px 40px #bec3c9, -20px -20px 40px #fff; position: relative; }
@@ -165,6 +179,44 @@
     </div>
 </section>
 
+<!-- 가격표 -->
+<section class="price-section">
+    <h2 class="section-title">PRICE</h2>
+    <div class="price-grid">
+        <div class="price-card">
+            <div class="price-qty">1개</div>
+            <div class="price-amt">10,000<span>원</span></div>
+        </div>
+        <div class="price-card">
+            <div class="price-qty">2개</div>
+            <div class="price-amt">16,000<span>원</span></div>
+            <div class="price-save">2,000원 절약</div>
+        </div>
+        <div class="price-card">
+            <div class="price-qty">3개</div>
+            <div class="price-amt">20,000<span>원</span></div>
+            <div class="price-save">10,000원 절약</div>
+        </div>
+        <div class="price-card">
+            <div class="price-qty">4개</div>
+            <div class="price-amt">25,000<span>원</span></div>
+            <div class="price-save">15,000원 절약</div>
+        </div>
+        <div class="price-card">
+            <div class="price-qty">5개</div>
+            <div class="price-amt">28,000<span>원</span></div>
+            <div class="price-save">22,000원 절약</div>
+        </div>
+        <div class="price-card price-card-best">
+            <div class="price-badge">BEST</div>
+            <div class="price-qty">10개</div>
+            <div class="price-amt">45,000<span>원</span></div>
+            <div class="price-save">55,000원 절약</div>
+        </div>
+    </div>
+    <p class="price-note">레이아웃 · 썸네일 동일 적용</p>
+</section>
+
 <!-- 주문서 -->
 <section class="offer-section" id="order">
     <div id="main-section">
@@ -222,7 +274,7 @@
         '083','085','087','088','089','091','092','093','095','096',
         '097','099','100','148',
         '221','222','223','224','225','226','227','228','229','230',
-        '231','232','233'
+        '231','232','233','234'
     ];
     const galleryGrid = document.getElementById('gallery-grid');
     jpgFiles.forEach(num => {
