@@ -70,6 +70,43 @@
     </ul>
 </nav>
 
+<section style="padding: 60px 20px; text-align: center; background: #e0e5ec;">
+    <h2 style="font-family: 'Cinzel', serif; font-size: 2rem; margin-bottom: 40px; letter-spacing: 5px; background: linear-gradient(135deg, #d4af37, #c5a059); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PRICE</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 700px; margin: 0 auto 20px;">
+        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center;">
+            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">1개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">10,000<span style="font-size:0.85rem;">원</span></div>
+        </div>
+        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center;">
+            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">2개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">16,000<span style="font-size:0.85rem;">원</span></div>
+            <div style="font-size: 0.72rem; color: #4caf7d; margin-top: 6px; font-weight: 700;">2,000원 절약</div>
+        </div>
+        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center;">
+            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">3개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">20,000<span style="font-size:0.85rem;">원</span></div>
+            <div style="font-size: 0.72rem; color: #4caf7d; margin-top: 6px; font-weight: 700;">10,000원 절약</div>
+        </div>
+        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center;">
+            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">4개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">25,000<span style="font-size:0.85rem;">원</span></div>
+            <div style="font-size: 0.72rem; color: #4caf7d; margin-top: 6px; font-weight: 700;">15,000원 절약</div>
+        </div>
+        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center;">
+            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">5개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">28,000<span style="font-size:0.85rem;">원</span></div>
+            <div style="font-size: 0.72rem; color: #4caf7d; margin-top: 6px; font-weight: 700;">22,000원 절약</div>
+        </div>
+        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center; border: 1.5px solid #d4af37; position: relative;">
+            <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #d4af37, #c5a059); color: #000; font-size: 0.65rem; font-weight: 900; padding: 3px 12px; border-radius: 20px; letter-spacing: 2px;">BEST</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">10개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">45,000<span style="font-size:0.85rem;">원</span></div>
+            <div style="font-size: 0.72rem; color: #4caf7d; margin-top: 6px; font-weight: 700;">55,000원 절약</div>
+        </div>
+    </div>
+    <p style="font-size: 0.82rem; color: #aaa; letter-spacing: 1px;">레이아웃 · 썸네일 동일 적용</p>
+</section>
+
 <section class="offer-section">
     <div id="main-section">
         <div id="success-overlay">
@@ -164,4 +201,11 @@
             });
         } catch(e) { console.error('전송 오류:', e); }
         setTimeout(() => {
-            document.getEl
+            document.getElementById('success-overlay').style.display = 'none';
+            document.getElementById('product-name').value = '';
+            document.getElementById('user-contact').value = '';
+        }, 4000);
+    }
+</script>
+</body>
+</html>
