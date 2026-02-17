@@ -90,6 +90,44 @@
     <div class="thumb-grid" id="thumb-grid"></div>
 </section>
 
+<!-- 가격표 -->
+<section style="padding: 80px 20px; text-align: center; background: #050505;">
+    <h2 style="font-family: 'Cinzel', serif; font-size: 2.5rem; color: #c5a059; margin-bottom: 60px; letter-spacing: 5px;">PRICE</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto 30px; padding: 0 20px;">
+        <div style="background: #0a0a0a; border: 1px solid rgba(197,160,89,0.25); border-radius: 15px; padding: 30px 20px; transition: transform 0.3s;">
+            <div style="font-family: 'Cinzel', serif; font-size: 1rem; color: #888; margin-bottom: 12px; letter-spacing: 2px;">1개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; color: #c5a059;">10,000<span style="font-size:1rem;">원</span></div>
+        </div>
+        <div style="background: #0a0a0a; border: 1px solid rgba(197,160,89,0.25); border-radius: 15px; padding: 30px 20px;">
+            <div style="font-family: 'Cinzel', serif; font-size: 1rem; color: #888; margin-bottom: 12px; letter-spacing: 2px;">2개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; color: #c5a059;">16,000<span style="font-size:1rem;">원</span></div>
+            <div style="font-size: 0.75rem; color: #4caf7d; margin-top: 8px; font-weight: 700;">2,000원 절약</div>
+        </div>
+        <div style="background: #0a0a0a; border: 1px solid rgba(197,160,89,0.25); border-radius: 15px; padding: 30px 20px;">
+            <div style="font-family: 'Cinzel', serif; font-size: 1rem; color: #888; margin-bottom: 12px; letter-spacing: 2px;">3개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; color: #c5a059;">20,000<span style="font-size:1rem;">원</span></div>
+            <div style="font-size: 0.75rem; color: #4caf7d; margin-top: 8px; font-weight: 700;">10,000원 절약</div>
+        </div>
+        <div style="background: #0a0a0a; border: 1px solid rgba(197,160,89,0.25); border-radius: 15px; padding: 30px 20px;">
+            <div style="font-family: 'Cinzel', serif; font-size: 1rem; color: #888; margin-bottom: 12px; letter-spacing: 2px;">4개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; color: #c5a059;">25,000<span style="font-size:1rem;">원</span></div>
+            <div style="font-size: 0.75rem; color: #4caf7d; margin-top: 8px; font-weight: 700;">15,000원 절약</div>
+        </div>
+        <div style="background: #0a0a0a; border: 1px solid rgba(197,160,89,0.25); border-radius: 15px; padding: 30px 20px;">
+            <div style="font-family: 'Cinzel', serif; font-size: 1rem; color: #888; margin-bottom: 12px; letter-spacing: 2px;">5개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; color: #c5a059;">28,000<span style="font-size:1rem;">원</span></div>
+            <div style="font-size: 0.75rem; color: #4caf7d; margin-top: 8px; font-weight: 700;">22,000원 절약</div>
+        </div>
+        <div style="background: rgba(197,160,89,0.05); border: 1px solid #c5a059; border-radius: 15px; padding: 30px 20px; position: relative;">
+            <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #d4af37, #c5a059); color: #000; font-size: 0.7rem; font-weight: 900; padding: 4px 14px; border-radius: 20px; letter-spacing: 2px;">BEST</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1rem; color: #888; margin-bottom: 12px; letter-spacing: 2px;">10개</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; color: #c5a059;">45,000<span style="font-size:1rem;">원</span></div>
+            <div style="font-size: 0.75rem; color: #4caf7d; margin-top: 8px; font-weight: 700;">55,000원 절약</div>
+        </div>
+    </div>
+    <p style="font-size: 0.85rem; color: #555; letter-spacing: 1px;">레이아웃 · 썸네일 동일 적용</p>
+</section>
+
 <!-- 주문서 -->
 <section class="offer-section" id="order">
     <div id="main-section">
@@ -139,7 +177,7 @@
 
     // 썸네일 동적 로드 - 깃허브 이미지 목록 기반 전체 번호
     const BASE = "https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/";
-    const pngNumbers = [23,25,26,27,28,29,31,32];
+    const pngNumbers = [23,25,26,28,29,31,32];
     const thumbGrid = document.getElementById('thumb-grid');
     pngNumbers.forEach(num => {
         const card = document.createElement('div');
