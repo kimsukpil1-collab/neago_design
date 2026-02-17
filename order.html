@@ -92,7 +92,7 @@
         <div class="email-box">
             <div class="email-info">
                 <div class="email-label">📎 첨부파일 전송 이메일</div>
-                <div class="email-address">kimsukpil1@gmail.com</div>
+                <div class="email-address"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85eeece8f6f0eef5ece9b4c5e2e8e4ece9abe6eae8">[email&#160;protected]</a></div>
                 <div class="email-hint">첨부파일(사진·영상)은 이메일로 보내 주세요</div>
             </div>
             <button class="copy-btn" onclick="copyEmail()">주소복사</button>
@@ -104,7 +104,7 @@
     </div>
 </section>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // 드롭다운
     const dropbtn = document.getElementById('dropbtn');
     const dropdown = document.getElementById('dropdown');
@@ -154,7 +154,7 @@
         count = localStorage.getItem('last_date') !== dateStr ? 1 : count + 1;
         localStorage.setItem('last_date', dateStr);
         localStorage.setItem('last_count', String(count));
-        const text = '🎨 [디자인주문_' + dateStr + '_' + count + ']\n\n📦 상품명: ' + productName + '\n📞 연락처: ' + contact;
+        const text = '🎨 [홈페이지1주문_' + dateStr + '_' + count + ']\n\n📦 상품명: ' + productName + '\n📞 연락처: ' + contact;
         document.getElementById('success-overlay').style.display = 'flex';
         try {
             await fetch('https://script.google.com/macros/s/AKfycbymzFquDdmIHcimqhO0LkSgNt8xp5x9f7WCztr9BZJedBfcPVjHlH2d9sI8nK9xkM8JVQ/exec', {
@@ -164,11 +164,4 @@
             });
         } catch(e) { console.error('전송 오류:', e); }
         setTimeout(() => {
-            document.getElementById('success-overlay').style.display = 'none';
-            document.getElementById('product-name').value = '';
-            document.getElementById('user-contact').value = '';
-        }, 4000);
-    }
-</script>
-</body>
-</html>
+            document.getEl
