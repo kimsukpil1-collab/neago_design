@@ -232,6 +232,15 @@
         galleryGrid.appendChild(card);
     });
 
+    // 레이아웃 PNG (5(1)~5(22), 24 없음)
+    const pngLayout = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22];
+    pngLayout.forEach(num => {
+        const card = document.createElement('div');
+        card.className = 'gallery-card';
+        card.innerHTML = '<img src="' + BASE + '5%20(' + num + ').png" alt="레이아웃 ' + num + '" onerror="this.parentElement.style.display=\'none\'">';
+        galleryGrid.appendChild(card);
+    });
+
     // 이메일 복사 + 토스트
     function copyEmail() {
         const email = 'kimsukpil1@gmail.com';
