@@ -73,11 +73,7 @@
 <!-- 썸네일 갤러리 -->
 <section class="gallery-section">
     <h2 class="section-title">THUMBNAIL</h2>
-    <div class="gallery-grid">
-        <div class="gallery-card"><img src="thumb1.jpg" onerror="this.parentElement.style.display='none'"></div>
-        <div class="gallery-card"><img src="thumb2.jpg" onerror="this.parentElement.style.display='none'"></div>
-        <div class="gallery-card"><img src="thumb3.jpg" onerror="this.parentElement.style.display='none'"></div>
-    </div>
+    <div class="gallery-grid" id="gallery-grid"></div>
 </section>
 
 <!-- 가격표 -->
@@ -127,6 +123,22 @@
     document.addEventListener('click', function() {
         isOpen = false;
         menu.style.display = 'none';
+    });
+
+    // ===== 썸네일 갤러리 =====
+    var BASE = 'https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/';
+    var grid = document.getElementById('gallery-grid');
+    var pngFiles = [23, 25, 26, 28, 29, 31, 32];
+
+    pngFiles.forEach(function(num) {
+        var card = document.createElement('div');
+        card.className = 'gallery-card';
+        var img = document.createElement('img');
+        img.src = BASE + '5%20(' + num + ').png';
+        img.alt = '썸네일 ' + num;
+        img.onerror = function() { card.style.display = 'none'; };
+        card.appendChild(img);
+        grid.appendChild(card);
     });
 
     // ===== 주문 제출 =====
