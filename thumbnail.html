@@ -232,35 +232,28 @@ nav ul { list-style:none; display:flex; gap:15px; align-items:center; margin:0; 
     </div>
 </section>
 
+
+
 <script>
-(function(){
-  function bindDropdown(){
-    const dropdown = document.getElementById('dropdown');
-    const oldBtn = document.getElementById('dropbtn');
-    if(!dropdown || !oldBtn) return;
+document.addEventListener("click", function(e){
 
-    // 기존 리스너/캐시(BFCache)로 꼬이는 것 방지: 버튼을 교체해서 리스너 초기화
-    const btn = oldBtn.cloneNode(true);
-    oldBtn.parentNode.replaceChild(btn, oldBtn);
+  const dropdown = document.getElementById("dropdown");
+  const button   = document.getElementById("dropbtn");
 
-    // 문서 클릭 핸들러도 중복 제거
-    if (window.__neagoDocClick) {
-      document.removeEventListener('click', window.__neagoDocClick, true);
-    }
-    window.__neagoDocClick = function(e){
-      if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
-    };
-    document.addEventListener('click', window.__neagoDocClick, true);
+  if(!dropdown || !button) return;
 
-    btn.addEventListener('click', function(e){
+  if(button.contains(e.target)){
       e.stopPropagation();
-      dropdown.classList.toggle('active');
-    });
+      dropdown.classList.toggle("active");
+      return;
   }
 
-  document.addEventListener('DOMContentLoaded', bindDropdown);
-  window.addEventListener('pageshow', bindDropdown); // GitHub Pages/브라우저 캐시로 재진입해도 동작
-})();
+  if(!dropdown.contains(e.target)){
+      dropdown.classList.remove("active");
+  }
+
+});
 </script>
+
 </body>
 </html>
