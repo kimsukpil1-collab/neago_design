@@ -140,7 +140,7 @@
 
 <!-- 섹션1: 히어로 -->
 <div class="hero-box">
-    <img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s1-1.jpg" alt="NEAGO DESIGN">
+    <img src="p1-s1-1.jpg" alt="NEAGO DESIGN">
 </div>
 
 <!-- 금속판 -->
@@ -153,9 +153,9 @@
 <section class="lineup-section">
     <h2 class="section-title">PREMIUM LINEUP</h2>
     <div class="lineup-grid">
-        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s2-1.jpg" alt="시안 1" onerror="this.parentElement.style.display='none'"></div>
-        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s2-2.jpg" alt="시안 2" onerror="this.parentElement.style.display='none'"></div>
-        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s2-3.jpg" alt="시안 3" onerror="this.parentElement.style.display='none'"></div>
+        <div class="lineup-card"><img src="p1-s2-1.jpg" alt="시안 1" onerror="this.parentElement.style.display='none'"></div>
+        <div class="lineup-card"><img src="p1-s2-2.jpg" alt="시안 2" onerror="this.parentElement.style.display='none'"></div>
+        <div class="lineup-card"><img src="p1-s2-3.jpg" alt="시안 3" onerror="this.parentElement.style.display='none'"></div>
     </div>
 </section>
 
@@ -266,7 +266,7 @@
     });
 
     // 갤러리 이미지 동적 로드
-    const BASE = "https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/";
+    const BASE = "./";
     const jpgFiles = [
         '002','003','008','012','021','028','030','034','035','038',
         '040','042','044','046','047','048','049','050','051','052',
@@ -303,7 +303,7 @@
     }
     document.addEventListener('DOMContentLoaded', renderEmail);
 
-    window.copyEmail = async function() {
+    async function copyEmail() {
         const email = 'kimsukpil1' + '@' + 'gmail.com';
         try {
             if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -341,7 +341,7 @@
     }
 
     // 주문서 제출
-    window.handleFinalSubmit = async function() {
+    async function handleFinalSubmit() {
         const productName = document.getElementById('product-name').value.trim();
         const contact = document.getElementById('user-contact').value.trim();
         if (!productName || !contact) { alert('상품명과 연락처를 입력해주세요.'); return; }
@@ -351,7 +351,7 @@
         count = localStorage.getItem('last_date') !== dateStr ? 1 : count + 1;
         localStorage.setItem('last_date', dateStr);
         localStorage.setItem('last_count', String(count));
-        const text = '🎨 [홈페이지1주문_홈_' + dateStr + '_' + count + ']\n\n📦 상품명: ' + productName + '\n📞 연락처: ' + contact;
+        const text = '🎨 [홈페이지1주문_' + dateStr + '_' + count + ']\n\n📦 상품명: ' + productName + '\n📞 연락처: ' + contact;
         document.getElementById('success-overlay').style.display = 'flex';
         try {
             await fetch('https://script.google.com/macros/s/AKfycbymzFquDdmIHcimqhO0LkSgNt8xp5x9f7WCztr9BZJedBfcPVjHlH2d9sI8nK9xkM8JVQ/exec', {
@@ -362,10 +362,11 @@
         } catch(e) { console.error(e); }
         setTimeout(() => {
             document.getElementById('success-overlay').style.display = 'none';
-    document.getElementById('product-name').value = '';
-    document.getElementById('user-contact').value = '';
-  }, 4000);
-};
+            document.getElementById('product-name').value = '';
+            document.getElementById('user-contact').value = '';
+        }, 4000);
+    }
+    }); // DOMContentLoaded
 </script>
 </body>
 </html>
