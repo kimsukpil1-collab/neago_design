@@ -127,7 +127,7 @@
     <a href="index.html" class="logo">NEAGO DESIGN</a>
     <ul>
         <li class="dropdown" id="dropdown">
-            <button class="dropbtn" id="dropbtn">샘플보기</button>
+            <button class="dropbtn" id="dropbtn" type="button">샘플보기</button>
             <div class="dropdown-content">
                 <a href="index.html">홈</a>
                 <a href="thumbnail.html">썸네일</a>
@@ -254,16 +254,21 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    // 드롭다운
+    
+    // 드롭다운 (방어코드)
     const dropbtn = document.getElementById('dropbtn');
     const dropdown = document.getElementById('dropdown');
-    dropbtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('active');
-    });
-    document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
-    });
+    if (dropbtn && dropdown) {
+        dropbtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
+        });
+    }
+});
 
     // 갤러리 이미지 동적 로드
     const BASE = "./";
