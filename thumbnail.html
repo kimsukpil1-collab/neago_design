@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>neago - 썸네일</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Noto+Sans+KR:wght@300;400;900&display=swap" rel="stylesheet">
   <style>
     :root { --gold:#c5a059; --bg:#000; }
-    body { background:var(--bg); color:#fff; margin:0; font-family:'Noto Sans KR',sans-serif; overflow-x:hidden; }
-    nav { display:flex; justify-content:space-between; align-items:center; padding:10px 40px; background:rgba(0,0,0,0.95); position:sticky; top:0; z-index:1000; border-bottom:2px solid var(--gold); }
-    .logo { font-family:'Cinzel',serif; font-size:1.8rem; font-weight:900; text-decoration:none; background:linear-gradient(to right,#bf953f,#fcf6ba,#b38728,#fcf6ba,#bf953f); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:logo-shine 3s linear infinite; }
+    body { background:var(--bg); color:#fff; margin:0; font-family:'Noto Sans KR',sans-serif; overflow-x:hidden; scroll-behavior:smooth; }
+
+    nav { display:flex; justify-content:space-between; align-items:center; padding:10px 80px; background:rgba(0,0,0,0.95); position:sticky; top:0; z-index:1000; border-bottom:2px solid var(--gold);}
+    .logo { font-family:'Cinzel',serif; font-size:2.2rem; font-weight:900; text-decoration:none; background:linear-gradient(to right,#bf953f,#fcf6ba,#b38728,#fcf6ba,#bf953f); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:logo-shine 3s linear infinite; }
     @keyframes logo-shine { to { background-position:200% center; } }
-    nav ul { list-style:none; display:flex; gap:14px; align-items:center; margin:0; padding:0; }
+    nav ul { list-style:none; display:flex; gap:20px; align-items:center; margin:0; padding:0; }
     .dropdown { position:relative; }
-    .dropbtn { padding:10px 16px; border:2px solid var(--gold); border-radius:5px; color:#fff; font-weight:900; background:transparent; cursor:pointer; font-size:0.95rem; }
+    .dropbtn { padding:10px 20px; border:2px solid var(--gold); border-radius:5px; color:#fff; font-weight:900; background:transparent; cursor:pointer; font-size:1rem; outline:none; }
     .dropdown-content { display:none; position:absolute; background-color:#111; min-width:140px; box-shadow:0 8px 16px rgba(0,0,0,0.8); z-index:1001; border:1px solid var(--gold); top:50px; left:0; border-radius:5px; }
     .dropdown.active .dropdown-content { display:block; }
     .dropdown-content a { color:#888; padding:12px 16px; text-decoration:none; display:block; font-size:14px; font-weight:bold; }
     .dropdown-content a:hover { color:#fff; background:#222; }
-    .call-btn { background:linear-gradient(135deg,#bf953f,#fcf6ba,#b38728); color:#000 !important; padding:10px 16px; border-radius:5px; font-weight:900; text-decoration:none; border:1px solid #fff; white-space:nowrap; }
+    .call-btn { background:linear-gradient(135deg,#bf953f,#fcf6ba,#b38728); color:#000 !important; padding:10px 20px; border-radius:5px; font-weight:900; text-decoration:none; border:1px solid #fff; white-space:nowrap; }
 
-    .section-title { font-family:'Cinzel',serif; text-align:center; font-size:2.2rem; color:var(--gold); margin:55px 0 25px; letter-spacing:4px; }
-    .thumb-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; max-width:1200px; margin:0 auto; padding:0 12px 30px; }
-    @media (min-width: 980px) { .thumb-grid { grid-template-columns:repeat(3, 1fr); gap:18px; padding:0 40px 40px; } }
-    .thumb-card { background:#050505; border:1px solid rgba(197,160,89,0.25); border-radius:12px; overflow:hidden; }
+    .section-title { font-family:'Cinzel',serif; font-size:2.5rem; color:var(--gold); margin:60px 0 30px; letter-spacing:5px; text-align:center; }
+    .thumb-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; max-width:1400px; margin:0 auto; padding:0 40px 70px; align-items:start; }
+    .thumb-card { background:#000; border:1px solid rgba(197,160,89,0.2); border-radius:10px; overflow:hidden; transition:transform .25s, border-color .25s; }
+    .thumb-card:hover { transform:translateY(-5px); border-color:rgba(197,160,89,0.6); }
     .thumb-card img { width:100%; height:auto; display:block; }
 
-    /* 주문서 (index/order와 동일 톤으로 간단 유지) */
-    .offer-section { padding:60px 20px; display:flex; justify-content:center; align-items:center; background:#000; }
-    #main-section { width:100%; max-width:520px; padding:50px 40px; background:#e0e5ec; border-radius:40px; border:1.5px solid #d4af37; box-shadow:20px 20px 40px #bec3c9, -20px -20px 40px #fff; position:relative; }
+    /* 주문서 (index/order 동일) */
+    .offer-section { padding:80px 20px; display:flex; justify-content:center; align-items:center; background:#000; }
+    #main-section { width:100%; max-width:500px; padding:50px 40px; background:#e0e5ec; border-radius:40px; border:1.5px solid #d4af37; box-shadow:20px 20px 40px #bec3c9, -20px -20px 40px #fff; position:relative; }
     #success-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(224,229,236,0.98); border-radius:40px; display:none; flex-direction:column; justify-content:center; align-items:center; z-index:100; }
     .success-glass { background:linear-gradient(135deg, rgba(212,175,55,0.15), rgba(197,160,89,0.15)); backdrop-filter:blur(10px); padding:50px 30px; border-radius:25px; text-align:center; box-shadow:10px 10px 20px #bec3c9, -10px -10px 20px #fff; border:1px solid #d4af37; }
     .msg-line-1 { font-size:26px; font-weight:700; color:#d4af37; margin-bottom:12px; }
@@ -36,86 +37,95 @@
     .offer-title { font-family:'Great Vibes',cursive; font-size:48px; background:linear-gradient(135deg, #d4af37, #c5a059); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-align:center; margin-bottom:40px; }
     .field { margin-bottom:25px; text-align:left; }
     .field label { display:block; font-size:13px; color:#555; margin-bottom:10px; font-weight:700; }
-    .offer-input { width:100%; box-sizing:border-box; border:none; padding:18px 20px; font-size:16px; background:#e0e5ec; color:#2c3e50; outline:none; border-radius:15px; box-shadow:inset 5px 5px 10px #bec3c9, inset -5px -5px 10px #fff; }
-    .submit-btn { width:100%; box-sizing:border-box; padding:16px; background:#d8dde4; color:#888; border-radius:15px; font-size:14px; font-weight:700; border:none; cursor:pointer; box-shadow:3px 3px 6px #d1d9e6, -3px -3px 6px #f9f9f9; margin-bottom:12px; }
+    .offer-input { width:100%; box-sizing:border-box; border:none; padding:18px 20px; font-size:16px; background:#e0e5ec; color:#2c3e50; outline:none; font-family:'Noto Sans KR',sans-serif; border-radius:15px; box-shadow: inset 5px 5px 10px #bec3c9, inset -5px -5px 10px #fff; transition: all .25s; }
+    .offer-input:focus { box-shadow: inset 3px 3px 6px #bec3c9, inset -3px -3px 6px #fff; }
+    .submit-btn { width:100%; box-sizing:border-box; padding:16px; background:#d8dde4; color:#888; border-radius:15px; font-size:14px; font-weight:600; border:none; cursor:pointer; box-shadow:3px 3px 6px #d1d9e6, -3px -3px 6px #f9f9f9; margin-bottom:12px; transition:all .25s; }
     .submit-btn:hover { background:#d3d8df; color:#777; }
-    .email-box { background:rgba(212,175,55,0.05); padding:20px; border-radius:15px; margin-top:10px; display:flex; justify-content:space-between; align-items:center; gap:12px; box-shadow:inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #fff; }
+    .naver-btn { display:block; width:100%; box-sizing:border-box; padding:22px; background:linear-gradient(135deg,#03c75a,#029648); color:#fff !important; border-radius:15px; font-size:18px; font-weight:900; text-decoration:none; text-align:center; margin-bottom:28px; box-shadow:8px 8px 16px #bec3c9, -8px -8px 16px #fff; transition:transform .25s; }
+    .naver-btn:hover { transform:translateY(-3px); }
+    .email-box { background: rgba(212,175,55,0.05); padding:20px; border-radius:15px; margin-bottom:28px; display:flex; justify-content:space-between; align-items:center; box-shadow: inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #fff; gap:12px; }
+    .email-info { flex:1; }
     .email-label { font-size:12px; color:#888; margin-bottom:6px; font-weight:700; }
     .email-address { font-size:15px; color:#d4af37; font-weight:700; }
-    .copy-btn { padding:10px 18px; background:#e0e5ec; color:#666; border:none; border-radius:10px; font-size:13px; font-weight:800; cursor:pointer; box-shadow:5px 5px 10px #bec3c9, -5px -5px 10px #fff; white-space:nowrap; }
-    @media (max-width: 520px) {
-      #main-section { padding:40px 22px; border-radius:28px; }
-      .email-box { flex-direction:column; align-items:stretch; }
+    .email-hint { font-size:11px; color:#aaa; margin-top:5px; }
+    .copy-btn { padding:10px 20px; background:#e0e5ec; color:#666; border:none; border-radius:10px; font-size:13px; font-weight:700; cursor:pointer; box-shadow:5px 5px 10px #bec3c9, -5px -5px 10px #fff; flex-shrink:0; }
+
+    @media (max-width: 1024px) {
+      nav { padding:10px 20px; }
+      .logo { font-size:1.5rem; }
+      nav ul { gap:8px; }
+      .dropbtn { padding:8px 12px; font-size:0.85rem; }
+      .call-btn { padding:8px 12px; font-size:0.8rem; }
+      .thumb-grid { grid-template-columns:repeat(2, 1fr); padding:0 10px 50px; gap:10px; }
+      .email-box { flex-direction:column; gap:12px; }
       .copy-btn { width:100%; }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="logo">neago</a>
-    <ul>
-      <li class="dropdown" id="dropdown">
-        <button class="dropbtn" id="dropbtn">샘플보기</button>
-        <div class="dropdown-content">
-          <a href="index.html">홈</a>
-          <a href="thumbnail.html">썸네일</a>
-          <a href="order.html">주문서</a>
-        </div>
-      </li>
-      <li><a href="tel:010-7928-8645" class="call-btn">010-7928-8645</a></li>
-    </ul>
-  </nav>
 
-  <h2 class="section-title">THUMBNAIL</h2>
-  <div class="thumb-grid" id="thumb-grid"></div>
-
-  <section class="offer-section" id="order">
-    <div id="main-section">
-      <div id="success-overlay">
-        <div class="success-glass">
-          <div class="msg-line-1">주문이 접수되었습니다! 🎉</div>
-          <div class="msg-line-2">24시간 내 연락드리겠습니다.</div>
-        </div>
+<nav>
+  <a href="index.html" class="logo">neago</a>
+  <ul>
+    <li class="dropdown" id="dropdown">
+      <button class="dropbtn" id="dropbtn">샘플보기</button>
+      <div class="dropdown-content">
+        <a href="index.html">홈</a>
+        <a href="thumbnail.html">썸네일</a>
+        <a href="order.html">주문서</a>
       </div>
+    </li>
+    <li><a href="tel:010-7928-8645" class="call-btn">010-7928-8645</a></li>
+  </ul>
+</nav>
 
-      <h1 class="offer-title">Design Order</h1>
-      <div class="field">
-        <label>어떤 상품인가요?</label>
-        <input type="text" id="product-name" class="offer-input" placeholder="">
-      </div>
-      <div class="field">
-        <label>연락처</label>
-        <input type="text" id="user-contact" class="offer-input" placeholder="010-">
-      </div>
-      <button class="submit-btn" onclick="handleFinalSubmit()">상담요청</button>
+<h2 class="section-title">THUMBNAIL</h2>
+<div class="thumb-grid" id="thumb-grid"></div>
 
-      <div class="email-box">
-        <div style="flex:1;">
-          <div class="email-label">📎 첨부파일 전송 이메일</div>
-          <div class="email-address" id="email-display">kimsukpil1@gmail.com</div>
-          <div style="font-size:11px;color:#aaa;margin-top:5px;">첨부파일(사진·영상)은 이메일로 보내 주세요</div>
-        </div>
-        <button class="copy-btn" onclick="copyEmail()">주소복사</button>
+<section class="offer-section" id="order">
+  <div id="main-section">
+    <div id="success-overlay">
+      <div class="success-glass">
+        <div class="msg-line-1">주문이 접수되었습니다! 🎉</div>
+        <div class="msg-line-2">24시간 내 연락드리겠습니다.</div>
       </div>
     </div>
-  </section>
+
+    <h1 class="offer-title">Design Order</h1>
+    <div class="field">
+      <label>어떤 상품인가요?</label>
+      <input type="text" id="product-name" class="offer-input" placeholder="">
+    </div>
+    <div class="field">
+      <label>연락처</label>
+      <input type="text" id="user-contact" class="offer-input" placeholder="010-">
+    </div>
+
+    <button class="submit-btn" onclick="handleFinalSubmit()">상담요청</button>
+    <a href="https://smartstore.naver.com/pxq1/products/12976242217" target="_blank" class="naver-btn">네이버 스토어로 주문하기</a>
+
+    <div class="email-box">
+      <div class="email-info">
+        <div class="email-label">📎 첨부파일 전송 이메일</div>
+        <div class="email-address" id="email-display">kimsukpil1@gmail.com</div>
+        <div class="email-hint">첨부파일(사진·영상)은 이메일로 보내 주세요</div>
+      </div>
+      <button class="copy-btn" onclick="copyEmail()">주소복사</button>
+    </div>
+  </div>
+</section>
 
 <script>
-(function() {
-  // --- dropdown ---
+document.addEventListener('DOMContentLoaded', function() {
+  // 드롭다운
   const dropbtn = document.getElementById('dropbtn');
   const dropdown = document.getElementById('dropdown');
   if (dropbtn && dropdown) {
-    dropbtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdown.classList.toggle('active');
-    });
-    document.addEventListener('click', (e) => {
-      if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
-    });
+    dropbtn.addEventListener('click', (e) => { e.stopPropagation(); dropdown.classList.toggle('active'); });
+    document.addEventListener('click', (e) => { if (!dropdown.contains(e.target)) dropdown.classList.remove('active'); });
   }
 
-  // --- thumbnails (only existing numbers) ---
+  // 썸네일 (있는 번호만)
   const BASE = "https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/";
   const pngNumbers = [23, 25, 26, 28, 29, 31, 32];
   const grid = document.getElementById('thumb-grid');
@@ -126,89 +136,59 @@
     grid.appendChild(card);
   });
 
-  // --- email render ---
-  function renderEmail() {
-    const u='kimsukpil1', d='gmail', t='com';
-    const addr = u + String.fromCharCode(64) + d + '.' + t;
-    const el = document.getElementById('email-display');
-    if (el) el.textContent = addr;
-  }
-  renderEmail();
+  // 이메일 렌더
+  const u='kimsukpil1', d='gmail', t='com';
+  const addr = u + String.fromCharCode(64) + d + '.' + t;
+  const el = document.getElementById('email-display');
+  if (el) el.textContent = addr;
+});
 
-  // --- copy email (global for onclick) ---
-  window.copyEmail = async function() {
-    const email = 'kimsukpil1' + '@' + 'gmail.com';
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        await navigator.clipboard.writeText(email);
-        toast(email + ' 복사되었습니다! 📋');
-      } else {
-        fallbackCopy(email);
-      }
-    } catch(e) {
-      fallbackCopy(email);
+// 전역: 주소복사
+window.copyEmail = async function() {
+  const email = 'kimsukpil1' + '@' + 'gmail.com';
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(email);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = email; ta.style.cssText='position:fixed;top:0;left:0;opacity:0;';
+      document.body.appendChild(ta); ta.focus(); ta.select(); ta.setSelectionRange(0,9999);
+      document.execCommand('copy'); document.body.removeChild(ta);
     }
-  };
+  } catch(e) {}
+};
 
-  function fallbackCopy(email) {
-    const ta = document.createElement('textarea');
-    ta.value = email;
-    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
-    document.body.appendChild(ta);
-    ta.focus();
-    ta.select();
-    ta.setSelectionRange(0, 9999);
-    try { document.execCommand('copy'); toast(email + ' 복사되었습니다! 📋'); }
-    catch(e) { alert('수동으로 복사해주세요: ' + email); }
-    document.body.removeChild(ta);
-  }
+// 전역: 주문서 제출 (텔레그램)
+window.handleFinalSubmit = async function() {
+  const productName = document.getElementById('product-name').value.trim();
+  const contact = document.getElementById('user-contact').value.trim();
+  if (!productName || !contact) { alert('상품명과 연락처를 입력해주세요.'); return; }
 
-  function toast(msg) {
-    const old = document.getElementById('toast-wrap');
-    if (old) old.remove();
-    const wrap = document.createElement('div');
-    wrap.id = 'toast-wrap';
-    wrap.style.cssText = 'position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:9999;';
-    wrap.innerHTML = '<div style="background:rgba(20,20,20,0.95);color:#fcf6ba;padding:12px 20px;border-radius:8px;font-size:0.9rem;font-weight:800;border:1px solid rgba(197,160,89,0.5);white-space:nowrap;">' + msg + '</div>';
-    document.body.appendChild(wrap);
-    setTimeout(() => wrap.remove(), 2500);
-  }
+  const now = new Date();
+  const dateStr = String(now.getMonth()+1).padStart(2,'0') + '/' + String(now.getDate()).padStart(2,'0');
+  let count = parseInt(localStorage.getItem('last_count') || '0');
+  count = localStorage.getItem('last_date') !== dateStr ? 1 : count + 1;
+  localStorage.setItem('last_date', dateStr);
+  localStorage.setItem('last_count', String(count));
 
-  // --- telegram submit via Apps Script (global for onclick) ---
-  window.handleFinalSubmit = async function() {
-    const productName = document.getElementById('product-name').value.trim();
-    const contact = document.getElementById('user-contact').value.trim();
-    if (!productName || !contact) { alert('상품명과 연락처를 입력해주세요.'); return; }
+  const text = '🖼️ [홈페이지1주문_썸네일_' + dateStr + '_' + count + ']\n\n📦 상품명: ' + productName + '\n📞 연락처: ' + contact;
 
-    const now = new Date();
-    const dateStr = String(now.getMonth()+1).padStart(2,'0') + '/' + String(now.getDate()).padStart(2,'0');
-    let count = parseInt(localStorage.getItem('last_count') || '0');
-    count = localStorage.getItem('last_date') !== dateStr ? 1 : count + 1;
-    localStorage.setItem('last_date', dateStr);
-    localStorage.setItem('last_count', String(count));
+  document.getElementById('success-overlay').style.display = 'flex';
+  try {
+    await fetch('https://script.google.com/macros/s/AKfycbymzFquDdmIHcimqhO0LkSgNt8xp5x9f7WCztr9BZJedBfcPVjHlH2d9sI8nK9xkM8JVQ/exec', {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: '7299827824', text: text })
+    });
+  } catch(e) { console.error(e); }
 
-    const text = '🖼️ [썸네일주문_' + dateStr + '_' + count + ']\n\n📦 상품명: ' + productName + '\n📞 연락처: ' + contact;
-
-    document.getElementById('success-overlay').style.display = 'flex';
-    try {
-      // no-cors라서 브라우저에서 성공/실패 응답은 확인 불가 (요청은 전송됨)
-      await fetch('https://script.google.com/macros/s/AKfycbymzFquDdmIHcimqhO0LkSgNt8xp5x9f7WCztr9BZJedBfcPVjHlH2d9sI8nK9xkM8JVQ/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: '7299827824', text })
-      });
-    } catch (e) {
-      console.error(e);
-    }
-
-    setTimeout(() => {
-      document.getElementById('success-overlay').style.display = 'none';
-      document.getElementById('product-name').value = '';
-      document.getElementById('user-contact').value = '';
-    }, 2500);
-  };
-})();
+  setTimeout(() => {
+    document.getElementById('success-overlay').style.display = 'none';
+    document.getElementById('product-name').value = '';
+    document.getElementById('user-contact').value = '';
+  }, 4000);
+};
 </script>
+
 </body>
 </html>
