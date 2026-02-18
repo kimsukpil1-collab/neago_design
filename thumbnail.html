@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>썸네일 - NEAGO DESIGN</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Noto+Sans+KR:wght@300;400;900&display=swap" rel="stylesheet">
+<style>
+
+:root { --gold:#c5a059; --bg:#000; }
+*{ box-sizing:border-box; }
+body{ margin:0; font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:#fff; overflow-x:hidden; }
+
+nav{
+  position:sticky; top:0; z-index:1000;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 20px; background:rgba(0,0,0,0.95);
+  border-bottom:2px solid var(--gold);
+}
+.logo{
+  font-family:'Cinzel',serif; font-size:1.6rem; font-weight:900; text-decoration:none;
+  background: linear-gradient(to right,#bf953f,#fcf6ba,#b38728,#fcf6ba,#bf953f);
+  background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  animation:logo-shine 3s linear infinite;
+}
+@keyframes logo-shine{ to{ background-position:200% center; } }
+
+nav ul{ list-style:none; display:flex; gap:10px; align-items:center; margin:0; padding:0; }
+.dropdown{ position:relative; }
+.dropbtn{
+  padding:8px 12px; border:2px solid var(--gold); border-radius:8px;
+  background:transparent; color:#fff; font-weight:900; cursor:pointer;
+}
+.dropdown-content{
+  display:none; position:absolute; right:0; top:44px;
+  background:#111; min-width:150px; border:1px solid var(--gold);
+  border-radius:10px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.8);
+}
+.dropdown.active .dropdown-content{ display:block; }
+.dropdown-content a{
+  display:block; padding:12px 14px; text-decoration:none; color:#bbb; font-weight:800; font-size:14px;
+}
+.dropdown-content a:hover{ background:#222; color:#fff; }
+
+.call-btn{
+  background:linear-gradient(135deg,#bf953f,#fcf6ba,#b38728);
+  color:#000 !important; padding:8px 12px; border-radius:8px;
+  font-weight:900; text-decoration:none; border:1px solid #fff; white-space:nowrap;
+}
+
+.section{ padding:70px 20px; }
+.section-title{
+  font-family:'Cinzel',serif; font-size:2rem; color:var(--gold);
+  letter-spacing:5px; text-align:center; margin:0 0 40px;
+}
+
+.hero{ height:56vh; border-bottom:12px solid; border-image: repeating-linear-gradient(-45deg,#8a6d3b 0,#bf953f 2px,#fcf6ba 4px) 1; overflow:hidden; }
+.hero img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+.metal-plate{
+  margin:40px auto 0; width:min(900px,92%); padding:48px 18px; border-radius:12px;
+  background:linear-gradient(135deg,#bf953f 0%,#fcf6ba 20%,#b38728 40%,#fbf5b7 60%,#aa771c 80%,#fcf6ba 100%);
+  border:3px solid #f1d384; box-shadow:0 20px 50px rgba(0,0,0,0.8);
+  position:relative; overflow:hidden; text-align:center;
+}
+.metal-plate::before{
+  content:""; position:absolute; top:0; left:-150%; width:100%; height:100%;
+  background:linear-gradient(135deg,rgba(255,255,255,0) 35%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 65%);
+  animation:light-sweep 3.3s infinite;
+}
+@keyframes light-sweep{ 0%{left:-150%} 90%{left:150%} 100%{left:150%} }
+.wave-text{
+  position:relative; z-index:1;
+  font-family:'Cinzel',serif; font-size:clamp(1.4rem,3.6vw,3rem); font-weight:900; letter-spacing:-1px;
+  background:linear-gradient(to right,#fcf6ba,#fff,#fcf6ba);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(2px 2px 0 rgba(0,0,0,0.8));
+}
+.sub-copy{
+  position:relative; z-index:1;
+  display:block; margin-top:12px; font-weight:900; letter-spacing:6px; color:#5c441a;
+  text-transform:uppercase; font-size:clamp(0.7rem,1.4vw,1rem);
+}
+
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:1200px; margin:0 auto; }
+.card{ background:#050505; border:1px solid rgba(197,160,89,0.25); border-radius:14px; overflow:hidden; }
+.card img{ width:100%; height:auto; display:block; }
+
+.price-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:900px; margin:0 auto 18px; }
+.price-card{
+  background:#0a0a0a; border:1px solid rgba(197,160,89,0.25); border-radius:14px;
+  padding:24px 16px; text-align:center; position:relative;
+}
+.price-card-best{ border-color:var(--gold); background:rgba(197,160,89,0.06); }
+.price-badge{
+  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  background:linear-gradient(135deg,#d4af37,#c5a059); color:#000;
+  font-size:0.7rem; font-weight:900; padding:4px 12px; border-radius:999px; letter-spacing:2px;
+}
+.price-qty{ font-family:'Cinzel',serif; color:#888; letter-spacing:2px; margin-bottom:10px; }
+.price-amt{ font-family:'Cinzel',serif; font-size:1.8rem; font-weight:900; color:var(--gold); }
+.price-save{ font-size:0.78rem; color:#4caf7d; margin-top:8px; font-weight:800; }
+.price-note{ text-align:center; color:#666; letter-spacing:1px; font-size:0.85rem; margin:0; }
+
+.offer-wrap{ display:flex; justify-content:center; padding:70px 20px; background:#000; }
+.offer{
+  width:min(520px,100%); padding:38px 28px; border-radius:24px;
+  background:#111; border:1.5px solid var(--gold);
+  box-shadow:0 18px 40px rgba(0,0,0,0.6);
+}
+.offer-title{
+  font-family:'Great Vibes',cursive; font-size:44px; text-align:center; margin:0 0 26px;
+  background:linear-gradient(135deg,#d4af37,#c5a059);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.field{ margin-bottom:16px; }
+.field label{ display:block; font-size:13px; color:#bbb; margin-bottom:8px; font-weight:800; }
+.input{
+  width:100%; padding:14px 14px; border-radius:12px;
+  background:#0b0b0b; border:1px solid #222; color:#fff; outline:none;
+}
+.btn{
+  width:100%; padding:14px; border-radius:12px; border:none; cursor:pointer;
+  background:#d8dde4; color:#222; font-weight:900;
+}
+.btn:hover{ filter:brightness(0.98); }
+.naver-btn{
+  display:block; text-align:center; margin-top:10px;
+  padding:16px; border-radius:12px; text-decoration:none; font-weight:900; color:#fff !important;
+  background:linear-gradient(135deg,#03c75a,#029648);
+}
+.email-box{
+  margin-top:14px; padding:14px; border-radius:12px;
+  border:1px solid rgba(197,160,89,0.25); background:rgba(197,160,89,0.06);
+  display:flex; gap:10px; align-items:center; justify-content:space-between;
+}
+.email-box .addr{ color:var(--gold); font-weight:900; font-size:14px; word-break:break-all; }
+.copy-btn{
+  padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.18);
+  background:#0b0b0b; color:#ddd; font-weight:900; cursor:pointer;
+}
+.toast{
+  position:fixed; bottom:26px; left:50%; transform:translateX(-50%);
+  background:rgba(0,0,0,0.85); border:1px solid rgba(197,160,89,0.35);
+  color:#fff; padding:10px 14px; border-radius:999px; font-weight:800; z-index:9999;
+  display:none;
+}
+
+@media (max-width: 1024px){
+  nav{ padding:10px 14px; }
+  .logo{ font-size:1.35rem; }
+  .grid-3{ grid-template-columns:1fr; }
+  .price-grid{ grid-template-columns:repeat(2,1fr); }
+}
+
+/* 썸네일 페이지 헤더: 인덱스처럼 좌(로고) / 중(샘플보기) / 우(전화) 정렬 */
+nav{
+  display:grid !important;
+  grid-template-columns: 1fr auto 1fr !important;
+  align-items:center !important;
+  gap:10px !important;
+}
+nav > .logo{ justify-self:start; }
+nav > .dropdown{ justify-self:center; }
+nav > .call-btn{
+  justify-self:end;
+  display:inline-flex;
+  align-items:center;
+  white-space:nowrap !important;
+  word-break:keep-all;
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">NEAGO DESIGN</a>
+
+  <div class="dropdown" id="dropdown">
+    <button class="dropbtn" id="dropbtn" type="button">샘플보기</button>
+    <div class="dropdown-content" aria-label="샘플보기 메뉴">
+      <a href="index.html">홈</a>
+      <a href="thumbnail.html">썸네일</a>
+      <a href="order.html">주문서</a>
+    </div>
+  </div>
+
+  <a class="call-btn" href="tel:010-7928-8645">010-7928-8645</a>
+</nav>
+
+<section class="section">
+  <h2 class="section-title">THUMBNAIL</h2>
+  <div class="grid-3" id="thumb-grid"></div>
+  <p style="text-align:center;color:#777;margin:18px 0 0;font-weight:800;">(5 (23)~5 (32)만 로드 / 누락 3개는 자동 제외)</p>
+</section>
+
+<section class="section" id="price">
+  <h2 class="section-title">PRICE</h2>
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="price-qty">1개</div>
+      <div class="price-amt">10,000<span style="font-size:1rem">원</span></div>
+    </div>
+    <div class="price-card">
+      <div class="price-qty">2개</div>
+      <div class="price-amt">16,000<span style="font-size:1rem">원</span></div>
+      <div class="price-save">2,000원 절약</div>
+    </div>
+    <div class="price-card">
+      <div class="price-qty">3개</div>
+      <div class="price-amt">20,000<span style="font-size:1rem">원</span></div>
+      <div class="price-save">10,000원 절약</div>
+    </div>
+    <div class="price-card">
+      <div class="price-qty">4개</div>
+      <div class="price-amt">25,000<span style="font-size:1rem">원</span></div>
+      <div class="price-save">15,000원 절약</div>
+    </div>
+    <div class="price-card">
+      <div class="price-qty">5개</div>
+      <div class="price-amt">28,000<span style="font-size:1rem">원</span></div>
+      <div class="price-save">22,000원 절약</div>
+    </div>
+    <div class="price-card price-card-best">
+      <div class="price-badge">BEST</div>
+      <div class="price-qty">10개</div>
+      <div class="price-amt">45,000<span style="font-size:1rem">원</span></div>
+      <div class="price-save">55,000원 절약</div>
+    </div>
+  </div>
+  <p class="price-note">레이아웃 · 썸네일 동일 적용</p>
+</section>
+<section class="offer-wrap" id="order">
+  <div class="offer">
+    <h1 class="offer-title">Design Order</h1>
+    <div class="field">
+      <label for="product-name">어떤 상품인가요?</label>
+      <input id="product-name" class="input" type="text" placeholder="예) 유튜브 썸네일 / 상세페이지">
+    </div>
+    <div class="field">
+      <label for="user-contact">연락처</label>
+      <input id="user-contact" class="input" type="text" placeholder="010-">
+    </div>
+    <button class="btn" type="button" onclick="alert('주문이 접수되었습니다!\n24시간 내 연락드리겠습니다.')">상담요청</button>
+    <a class="naver-btn" href="https://smartstore.naver.com/pxq1/products/12976242217" target="_blank" rel="noopener">네이버 스토어로 주문하기</a>
+
+    <div class="email-box">
+      <div>
+        <div style="font-size:12px;color:#bbb;font-weight:800;margin-bottom:6px;">📎 첨부파일 전송 이메일</div>
+        <div class="addr" id="email-display">kimsukpil1@gmail.com</div>
+        <div style="font-size:11px;color:#888;margin-top:6px;">첨부파일(사진·영상)은 이메일로 보내 주세요</div>
+      </div>
+      <button class="copy-btn" type="button" onclick="copyEmail()">주소복사</button>
+    </div>
+  </div>
+</section>
+<div class="toast" id="toast">복사 완료 ✅</div>
+
+<script>
+(function(){
+  // 5 (23) ~ 5 (32) 중 누락: 24, 27, 30 제외
+  const files = ["5 (23).png","5 (25).png","5 (26).png","5 (28).png","5 (29).png","5 (31).png","5 (32).png"];
+  const grid = document.getElementById("thumb-grid");
+  if(!grid) return;
+  files.forEach(name => {
+    const card = document.createElement("div");
+    card.className = "card";
+    const img = document.createElement("img");
+    img.alt = name;
+    img.src = "./" + encodeURI(name);
+    img.onerror = () => card.remove();
+    card.appendChild(img);
+    grid.appendChild(card);
+  });
+})();
+</script>
+
+<script>
+(function(){
+  function setupDropdown(){
+    const dropdown = document.getElementById('dropdown');
+    const btn = document.getElementById('dropbtn');
+    if(!dropdown || !btn) return;
+
+    // BFCache 대비: 이미 바인딩 되어 있으면 메뉴만 닫고 끝
+    if (window.__neagoBound) {
+      dropdown.classList.remove('active');
+      return;
+    }
+    window.__neagoBound = true;
+
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      dropdown.classList.toggle('active');
+    }, {passive:false});
+
+    document.addEventListener('click', function(e){
+      if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
+    }, true);
+
+    window.addEventListener('pageshow', function(){
+      dropdown.classList.remove('active');
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupDropdown);
+})();
+
+function copyEmail(){
+  const email = 'kimsukpil1' + '@' + 'gmail.com';
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(email).then(showToast).catch(()=>fallbackCopy(email));
+  } else fallbackCopy(email);
+}
+function fallbackCopy(email){
+  const ta = document.createElement('textarea');
+  ta.value = email; ta.style.position='fixed'; ta.style.left='-999999px';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); showToast(); }
+  catch(e){ alert('수동으로 복사: ' + email); }
+  document.body.removeChild(ta);
+}
+function showToast(){
+  const t = document.getElementById('toast');
+  if(!t) return;
+  t.style.display='block';
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(()=>{ t.style.display='none'; }, 1400);
+}
+</script>
+
+</body>
+</html>
