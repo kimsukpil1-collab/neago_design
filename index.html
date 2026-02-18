@@ -140,7 +140,7 @@
 
 <!-- 섹션1: 히어로 -->
 <div class="hero-box">
-    <img src="https://raw.githubusercontent.com/kimsukpil1-collab/naego_design/main/images/p1-s1-1.jpg" alt="NEAGO DESIGN">
+    <img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s1-1.jpg" alt="NEAGO DESIGN">
 </div>
 
 <!-- 금속판 -->
@@ -153,9 +153,9 @@
 <section class="lineup-section">
     <h2 class="section-title">PREMIUM LINEUP</h2>
     <div class="lineup-grid">
-        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/naego_design/main/images/p1-s2-1.jpg" alt="시안 1" onerror="this.parentElement.style.display='none'"></div>
-        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/naego_design/main/images/p1-s2-2.jpg" alt="시안 2" onerror="this.parentElement.style.display='none'"></div>
-        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/naego_design/main/images/p1-s2-3.jpg" alt="시안 3" onerror="this.parentElement.style.display='none'"></div>
+        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s2-1.jpg" alt="시안 1" onerror="this.parentElement.style.display='none'"></div>
+        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s2-2.jpg" alt="시안 2" onerror="this.parentElement.style.display='none'"></div>
+        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/images/p1-s2-3.jpg" alt="시안 3" onerror="this.parentElement.style.display='none'"></div>
     </div>
 </section>
 
@@ -240,7 +240,7 @@
         <div class="email-box">
             <div class="email-info">
                 <div class="email-label">📎 첨부파일 전송 이메일</div>
-                <div class="email-address">kimsukpil1&#64;gmail&#46;com</div>
+                <div class="email-address" id="email-display"></div>
                 <div class="email-hint">첨부파일(사진·영상)은 이메일로 보내 주세요</div>
             </div>
             <button class="copy-btn" onclick="copyEmail()">주소복사</button>
@@ -294,6 +294,13 @@
     });
 
     // 이메일 복사 + 토스트
+    // 이메일 동적 렌더링 (클라우드플레어 스크래핑 우회)
+    (function() {
+        const u = 'kimsukpil1', d = 'gmail', t = 'com';
+        const el = document.getElementById('email-display');
+        if (el) el.textContent = u + String.fromCharCode(64) + d + '.' + t;
+    })();
+
     function copyEmail() {
         const email = 'kimsukpil1' + '@' + 'gmail.com';
         if (navigator.clipboard && navigator.clipboard.writeText) {
