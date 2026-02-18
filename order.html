@@ -1,168 +1,290 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>주문서 - NEAGO DESIGN</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Noto+Sans+KR:wght@300;400;900&display=swap" rel="stylesheet">
-    <style>
-        :root { --gold: #c5a059; }
-        body { background: #e0e5ec; color: #333; margin: 0; font-family: 'Noto Sans KR', sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>주문서 - NEAGO DESIGN</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Great+Vibes&family=Noto+Sans+KR:wght@300;400;900&display=swap" rel="stylesheet">
+<style>
 
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; background: #e0e5ec; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .logo { font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 900; text-decoration: none; background: linear-gradient(135deg, #d4af37, #c5a059); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        nav ul { list-style: none; display: flex; gap: 15px; align-items: center; margin: 0; padding: 0; }
-        .dropdown { position: relative; }
-        .dropbtn { padding: 8px 20px; background: linear-gradient(135deg, #d4af37, #c5a059); color: #fff; border-radius: 8px; font-weight: 900; font-size: 0.9rem; border: none; cursor: pointer; outline: none; }
-        .dropdown-content { display: none; position: absolute; background-color: #fff; min-width: 130px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); z-index: 1001; border-radius: 8px; top: 45px; right: 0; }
-        .dropdown.active .dropdown-content { display: block; }
-        .dropdown-content a { color: #666; padding: 10px 15px; text-decoration: none; display: block; font-size: 13px; font-weight: bold; }
-        .dropdown-content a:hover { color: #d4af37; background: #f5f5f5; }
+:root { --gold:#c5a059; --bg:#000; }
+*{ box-sizing:border-box; }
+body{ margin:0; font-family:'Noto Sans KR',sans-serif; background:var(--bg); color:#fff; overflow-x:hidden; }
 
-        .offer-section { min-height: 100vh; padding: 60px 20px; display: flex; justify-content: center; align-items: center; }
-        #main-section { width: 100%; max-width: 500px; padding: 50px 40px; background: #e0e5ec; border-radius: 40px; border: 1.5px solid #d4af37; box-shadow: 20px 20px 40px #bec3c9, -20px -20px 40px #fff; position: relative; }
-        #success-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(224,229,236,0.98); border-radius: 40px; display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 100; }
-        .success-glass { background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(197,160,89,0.15)); backdrop-filter: blur(10px); padding: 50px 30px; border-radius: 25px; text-align: center; box-shadow: 10px 10px 20px #bec3c9, -10px -10px 20px #fff; border: 1px solid #d4af37; }
-        .msg-line-1 { font-size: 26px; font-weight: 700; color: #d4af37; margin-bottom: 12px; }
-        .msg-line-2 { font-size: 16px; color: #666; }
-        .offer-title { font-family: 'Great Vibes', cursive; font-size: 48px; background: linear-gradient(135deg, #d4af37, #c5a059); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 40px; }
-        .field { margin-bottom: 25px; text-align: left; }
-        .field label { display: block; font-size: 13px; color: #555; margin-bottom: 10px; font-weight: 700; }
-        .offer-input { width: 100%; box-sizing: border-box; border: none; padding: 18px 20px; font-size: 16px; background: #e0e5ec; color: #2c3e50; outline: none; font-family: 'Noto Sans KR', sans-serif; border-radius: 15px; box-shadow: inset 5px 5px 10px #bec3c9, inset -5px -5px 10px #fff; transition: all 0.3s; }
-        .offer-input:focus { box-shadow: inset 3px 3px 6px #bec3c9, inset -3px -3px 6px #fff; }
-        .submit-btn { width: 100%; box-sizing: border-box; padding: 16px; background: #d8dde4; color: #888; border-radius: 15px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; box-shadow: 3px 3px 6px #d1d9e6, -3px -3px 6px #f9f9f9; margin-bottom: 12px; transition: all 0.3s; }
-        .submit-btn:hover { background: #d3d8df; color: #777; }
-        .naver-btn { display: block; width: 100%; box-sizing: border-box; padding: 22px; background: linear-gradient(135deg, #03c75a, #029648); color: #fff !important; border-radius: 15px; font-size: 18px; font-weight: 900; text-decoration: none; text-align: center; margin-bottom: 28px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; transition: all 0.3s; }
-        .naver-btn:hover { transform: translateY(-3px); }
-        .email-box { background: rgba(212,175,55,0.05); padding: 20px; border-radius: 15px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; box-shadow: inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #fff; }
-        .email-info { flex: 1; }
-        .email-label { font-size: 12px; color: #888; margin-bottom: 6px; font-weight: 700; }
-        .email-address { font-size: 15px; color: #d4af37; font-weight: 700; }
-        .email-hint { font-size: 11px; color: #aaa; margin-top: 5px; }
-        .copy-btn { padding: 10px 20px; background: #e0e5ec; color: #666; border: none; border-radius: 10px; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 5px 5px 10px #bec3c9, -5px -5px 10px #fff; flex-shrink: 0; }
-        .signature-box { border-top: 1px solid #d1d9e6; padding-top: 24px; text-align: center; }
-        .sig-name { font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: #111; display: block; }
-        .sig-phone { font-size: 0.85rem; color: #d4af37; font-weight: 700; letter-spacing: 2px; }
+nav{
+  position:sticky; top:0; z-index:1000;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 20px; background:rgba(0,0,0,0.95);
+  border-bottom:2px solid var(--gold);
+}
+.logo{
+  font-family:'Cinzel',serif; font-size:1.6rem; font-weight:900; text-decoration:none;
+  background: linear-gradient(to right,#bf953f,#fcf6ba,#b38728,#fcf6ba,#bf953f);
+  background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  animation:logo-shine 3s linear infinite;
+}
+@keyframes logo-shine{ to{ background-position:200% center; } }
 
-        @media (max-width: 768px) {
-            nav { padding: 15px 20px; }
-            .logo { font-size: 1.4rem; }
-            #main-section { padding: 40px 25px; }
-            .offer-title { font-size: 36px; }
-            .email-box { flex-direction: column; gap: 12px; }
-            .copy-btn { width: 100%; }
-        }
-    </style>
+nav ul{ list-style:none; display:flex; gap:10px; align-items:center; margin:0; padding:0; }
+.dropdown{ position:relative; }
+.dropbtn{
+  padding:8px 12px; border:2px solid var(--gold); border-radius:8px;
+  background:transparent; color:#fff; font-weight:900; cursor:pointer;
+}
+.dropdown-content{
+  display:none; position:absolute; right:0; top:44px;
+  background:#111; min-width:150px; border:1px solid var(--gold);
+  border-radius:10px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.8);
+}
+.dropdown.active .dropdown-content{ display:block; }
+.dropdown-content a{
+  display:block; padding:12px 14px; text-decoration:none; color:#bbb; font-weight:800; font-size:14px;
+}
+.dropdown-content a:hover{ background:#222; color:#fff; }
+
+.call-btn{
+  background:linear-gradient(135deg,#bf953f,#fcf6ba,#b38728);
+  color:#000 !important; padding:8px 12px; border-radius:8px;
+  font-weight:900; text-decoration:none; border:1px solid #fff; white-space:nowrap;
+}
+
+.section{ padding:70px 20px; }
+.section-title{
+  font-family:'Cinzel',serif; font-size:2rem; color:var(--gold);
+  letter-spacing:5px; text-align:center; margin:0 0 40px;
+}
+
+.hero{ height:56vh; border-bottom:12px solid; border-image: repeating-linear-gradient(-45deg,#8a6d3b 0,#bf953f 2px,#fcf6ba 4px) 1; overflow:hidden; }
+.hero img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+.metal-plate{
+  margin:40px auto 0; width:min(900px,92%); padding:48px 18px; border-radius:12px;
+  background:linear-gradient(135deg,#bf953f 0%,#fcf6ba 20%,#b38728 40%,#fbf5b7 60%,#aa771c 80%,#fcf6ba 100%);
+  border:3px solid #f1d384; box-shadow:0 20px 50px rgba(0,0,0,0.8);
+  position:relative; overflow:hidden; text-align:center;
+}
+.metal-plate::before{
+  content:""; position:absolute; top:0; left:-150%; width:100%; height:100%;
+  background:linear-gradient(135deg,rgba(255,255,255,0) 35%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0) 65%);
+  animation:light-sweep 3.3s infinite;
+}
+@keyframes light-sweep{ 0%{left:-150%} 90%{left:150%} 100%{left:150%} }
+.wave-text{
+  position:relative; z-index:1;
+  font-family:'Cinzel',serif; font-size:clamp(1.4rem,3.6vw,3rem); font-weight:900; letter-spacing:-1px;
+  background:linear-gradient(to right,#fcf6ba,#fff,#fcf6ba);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(2px 2px 0 rgba(0,0,0,0.8));
+}
+.sub-copy{
+  position:relative; z-index:1;
+  display:block; margin-top:12px; font-weight:900; letter-spacing:6px; color:#5c441a;
+  text-transform:uppercase; font-size:clamp(0.7rem,1.4vw,1rem);
+}
+
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:1200px; margin:0 auto; }
+.card{ background:#050505; border:1px solid rgba(197,160,89,0.25); border-radius:14px; overflow:hidden; }
+.card img{ width:100%; height:auto; display:block; }
+
+.price-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:900px; margin:0 auto 18px; }
+.price-card{
+  background:#0a0a0a; border:1px solid rgba(197,160,89,0.25); border-radius:14px;
+  padding:24px 16px; text-align:center; position:relative;
+}
+.price-card-best{ border-color:var(--gold); background:rgba(197,160,89,0.06); }
+.price-badge{
+  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  background:linear-gradient(135deg,#d4af37,#c5a059); color:#000;
+  font-size:0.7rem; font-weight:900; padding:4px 12px; border-radius:999px; letter-spacing:2px;
+}
+.price-qty{ font-family:'Cinzel',serif; color:#888; letter-spacing:2px; margin-bottom:10px; }
+.price-amt{ font-family:'Cinzel',serif; font-size:1.8rem; font-weight:900; color:var(--gold); }
+.price-save{ font-size:0.78rem; color:#4caf7d; margin-top:8px; font-weight:800; }
+.price-note{ text-align:center; color:#666; letter-spacing:1px; font-size:0.85rem; margin:0; }
+
+.offer-wrap{ display:flex; justify-content:center; padding:70px 20px; background:#000; }
+.offer{
+  width:min(520px,100%); padding:38px 28px; border-radius:24px;
+  background:#111; border:1.5px solid var(--gold);
+  box-shadow:0 18px 40px rgba(0,0,0,0.6);
+}
+.offer-title{
+  font-family:'Great Vibes',cursive; font-size:44px; text-align:center; margin:0 0 26px;
+  background:linear-gradient(135deg,#d4af37,#c5a059);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.field{ margin-bottom:16px; }
+.field label{ display:block; font-size:13px; color:#bbb; margin-bottom:8px; font-weight:800; }
+.input{
+  width:100%; padding:14px 14px; border-radius:12px;
+  background:#0b0b0b; border:1px solid #222; color:#fff; outline:none;
+}
+.btn{
+  width:100%; padding:14px; border-radius:12px; border:none; cursor:pointer;
+  background:#d8dde4; color:#222; font-weight:900;
+}
+.btn:hover{ filter:brightness(0.98); }
+.naver-btn{
+  display:block; text-align:center; margin-top:10px;
+  padding:16px; border-radius:12px; text-decoration:none; font-weight:900; color:#fff !important;
+  background:linear-gradient(135deg,#03c75a,#029648);
+}
+.email-box{
+  margin-top:14px; padding:14px; border-radius:12px;
+  border:1px solid rgba(197,160,89,0.25); background:rgba(197,160,89,0.06);
+  display:flex; gap:10px; align-items:center; justify-content:space-between;
+}
+.email-box .addr{ color:var(--gold); font-weight:900; font-size:14px; word-break:break-all; }
+.copy-btn{
+  padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.18);
+  background:#0b0b0b; color:#ddd; font-weight:900; cursor:pointer;
+}
+.toast{
+  position:fixed; bottom:26px; left:50%; transform:translateX(-50%);
+  background:rgba(0,0,0,0.85); border:1px solid rgba(197,160,89,0.35);
+  color:#fff; padding:10px 14px; border-radius:999px; font-weight:800; z-index:9999;
+  display:none;
+}
+
+@media (max-width: 1024px){
+  nav{ padding:10px 14px; }
+  .logo{ font-size:1.35rem; }
+  .grid-3{ grid-template-columns:1fr; }
+  .price-grid{ grid-template-columns:repeat(2,1fr); }
+}
+
+</style>
 </head>
 <body>
-
 <nav>
-    <a href="index.html" class="logo">NEAGO DESIGN</a>
-    <ul>
-        <li class="dropdown" id="dropdown">
-            <button class="dropbtn" id="dropbtn">샘플보기</button>
-            <div class="dropdown-content">
-                <a href="index.html">홈</a>
-                <a href="thumbnail.html">썸네일</a>
-                <a href="order.html">주문서</a>
-            </div>
-        </li>
-    </ul>
+  <a href="index.html" class="logo">NEAGO DESIGN</a>
+  <ul>
+    <li class="dropdown" id="dropdown">
+      <button class="dropbtn" id="dropbtn" type="button">샘플보기</button>
+      <div class="dropdown-content" aria-label="샘플보기 메뉴">
+        <a href="index.html">홈</a>
+        <a href="thumbnail.html">썸네일</a>
+        <a href="order.html">주문서</a>
+      </div>
+    </li>
+    <li><a class="call-btn" href="tel:010-7928-8645">010-7928-8645</a></li>
+  </ul>
 </nav>
-
-<section style="padding: 60px 20px; text-align: center; background: #e0e5ec;">
-    <h2 style="font-family: 'Cinzel', serif; font-size: 2rem; margin-bottom: 40px; letter-spacing: 5px; background: linear-gradient(135deg, #d4af37, #c5a059); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PRICE</h2>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 700px; margin: 0 auto 20px;">
-        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center;">
-            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">1개</div>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">10,000<span style="font-size:0.85rem;">원</span></div>
-        </div>
-        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center;">
-            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">2개</div>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">16,000<span style="font-size:0.85rem;">원</span></div>
-            <div style="font-size: 0.72rem; color: #4caf7d; margin-top: 6px; font-weight: 700;">2,000원 절약</div>
-        </div>
-        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center;">
-            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">3개</div>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">20,000<span style="font-size:0.85rem;">원</span></div>
-            <div style="font-size: 0.72rem; color: #4caf7d; margin-top: 6px; font-weight: 700;">10,000원 절약</div>
-        </div>
-        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center;">
-            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">4개</div>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">25,000<span style="font-size:0.85rem;">원</span></div>
-            <div style="font-size: 0.72rem; color: #4caf7d; margin-top: 6px; font-weight: 700;">15,000원 절약</div>
-        </div>
-        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center;">
-            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">5개</div>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">28,000<span style="font-size:0.85rem;">원</span></div>
-            <div style="font-size: 0.72rem; color: #4caf7d; margin-top: 6px; font-weight: 700;">22,000원 절약</div>
-        </div>
-        <div style="background: #e0e5ec; border-radius: 15px; padding: 24px 16px; box-shadow: 8px 8px 16px #bec3c9, -8px -8px 16px #fff; text-align: center; border: 1.5px solid #d4af37; position: relative;">
-            <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #d4af37, #c5a059); color: #000; font-size: 0.65rem; font-weight: 900; padding: 3px 12px; border-radius: 20px; letter-spacing: 2px;">BEST</div>
-            <div style="font-family: 'Cinzel', serif; font-size: 0.9rem; color: #888; margin-bottom: 10px; letter-spacing: 2px;">10개</div>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; color: #d4af37;">45,000<span style="font-size:0.85rem;">원</span></div>
-            <div style="font-size: 0.72rem; color: #4caf7d; margin-top: 6px; font-weight: 700;">55,000원 절약</div>
-        </div>
+<section class="section" id="price">
+  <h2 class="section-title">PRICE</h2>
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="price-qty">1개</div>
+      <div class="price-amt">10,000<span style="font-size:1rem">원</span></div>
     </div>
-    <p style="font-size: 0.82rem; color: #aaa; letter-spacing: 1px;">레이아웃 · 썸네일 동일 적용</p>
-</section>
-
-<section class="offer-section">
-    <div id="main-section">
-        <div id="success-overlay">
-            <div class="success-glass">
-                <div class="msg-line-1">주문이 접수되었습니다! 🎉</div>
-                <div class="msg-line-2">24시간 내 연락드리겠습니다.</div>
-            </div>
-        </div>
-        <h1 class="offer-title">Design Order</h1>
-        <div class="field">
-            <label>어떤 상품인가요?</label>
-            <input type="text" id="product-name" class="offer-input" placeholder="">
-        </div>
-        <div class="field">
-            <label>연락처</label>
-            <input type="text" id="user-contact" class="offer-input" placeholder="010-">
-        </div>
-        <button class="submit-btn" onclick="handleFinalSubmit()">상담요청</button>
-        <a href="https://smartstore.naver.com/pxq1/products/12976242217" target="_blank" class="naver-btn">네이버 스토어로 주문하기</a>
-        <div class="email-box">
-            <div class="email-info">
-                <div class="email-label">📎 첨부파일 전송 이메일</div>
-                <div class="email-address">kimsukpil1&#64;gmail&#46;com</div>
-                <div class="email-hint">첨부파일(사진·영상)은 이메일로 보내 주세요</div>
-            </div>
-            <button class="copy-btn" onclick="copyEmail()">주소복사</button>
-        </div>
-        <div class="signature-box">
-            <span class="sig-name">Sukbeom Kim</span>
-            <span class="sig-phone">010-7928-8645</span>
-        </div>
+    <div class="price-card">
+      <div class="price-qty">2개</div>
+      <div class="price-amt">16,000<span style="font-size:1rem">원</span></div>
+      <div class="price-save">2,000원 절약</div>
     </div>
+    <div class="price-card">
+      <div class="price-qty">3개</div>
+      <div class="price-amt">20,000<span style="font-size:1rem">원</span></div>
+      <div class="price-save">10,000원 절약</div>
+    </div>
+    <div class="price-card">
+      <div class="price-qty">4개</div>
+      <div class="price-amt">25,000<span style="font-size:1rem">원</span></div>
+      <div class="price-save">15,000원 절약</div>
+    </div>
+    <div class="price-card">
+      <div class="price-qty">5개</div>
+      <div class="price-amt">28,000<span style="font-size:1rem">원</span></div>
+      <div class="price-save">22,000원 절약</div>
+    </div>
+    <div class="price-card price-card-best">
+      <div class="price-badge">BEST</div>
+      <div class="price-qty">10개</div>
+      <div class="price-amt">45,000<span style="font-size:1rem">원</span></div>
+      <div class="price-save">55,000원 절약</div>
+    </div>
+  </div>
+  <p class="price-note">레이아웃 · 썸네일 동일 적용</p>
 </section>
+<section class="offer-wrap" id="order">
+  <div class="offer">
+    <h1 class="offer-title">Design Order</h1>
+    <div class="field">
+      <label for="product-name">어떤 상품인가요?</label>
+      <input id="product-name" class="input" type="text" placeholder="예) 유튜브 썸네일 / 상세페이지">
+    </div>
+    <div class="field">
+      <label for="user-contact">연락처</label>
+      <input id="user-contact" class="input" type="text" placeholder="010-">
+    </div>
+    <button class="btn" type="button" onclick="alert('주문이 접수되었습니다!\n24시간 내 연락드리겠습니다.')">상담요청</button>
+    <a class="naver-btn" href="https://smartstore.naver.com/pxq1/products/12976242217" target="_blank" rel="noopener">네이버 스토어로 주문하기</a>
 
-
-
+    <div class="email-box">
+      <div>
+        <div style="font-size:12px;color:#bbb;font-weight:800;margin-bottom:6px;">📎 첨부파일 전송 이메일</div>
+        <div class="addr" id="email-display">kimsukpil1@gmail.com</div>
+        <div style="font-size:11px;color:#888;margin-top:6px;">첨부파일(사진·영상)은 이메일로 보내 주세요</div>
+      </div>
+      <button class="copy-btn" type="button" onclick="copyEmail()">주소복사</button>
+    </div>
+  </div>
+</section>
+<div class="toast" id="toast">복사 완료 ✅</div>
 
 <script>
-document.addEventListener("click", function(e){
+(function(){
+  function setupDropdown(){
+    const dropdown = document.getElementById('dropdown');
+    const btn = document.getElementById('dropbtn');
+    if(!dropdown || !btn) return;
 
-  const dropdown = document.getElementById("dropdown");
-  const button   = document.getElementById("dropbtn");
-
-  if(!dropdown || !button) return;
-
-  if(button.contains(e.target)){
-      e.stopPropagation();
-      dropdown.classList.toggle("active");
+    // BFCache 대비: 이미 바인딩 되어 있으면 메뉴만 닫고 끝
+    if (window.__neagoBound) {
+      dropdown.classList.remove('active');
       return;
+    }
+    window.__neagoBound = true;
+
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      dropdown.classList.toggle('active');
+    }, {passive:false});
+
+    document.addEventListener('click', function(e){
+      if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
+    }, true);
+
+    window.addEventListener('pageshow', function(){
+      dropdown.classList.remove('active');
+    });
   }
 
-  if(!dropdown.contains(e.target)){
-      dropdown.classList.remove("active");
-  }
+  document.addEventListener('DOMContentLoaded', setupDropdown);
+})();
 
-});
+function copyEmail(){
+  const email = 'kimsukpil1' + '@' + 'gmail.com';
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(email).then(showToast).catch(()=>fallbackCopy(email));
+  } else fallbackCopy(email);
+}
+function fallbackCopy(email){
+  const ta = document.createElement('textarea');
+  ta.value = email; ta.style.position='fixed'; ta.style.left='-999999px';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); showToast(); }
+  catch(e){ alert('수동으로 복사: ' + email); }
+  document.body.removeChild(ta);
+}
+function showToast(){
+  const t = document.getElementById('toast');
+  if(!t) return;
+  t.style.display='block';
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(()=>{ t.style.display='none'; }, 1400);
+}
 </script>
 
 </body>
