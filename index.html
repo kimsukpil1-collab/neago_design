@@ -253,6 +253,7 @@
 </section>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
     // 드롭다운
     const dropbtn = document.getElementById('dropbtn');
     const dropdown = document.getElementById('dropdown');
@@ -355,4 +356,17 @@
         try {
             await fetch('https://script.google.com/macros/s/AKfycbymzFquDdmIHcimqhO0LkSgNt8xp5x9f7WCztr9BZJedBfcPVjHlH2d9sI8nK9xkM8JVQ/exec', {
                 method: 'POST', mode: 'no-cors',
-                headers: { 'Content-Ty
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: '7299827824', text: text })
+            });
+        } catch(e) { console.error(e); }
+        setTimeout(() => {
+            document.getElementById('success-overlay').style.display = 'none';
+            document.getElementById('product-name').value = '';
+            document.getElementById('user-contact').value = '';
+        }, 4000);
+    }
+    }); // DOMContentLoaded
+</script>
+</body>
+</html>
