@@ -151,7 +151,7 @@
         <div class="email-box">
             <div class="email-info">
                 <div class="email-label">📎 첨부파일 전송 이메일</div>
-                <div class="email-address">kimsukpil1@gmail.com</div>
+                <div class="email-address">kimsukpil1&#64;gmail&#46;com</div>
                 <div class="email-hint">첨부파일(사진·영상)은 이메일로 보내 주세요</div>
             </div>
             <button class="copy-btn" onclick="copyEmail()">주소복사</button>
@@ -188,7 +188,7 @@
 
     // 이메일 복사 + 토스트
     function copyEmail() {
-        const email = 'kimsukpil1@gmail.com';
+        const email = 'kimsukpil1' + '@' + 'gmail.com';
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(email).then(() => showToast()).catch(() => fallbackCopy(email));
         } else { fallbackCopy(email); }
@@ -207,7 +207,7 @@
         const wrap = document.createElement('div');
         wrap.id = 'toast-wrap';
         wrap.style.cssText = 'position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:8px;align-items:center;';
-        wrap.innerHTML = '<div style="background:rgba(20,20,20,0.95);color:#fcf6ba;padding:12px 24px;border-radius:8px;font-size:0.9rem;font-weight:700;border:1px solid rgba(197,160,89,0.5);white-space:nowrap;">kimsukpil1@gmail.com 복사되었습니다! 📋</div>'
+        wrap.innerHTML = '<div style="background:rgba(20,20,20,0.95);color:#fcf6ba;padding:12px 24px;border-radius:8px;font-size:0.9rem;font-weight:700;border:1px solid rgba(197,160,89,0.5);white-space:nowrap;">kimsukpil1&#64;gmail&#46;com 복사되었습니다! 📋</div>'
                        + '<div style="background:rgba(20,20,20,0.9);color:#aaa;padding:10px 20px;border-radius:8px;font-size:0.8rem;border:1px solid rgba(255,255,255,0.1);white-space:nowrap;">첨부파일(사진·영상)은 이메일로 보내 주세요</div>';
         document.body.appendChild(wrap);
         setTimeout(() => wrap.remove(), 3500);
@@ -234,11 +234,4 @@
             });
         } catch(e) { console.error('전송 오류:', e); }
         setTimeout(() => {
-            document.getElementById('success-overlay').style.display = 'none';
-            document.getElementById('product-name').value = '';
-            document.getElementById('user-contact').value = '';
-        }, 4000);
-    }
-</script>
-</body>
-</html>
+            document.getEl
