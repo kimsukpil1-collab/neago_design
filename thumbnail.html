@@ -164,6 +164,7 @@
 </section>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
     // 드롭다운
     const dropbtn = document.getElementById('dropbtn');
     const dropdown = document.getElementById('dropdown');
@@ -182,7 +183,7 @@
     pngNumbers.forEach(num => {
         const card = document.createElement('div');
         card.className = 'thumb-card';
-        card.innerHTML = '<img src="' + BASE + '5%20(' + num + ').png" alt="썸네일 ' + num + '" onerror="this.parentElement.style.display=\'none\'">';
+        card.innerHTML = '<img src="' + BASE + '5%20%28' + num + '%29.png" alt="썸네일 ' + num + '" onerror="this.parentElement.style.display=\'none\'">';
         thumbGrid.appendChild(card);
     });
 
@@ -239,6 +240,7 @@
             document.getElementById('order-note').value = '';
         }, 4000);
     }
+    }); // DOMContentLoaded
 </script>
 </body>
 </html>
