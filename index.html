@@ -240,7 +240,7 @@
         <div class="email-box">
             <div class="email-info">
                 <div class="email-label">📎 첨부파일 전송 이메일</div>
-                <div class="email-address" id="email-display">kimsukpil1@gmail.com</div>
+                <div class="email-address" id="email-display"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="274c4e4a54524c574e4b1667404a464e4b0944484a">[email&#160;protected]</a></div>
                 <div class="email-hint">첨부파일(사진·영상)은 이메일로 보내 주세요</div>
             </div>
             <button class="copy-btn" onclick="copyEmail()">주소복사</button>
@@ -252,17 +252,26 @@
     </div>
 </section>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     document.addEventListener('DOMContentLoaded', function() {
     // 드롭다운
     const dropbtn = document.getElementById('dropbtn');
     const dropdown = document.getElementById('dropdown');
     dropbtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        dropdown.classList.toggle('active');
+        e.preventDefault();
+        const isOpen = dropdown.classList.contains('active');
+        dropdown.classList.remove('active');
+        if (!isOpen) dropdown.classList.add('active');
     });
     document.addEventListener('click', (e) => {
         if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
+    });
+    document.addEventListener('visibilitychange', () => {
+        dropdown.classList.remove('active');
+    });
+    window.addEventListener('blur', () => {
+        setTimeout(() => dropdown.classList.remove('active'), 100);
     });
 
     // 갤러리 이미지 동적 로드
@@ -361,11 +370,4 @@
             });
         } catch(e) { console.error(e); }
         setTimeout(() => {
-            document.getE).getElementById('success-overlay').style.display = 'none';
-            document.getElementById('product-name').value = '';
-            document.getElementById('user-contact').value = '';
-        }, 4000);
-    }
-</script>
-</body>
-</html>
+            document.getE).getE
