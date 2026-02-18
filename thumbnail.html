@@ -164,83 +164,118 @@
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    // 드롭다운
-    const dropbtn = document.getElementById('dropbtn');
-    const dropdown = document.getElementById('dropdown');
+/* ===== neago: 공통 JS (thumbnail) ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  // 드롭다운
+  const dropbtn = document.getElementById('dropbtn');
+  const dropdown = document.getElementById('dropdown');
+  if (dropbtn && dropdown) {
     dropbtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('active');
+      e.stopPropagation();
+      dropdown.classList.toggle('active');
     });
     document.addEventListener('click', (e) => {
-        if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
+      if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
     });
+  }
 
-    // 썸네일 동적 로드 - 깃허브 이미지 목록 기반 전체 번호
-    const BASE = "https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/";
-    const pngNumbers = [23,25,26,28,29,31,32];
-    const thumbGrid = document.getElementById('thumb-grid');
-    pngNumbers.forEach(num => {
-        const card = document.createElement('div');
-        card.className = 'thumb-card';
-        card.innerHTML = '<img src="' + BASE + '5%20%28' + num + '%29.png" alt="썸네일 ' + num + '" onerror="this.parentElement.style.display=\'none\'">';
-        thumbGrid.appendChild(card);
+  // 썸네일: 5 (23) ~ 5 (32) 로드
+  const BASE = "https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/";
+  const thumbGrid = document.getElementById('thumb-grid');
+  if (thumbGrid) {
+    thumbGrid.innerHTML = '';
+    for (let n = 23; n <= 32; n++) {
+      const filename = `5 (${n}).png`;
+      const url = BASE + encodeURIComponent(filename);
+      const card = document.createElement('div');
+      card.className = 'thumb-card';
+      card.innerHTML = `<img src="${url}" alt="썸네일 ${n}" onerror="this.parentElement.style.display='none'">`;
+      thumbGrid.appendChild(card);
+    }
+  }
+
+  // 이메일 렌더
+  const u = 'kimsukpil1', d = 'gmail', t = 'com';
+  const email = `${u}@${d}.${t}`;
+  const el = document.getElementById('email-display');
+  if (el) el.textContent = email;
+});
+
+// ===== onclick 전역 함수 =====
+window.copyEmail = async function copyEmail() {
+  const email = 'kimsukpil1@gmail.com';
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(email);
+      window.showToast?.();
+    } else {
+      window.fallbackCopy?.(email);
+    }
+  } catch (e) {
+    window.fallbackCopy?.(email);
+  }
+};
+
+window.fallbackCopy = function fallbackCopy(email) {
+  const ta = document.createElement('textarea');
+  ta.value = email;
+  ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  ta.setSelectionRange(0, 9999);
+  try { document.execCommand('copy'); window.showToast?.(); }
+  catch(e) { alert('수동으로 복사해주세요: ' + email); }
+  document.body.removeChild(ta);
+};
+
+window.showToast = function showToast() {
+  const old = document.getElementById('toast-wrap');
+  if (old) old.remove();
+  const wrap = document.createElement('div');
+  wrap.id = 'toast-wrap';
+  wrap.style.cssText = 'position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:8px;align-items:center;';
+  wrap.innerHTML =
+    '<div style="background:rgba(20,20,20,0.95);color:#fcf6ba;padding:12px 24px;border-radius:8px;font-size:0.9rem;font-weight:700;border:1px solid rgba(197,160,89,0.5);white-space:nowrap;">kimsukpil1@gmail.com 복사되었습니다! 📋</div>' +
+    '<div style="background:rgba(20,20,20,0.9);color:#aaa;padding:10px 20px;border-radius:8px;font-size:0.8rem;border:1px solid rgba(255,255,255,0.1);white-space:nowrap;">첨부파일(사진·영상)은 이메일로 보내 주세요</div>';
+  document.body.appendChild(wrap);
+  setTimeout(() => wrap.remove(), 3500);
+};
+
+window.handleFinalSubmit = async function handleFinalSubmit() {
+  const productName = document.getElementById('product-name')?.value.trim();
+  const contact = document.getElementById('user-contact')?.value.trim();
+  if (!productName || !contact) { alert('상품명과 연락처를 입력해주세요.'); return; }
+
+  const now = new Date();
+  const dateStr = String(now.getMonth()+1).padStart(2,'0') + '/' + String(now.getDate()).padStart(2,'0');
+  let count = parseInt(localStorage.getItem('last_count') || '0', 10);
+  count = localStorage.getItem('last_date') !== dateStr ? 1 : count + 1;
+  localStorage.setItem('last_date', dateStr);
+  localStorage.setItem('last_count', String(count));
+
+  const text = `🎨 [썸네일주문_${dateStr}_${count}]\n\n📦 상품명: ${productName}\n📞 연락처: ${contact}`;
+
+  const overlay = document.getElementById('success-overlay');
+  if (overlay) overlay.style.display = 'flex';
+
+  try {
+    await fetch('https://script.google.com/macros/s/AKfycbymzFquDdmIHcimqhO0LkSgNt8xp5x9f7WCztr9BZJedBfcPVjHlH2d9sI8nK9xkM8JVQ/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: '7299827824', text })
     });
+  } catch(e) { console.error(e); }
 
-    // 이메일 복사 + 토스트
-    function copyEmail() {
-        const email = 'kimsukpil1' + '@' + 'gmail.com';
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(email).then(() => showToast()).catch(() => fallbackCopy(email));
-        } else { fallbackCopy(email); }
-    }
-    function fallbackCopy(email) {
-        const ta = document.createElement('textarea');
-        ta.value = email; ta.style.position = 'fixed'; ta.style.left = '-999999px';
-        document.body.appendChild(ta); ta.select();
-        try { document.execCommand('copy'); showToast(); }
-        catch(e) { alert('수동으로 복사해주세요: ' + email); }
-        document.body.removeChild(ta);
-    }
-    function showToast() {
-        const old = document.getElementById('toast-wrap');
-        if (old) old.remove();
-        const wrap = document.createElement('div');
-        wrap.id = 'toast-wrap';
-        wrap.style.cssText = 'position:fixed;bottom:40px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:8px;align-items:center;';
-        wrap.innerHTML = '<div style="background:rgba(20,20,20,0.95);color:#fcf6ba;padding:12px 24px;border-radius:8px;font-size:0.9rem;font-weight:700;border:1px solid rgba(197,160,89,0.5);white-space:nowrap;">kimsukpil1&#64;gmail&#46;com 복사되었습니다! 📋</div>'
-                       + '<div style="background:rgba(20,20,20,0.9);color:#aaa;padding:10px 20px;border-radius:8px;font-size:0.8rem;border:1px solid rgba(255,255,255,0.1);white-space:nowrap;">첨부파일(사진·영상)은 이메일로 보내 주세요</div>';
-        document.body.appendChild(wrap);
-        setTimeout(() => wrap.remove(), 3500);
-    }
-
-    // 주문서 제출
-    async function handleFinalSubmit() {
-        const productName = document.getElementById('product-name').value.trim();
-        const contact = document.getElementById('user-contact').value.trim();
-        if (!productName || !contact) { alert('상품명과 연락처를 입력해주세요.'); return; }
-        const now = new Date();
-        const dateStr = String(now.getMonth()+1).padStart(2,'0') + '/' + String(now.getDate()).padStart(2,'0');
-        let count = parseInt(localStorage.getItem('last_count') || '0');
-        count = localStorage.getItem('last_date') !== dateStr ? 1 : count + 1;
-        localStorage.setItem('last_date', dateStr);
-        localStorage.setItem('last_count', String(count));
-        const text = '🎨 [디자인주문_' + dateStr + '_' + count + ']\n\n📦 상품명: ' + productName + '\n📞 연락처: ' + contact;
-        document.getElementById('success-overlay').style.display = 'flex';
-        try {
-            await fetch('https://script.google.com/macros/s/AKfycbymzFquDdmIHcimqhO0LkSgNt8xp5x9f7WCztr9BZJedBfcPVjHlH2d9sI8nK9xkM8JVQ/exec', {
-                method: 'POST', mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: '7299827824', text: text })
-            });
-        } catch(e) { console.error('전송 오류:', e); }
-        setTimeout(() => {
-            document.getEl            document.getElementById('order-name').value = '';
-            document.getElementById('order-contact').value = '';
-            document.getElementById('order-note').value = '';
-        }, 4000);
-    }
-    }); // DOMContentLoaded
+  setTimeout(() => {
+    if (overlay) overlay.style.display = 'none';
+    const pn = document.getElementById('product-name');
+    const uc = document.getElementById('user-contact');
+    if (pn) pn.value = '';
+    if (uc) uc.value = '';
+  }, 4000);
+};
 </script>
 </body>
 </html>
