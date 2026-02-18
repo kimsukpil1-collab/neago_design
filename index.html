@@ -140,7 +140,7 @@
 
 <!-- 섹션1: 히어로 -->
 <div class="hero-box">
-    <img src="p1-s1-1.jpg" alt="NEAGO DESIGN">
+    <img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/p1-s1-1.jpg" alt="NEAGO DESIGN">
 </div>
 
 <!-- 금속판 -->
@@ -153,9 +153,9 @@
 <section class="lineup-section">
     <h2 class="section-title">PREMIUM LINEUP</h2>
     <div class="lineup-grid">
-        <div class="lineup-card"><img src="p1-s2-1.jpg" alt="시안 1" onerror="this.parentElement.style.display='none'"></div>
-        <div class="lineup-card"><img src="p1-s2-2.jpg" alt="시안 2" onerror="this.parentElement.style.display='none'"></div>
-        <div class="lineup-card"><img src="p1-s2-3.jpg" alt="시안 3" onerror="this.parentElement.style.display='none'"></div>
+        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/p1-s2-1.jpg" alt="시안 1" onerror="this.parentElement.style.display='none'"></div>
+        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/p1-s2-2.jpg" alt="시안 2" onerror="this.parentElement.style.display='none'"></div>
+        <div class="lineup-card"><img src="https://raw.githubusercontent.com/kimsukpil1-collab/neago_design/main/p1-s2-3.jpg" alt="시안 3" onerror="this.parentElement.style.display='none'"></div>
     </div>
 </section>
 
@@ -240,7 +240,7 @@
         <div class="email-box">
             <div class="email-info">
                 <div class="email-label">📎 첨부파일 전송 이메일</div>
-                <div class="email-address" id="email-display"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="274c4e4a54524c574e4b1667404a464e4b0944484a">[email&#160;protected]</a></div>
+                <div class="email-address" id="email-display">kimsukpil1@gmail.com</div>
                 <div class="email-hint">첨부파일(사진·영상)은 이메일로 보내 주세요</div>
             </div>
             <button class="copy-btn" onclick="copyEmail()">주소복사</button>
@@ -252,30 +252,21 @@
     </div>
 </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
     // 드롭다운
     const dropbtn = document.getElementById('dropbtn');
     const dropdown = document.getElementById('dropdown');
     dropbtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        e.preventDefault();
-        const isOpen = dropdown.classList.contains('active');
-        dropdown.classList.remove('active');
-        if (!isOpen) dropdown.classList.add('active');
+        dropdown.classList.toggle('active');
     });
     document.addEventListener('click', (e) => {
         if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
     });
-    document.addEventListener('visibilitychange', () => {
-        dropdown.classList.remove('active');
-    });
-    window.addEventListener('blur', () => {
-        setTimeout(() => dropdown.classList.remove('active'), 100);
-    });
 
     // 갤러리 이미지 동적 로드
-    const BASE = "https://github.com/kimsukpil1-collab/neago_design/blob/main/";
+    const BASE = "./";
     const jpgFiles = [
         '002','003','008','012','021','028','030','034','035','038',
         '040','042','044','046','047','048','049','050','051','052',
@@ -290,7 +281,7 @@
     jpgFiles.forEach(num => {
         const card = document.createElement('div');
         card.className = 'gallery-card';
-        card.innerHTML = '<img src="' + BASE + num + '.jpg?raw=true" alt="레이아웃 ' + num + '" onerror="this.parentElement.style.display=\'none\'">';
+        card.innerHTML = '<img src="' + BASE + num + '.jpg" alt="레이아웃 ' + num + '" onerror="this.parentElement.style.display=\'none\'">';
         galleryGrid.appendChild(card);
     });
 
@@ -299,7 +290,7 @@
     pngLayout.forEach(num => {
         const card = document.createElement('div');
         card.className = 'gallery-card';
-        card.innerHTML = '<img src="' + BASE + '5%20(' + num + ').png?raw=true" alt="레이아웃 ' + num + '" onerror="this.parentElement.style.display=\'none\'">';
+        card.innerHTML = '<img src="' + BASE + '5%20(' + num + ').png" alt="레이아웃 ' + num + '" onerror="this.parentElement.style.display=\'none\'">';
         galleryGrid.appendChild(card);
     });
 
@@ -370,4 +361,41 @@
             });
         } catch(e) { console.error(e); }
         setTimeout(() => {
-            document.getE).getE
+            document.getE).getElementById('success-overlay').style.display = 'none';
+            document.getElementById('product-name').value = '';
+            document.getElementById('user-contact').value = '';
+        }, 4000);
+    }
+</script>
+<script>
+(function(){
+  function bindDropdown(){
+    const dropdown = document.getElementById('dropdown');
+    const oldBtn = document.getElementById('dropbtn');
+    if(!dropdown || !oldBtn) return;
+
+    // 기존 리스너/캐시(BFCache)로 꼬이는 것 방지: 버튼을 교체해서 리스너 초기화
+    const btn = oldBtn.cloneNode(true);
+    oldBtn.parentNode.replaceChild(btn, oldBtn);
+
+    // 문서 클릭 핸들러도 중복 제거
+    if (window.__neagoDocClick) {
+      document.removeEventListener('click', window.__neagoDocClick, true);
+    }
+    window.__neagoDocClick = function(e){
+      if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
+    };
+    document.addEventListener('click', window.__neagoDocClick, true);
+
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      dropdown.classList.toggle('active');
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', bindDropdown);
+  window.addEventListener('pageshow', bindDropdown); // GitHub Pages/브라우저 캐시로 재진입해도 동작
+})();
+</script>
+</body>
+</html>

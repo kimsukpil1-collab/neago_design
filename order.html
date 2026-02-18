@@ -147,19 +147,10 @@
     const dropdown = document.getElementById('dropdown');
     dropbtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        e.preventDefault();
-        const isOpen = dropdown.classList.contains('active');
-        dropdown.classList.remove('active');
-        if (!isOpen) dropdown.classList.add('active');
+        dropdown.classList.toggle('active');
     });
     document.addEventListener('click', (e) => {
         if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
-    });
-    document.addEventListener('visibilitychange', () => {
-        dropdown.classList.remove('active');
-    });
-    window.addEventListener('blur', () => {
-        setTimeout(() => dropdown.classList.remove('active'), 100);
     });
 
     // 이메일 복사 + 토스트
@@ -215,6 +206,36 @@
             document.getElementById('user-contact').value = '';
         }, 4000);
     }
+</script>
+<script>
+(function(){
+  function bindDropdown(){
+    const dropdown = document.getElementById('dropdown');
+    const oldBtn = document.getElementById('dropbtn');
+    if(!dropdown || !oldBtn) return;
+
+    // 기존 리스너/캐시(BFCache)로 꼬이는 것 방지: 버튼을 교체해서 리스너 초기화
+    const btn = oldBtn.cloneNode(true);
+    oldBtn.parentNode.replaceChild(btn, oldBtn);
+
+    // 문서 클릭 핸들러도 중복 제거
+    if (window.__neagoDocClick) {
+      document.removeEventListener('click', window.__neagoDocClick, true);
+    }
+    window.__neagoDocClick = function(e){
+      if (!dropdown.contains(e.target)) dropdown.classList.remove('active');
+    };
+    document.addEventListener('click', window.__neagoDocClick, true);
+
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      dropdown.classList.toggle('active');
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', bindDropdown);
+  window.addEventListener('pageshow', bindDropdown); // GitHub Pages/브라우저 캐시로 재진입해도 동작
+})();
 </script>
 </body>
 </html>
