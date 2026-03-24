@@ -353,7 +353,7 @@
         var text = '🎨 [홈페이지1주문_' + dateStr + '_' + count + ']\n\n📦 상품명: ' + productName + '\n📞 연락처: ' + contact;
         document.getElementById('success-overlay').style.display = 'flex';
         try {
-            await fetch('https://script.google.com/macros/s/AKfycbymzFquDdmIHcimqhO0LkSgNt8xp5x9f7WCztr9BZJedBfcPVjHlH2d9sI8nK9xkM8JVQ/exec', {
+            await fetch('https://script.google.com/macros/s/AKfycbxJPGBFT1RUlSu0UD00NSAgxWgEfw76vp2iZ86UcKM454WQt9AEakeIwXr3bTOiPqY5/exec', {
                 method: 'POST', mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: '7299827824', text: text })
